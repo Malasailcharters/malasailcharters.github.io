@@ -1237,9 +1237,6 @@ ul { list-style: none; }
   .trip-meta { flex-wrap: wrap; gap: 4px 8px; }
   .trip-footer { flex-wrap: wrap; gap: 12px; }
 
-  .review-header { flex-wrap: wrap; }
-  .review-trip-tag { margin-left: auto; }
-
   .captain-img { height: 320px; }
 
   .gallery-strip { height: 150px; overflow-x: auto; scroll-snap-type: x mandatory; }
