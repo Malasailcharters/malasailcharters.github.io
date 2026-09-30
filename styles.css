@@ -806,34 +806,13 @@ ul { list-style: none; }
 
 .review-header {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
   margin-bottom: 16px;
-}
-.review-avatar {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: white;
-  flex-shrink: 0;
 }
 .review-name { font-weight: 700; font-size: 0.95rem; }
 .review-stars { color: var(--gold); font-size: 0.85rem; }
-
-.review-trip-tag {
-  margin-left: auto;
-  font-size: 0.72rem;
-  background: rgba(176,134,82,0.12);
-  color: var(--cyan);
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-weight: 600;
-  white-space: nowrap;
-}
 
 .review-text {
   font-size: 0.88rem;
