@@ -1,5 +1,5 @@
 /* =============================================
-   SONG OF WATER — PREMIUM CSS
+   MĀLĀ SAIL CHARTERS — PREMIUM CSS
    ============================================= */
 
 /* --- RESET & VARIABLES --- */
@@ -227,8 +227,12 @@ ul { list-style: none; }
      makes the two brands read as related, more than the family does. */
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  /* The bar is the one place a tracked lockup could wrap mid-name. */
+  white-space: nowrap;
   color: var(--ink);
 }
+/* letter-spacing also pads the last glyph, which skews the lockup right. */
+.logo-text { margin-right: -0.2em; }
 .logo-icon { font-size: 1.6rem; }
 .logo-icon-svg { 
   width: 32px; 
