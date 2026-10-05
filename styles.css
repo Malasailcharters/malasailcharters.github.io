@@ -37,6 +37,12 @@
      geometric skeleton (monolinear, no serifs, pointed A, M vertex that
      stops above the baseline) at a similar stroke-to-cap ratio. */
   --font-nav:     'Questrial', sans-serif;
+  /* The wordmark in the top bar only, and only the four glyphs of MALA.
+     AWA Aruba titles its pages in BuganTra, a paid geometric sans that is
+     heavy even at weight 400 (stem is 25% of cap height). Montserrat 700
+     is the closest free match on stroke weight and on the width ratios of
+     A, M, W, O and S. Questrial is far too light to stand in for it. */
+  --font-wordmark: 'Montserrat', sans-serif;
   --quote-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E%3Cpath fill='%23fff' d='M6.056 21.448C4.376 21.448 3.056 20.872 2.096 19.72 1.184 18.568.728 16.816.728 14.464.728 11.92 1.328 9.496 2.528 7.192 3.776 4.84 5.576 2.512 7.928 0.208 7.976.16 8.048.136 8.144.136c.144 0 .24.072.288.216.096.096.12.216.072.36C7.208 2.296 6.296 3.88 5.768 5.464 5.288 7 5.048 8.728 5.048 10.648c0 1.344.12 2.352.36 3.024.24.624.624 1.152 1.152 1.584L3.896 15.76c-.048-.816.192-1.44.72-1.872.528-.432 1.248-.648 2.16-.648 1.248 0 2.208.36 2.88 1.08.72.72 1.08 1.704 1.08 2.952 0 1.296-.432 2.328-1.296 3.096-.816.72-1.944 1.08-3.384 1.08Zm12.456 0c-1.68 0-3-.576-3.96-1.728-.912-1.152-1.368-2.904-1.368-5.256 0-2.544.6-4.968 1.8-7.272 1.248-2.352 3.048-4.68 5.4-6.984.048-.048.12-.072.216-.072.144 0 .24.072.288.216.096.096.12.216.072.36-1.296 1.584-2.208 3.168-2.736 4.752-.48 1.536-.72 3.264-.72 5.184 0 1.344.12 2.352.36 3.024.24.624.624 1.152 1.152 1.584l-2.664.504c-.048-.816.192-1.44.72-1.872.528-.432 1.248-.648 2.16-.648 1.248 0 2.208.36 2.88 1.08.72.72 1.08 1.704 1.08 2.952 0 1.296-.432 2.328-1.296 3.096-.816.72-1.944 1.08-3.384 1.08Z'/%3E%3C/svg%3E");
   --radius-sm:    8px;
   --radius-md:    16px;
@@ -213,26 +219,38 @@ ul { list-style: none; }
   gap: 32px;
 }
 
-/* The wordmark. Not scoped to .navbar on purpose: the footer repeats the
-   same mark, and a brand lockup that changes between the two reads as a
-   bug even when nothing is technically broken. */
+/* Shared lockup geometry. The type itself differs between the two marks, so
+   only the layout lives here; see .navbar .nav-logo and .footer-brand below. */
 .nav-logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-nav);
-  font-size: 1.15rem;
-  font-weight: 400;
-  /* The AMANAY wordmark is wide-tracked capitals. This is what actually
-     makes the two brands read as related, more than the family does. */
-  letter-spacing: 0.2em;
   text-transform: uppercase;
   /* The bar is the one place a tracked lockup could wrap mid-name. */
   white-space: nowrap;
   color: var(--ink);
 }
+
+/* Top bar: AWA-style, a single bold geometric word. Tracking is much tighter
+   than the AMANAY lockup it replaces, because that mark was hand-drawn wide
+   while this one is set type. */
+.navbar .nav-logo {
+  font-family: var(--font-wordmark);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
 /* letter-spacing also pads the last glyph, which skews the lockup right. */
-.logo-text { margin-right: -0.2em; }
+.navbar .logo-text { margin-right: -0.08em; }
+
+/* Footer keeps the full name, quiet, on the lighter navigational face. */
+.footer-brand .nav-logo {
+  font-family: var(--font-nav);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+.footer-brand .logo-text { margin-right: -0.2em; }
 .logo-icon { font-size: 1.6rem; }
 .logo-icon-svg { 
   width: 32px; 
