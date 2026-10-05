@@ -28,8 +28,8 @@
   --card:         #fdfaf3;
   --gradient-hero: linear-gradient(135deg, rgba(24,16,10,0.82) 0%, rgba(80,55,30,0.22) 100%);
   --gradient-card: linear-gradient(180deg, transparent 40%, rgba(24,16,10,0.95) 100%);
-  --font-main:    'Outfit', sans-serif;
-  --font-display: 'Playfair Display', serif;
+  --font-main:    'DM Sans', sans-serif;
+  --font-display: 'Fraunces', serif;
   --radius-sm:    8px;
   --radius-md:    16px;
   --radius-lg:    24px;
@@ -49,6 +49,21 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Display face for headings. Fraunces is high-contrast, so the very heavy
+   weights look blacker here than they did in Outfit. Capped at 700. */
+h1, h2, h3, h4,
+.hero-title,
+.hero-title-accent,
+.section-title,
+.feature-title,
+.trip-title,
+.trips-group-title,
+.review-heading {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
 }
 
 img { max-width: 100%; display: block; }
@@ -81,7 +96,7 @@ ul { list-style: none; }
 
 .section-title {
   font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 48px;
   color: var(--ink);
@@ -326,7 +341,7 @@ ul { list-style: none; }
 
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.1;
   margin-bottom: 24px;
   color: #fff;
@@ -369,8 +384,10 @@ ul { list-style: none; }
   flex-direction: column;
 }
 .stat-number {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
   font-size: 1.8rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
   line-height: 1;
 }
@@ -459,8 +476,10 @@ ul { list-style: none; }
 .feature-number {
   position: absolute;
   top: 24px; right: 24px;
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
   font-size: 3.5rem;
-  font-weight: 900;
+  font-weight: 500;
   color: rgba(176,134,82,0.15);
   line-height: 1;
 }
@@ -1095,7 +1114,7 @@ ul { list-style: none; }
 
 .newsletter-container h2 {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .newsletter-container p { color: var(--ink-muted); font-size: 0.95rem; }
