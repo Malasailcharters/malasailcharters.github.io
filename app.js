@@ -61,6 +61,29 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => revealObserver.observe(el));
 
+// ---- REVIEWS: SHOW ALL (desktop) ----
+// Above 768px only the first row shows; the rest wait behind the
+// button. On phones the swipe strip shows everything, so the button
+// stays hidden there and this handler simply never becomes visible.
+const reviewsGrid = document.getElementById('reviews-grid');
+const reviewsMore = document.getElementById('reviews-more');
+const reviewsTotal = reviewsGrid
+  ? reviewsGrid.querySelectorAll('.review-card').length
+  : 0;
+
+if (reviewsMore && reviewsGrid && reviewsTotal > 2) {
+  const label = reviewsMore.querySelector('.reviews-more-text');
+
+  reviewsMore.addEventListener('click', () => {
+    const nowOpen = reviewsGrid.classList.toggle('is-collapsed') === false;
+    reviewsMore.classList.toggle('is-open', nowOpen);
+    reviewsMore.setAttribute('aria-expanded', String(nowOpen));
+    label.textContent = nowOpen
+      ? 'Show fewer reviews'
+      : `Show all ${reviewsTotal} reviews`;
+  });
+}
+
 // ---- FAQ ACCORDION ----
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {

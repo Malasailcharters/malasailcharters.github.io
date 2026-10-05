@@ -882,6 +882,10 @@ ul { list-style: none; }
   font-style: italic;
 }
 
+/* The "show all" control only exists on desktop; the mobile swipe hint
+   and this button are each shown in one place only. */
+.reviews-more { display: none; }
+
 /* =============================================
    FAQ
    ============================================= */
@@ -1272,6 +1276,60 @@ ul { list-style: none; }
   .captain-img { height: 360px; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+/* =============================================
+   DESKTOP REVIEWS COLLAPSE
+   Above 768px the swipe strip does not apply, so instead of a tall
+   wall of 22 cards the grid shows exactly one full row and the rest
+   sit behind the "Show all reviews" button. The visible count tracks
+   the column count: 2 columns between 769-1027px, 3 columns from
+   1028px up (the container caps at 1200px, so it never reaches 4).
+   ============================================= */
+@media (min-width: 769px) and (max-width: 1027px) {
+  .reviews-grid.is-collapsed .review-card:nth-child(n+3) { display: none; }
+}
+
+@media (min-width: 1028px) {
+  .reviews-grid.is-collapsed .review-card:nth-child(n+4) { display: none; }
+}
+
+/* The button belongs to every width where cards are hidden behind it,
+   which is every desktop width. */
+@media (min-width: 769px) {
+  .reviews-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 32px auto 0;
+    padding: 14px 32px;
+    min-height: 48px;
+    border: 1px solid rgba(176,134,82,0.5);
+    border-radius: 999px;
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--cyan-light);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .reviews-more:hover {
+    background: var(--cyan);
+    border-color: var(--cyan);
+    color: var(--white);
+  }
+  .reviews-more .reviews-hint-arrow { width: 20px; }
+  .reviews-more.is-open .reviews-hint-arrow { transform: rotate(90deg); }
+  .reviews-more.is-open .reviews-hint-arrow::after { display: none; }
+}
+
+.reviews-more:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 @media (max-width: 768px) {
