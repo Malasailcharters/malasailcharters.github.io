@@ -84,6 +84,64 @@ if (reviewsMore && reviewsGrid && reviewsTotal > 2) {
   });
 }
 
+// ---- REVIEWS: READ MORE ----
+// Long bodies are clamped to four lines and get the button; short ones show
+// in full and the button stays hidden.
+const reviewCards = [...document.querySelectorAll('.review-card')];
+
+function measureReviews() {
+  reviewCards.forEach(card => {
+    const text = card.querySelector('.review-text');
+    const btn  = card.querySelector('.review-more');
+    if (!text || !btn) return;
+
+    const wasExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+    // Cards hidden by the collapsed grid measure 0x0 and would look
+    // unclipped. Render just this card while measuring, without changing
+    // the collapsed state the user sees.
+    const wasHidden = card.offsetParent === null;
+    if (wasHidden) card.style.display = 'block';
+
+    text.classList.add('is-clamped');
+    const clipped = text.scrollHeight > text.clientHeight + 1;
+
+    if (!clipped) {
+      text.classList.remove('is-clamped');
+      if (!wasExpanded) btn.hidden = true;
+    } else if (!wasExpanded) {
+      btn.hidden = false;
+    }
+
+    if (wasHidden) card.style.display = '';
+  });
+}
+
+measureReviews();
+
+// Fonts land after first paint and change the line breaks, so re-measure
+// once everything is in.
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(measureReviews);
+}
+window.addEventListener('resize', () => {
+  measureReviews();
+});
+
+reviewCards.forEach(card => {
+  const text = card.querySelector('.review-text');
+  const btn  = card.querySelector('.review-more');
+  if (!text || !btn) return;
+
+  const label = btn.textContent;
+
+  btn.addEventListener('click', () => {
+    const nowOpen = text.classList.toggle('is-clamped') === false;
+    btn.setAttribute('aria-expanded', String(nowOpen));
+    btn.firstChild.nodeValue = nowOpen ? 'Show less' : label;
+  });
+});
+
 // ---- FAQ ACCORDION ----
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
