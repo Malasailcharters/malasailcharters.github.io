@@ -984,7 +984,6 @@ ul { list-style: none; }
   transform: translateX(6px);
 }
 
-.contact-method-icon { font-size: 1.6rem; }
 .contact-method div { display: flex; flex-direction: column; }
 .contact-method strong { font-size: 0.95rem; color: var(--ink); }
 .contact-method span { font-size: 0.82rem; color: var(--gray-500); }
@@ -1042,7 +1041,6 @@ ul { list-style: none; }
   padding: 48px;
   text-align: center;
 }
-.success-icon { font-size: 3rem; margin-bottom: 16px; }
 .form-success h3 { font-size: 1.4rem; margin-bottom: 8px; }
 .form-success p { color: var(--ink-muted); }
 
