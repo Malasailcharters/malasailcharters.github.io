@@ -877,6 +877,12 @@ ul { list-style: none; }
   margin-bottom: 16px;
 }
 .review-name { font-weight: 700; font-size: 0.95rem; }
+/* Country reads as secondary context, not as part of the name. */
+.review-country {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--gray-500);
+}
 .review-stars { color: var(--gold); font-size: 0.85rem; }
 
 .review-text {
