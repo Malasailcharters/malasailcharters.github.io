@@ -846,6 +846,10 @@ ul { list-style: none; }
   gap: 20px;
 }
 
+/* Mobile only: horizontal snap carousel instead of a 22-card column.
+   Hidden on desktop, where the grid shows everything at once. */
+.reviews-hint { display: none; }
+
 .review-card {
   background: var(--card);
   border: 1px solid rgba(176,134,82,0.45);
@@ -1283,8 +1287,51 @@ ul { list-style: none; }
 
   .trips-grid { grid-template-columns: 1fr; }
   .calendar-grid { grid-template-columns: 1fr; }
-  .reviews-grid { grid-template-columns: 1fr; }
   .features-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Reviews become a swipeable strip: ~2.5 cards in view so it is
+     obvious there is more to the right. Cards keep their own height. */
+  .reviews-grid {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 24px 20px;
+    margin: 0 -24px;
+  }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .review-card {
+    flex: 0 0 78%;
+    scroll-snap-align: center;
+    align-self: flex-start;
+  }
+  .reviews-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 4px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+  .reviews-hint-arrow {
+    width: 22px; height: 2px;
+    background: currentColor;
+    position: relative;
+  }
+  .reviews-hint-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0; top: -3px;
+    width: 8px; height: 8px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
   .footer-grid { grid-template-columns: 1fr; }
 
   .trip-overlay { opacity: 1; background: rgba(24,16,10,0.15); }
@@ -1334,6 +1381,10 @@ ul { list-style: none; }
 
   .board-head { padding: 12px 20px; }
   .board-frame iframe { height: 560px; }
+
+  /* Tighter cards so the strip still reads as cards, not banners. */
+  .review-card { flex-basis: 82%; padding: 24px; }
+  .review-text { font-size: 0.95rem; }
 }
 
 @media (hover: none) {
