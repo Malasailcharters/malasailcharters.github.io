@@ -722,18 +722,16 @@ ul { list-style: none; }
   box-shadow: var(--shadow-md);
 }
 
+/* Only the "Open board" link lives here; the board supplies its own title. */
 .board-head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 16px;
-  padding: 18px 24px;
+  padding: 14px 24px;
   background: rgba(176,134,82,0.08);
   border-bottom: 1px solid rgba(176,134,82,0.18);
 }
-.board-head-text { display: flex; flex-direction: column; gap: 2px; }
-.board-title { font-size: 1.05rem; font-weight: 700; color: var(--ink); }
-.board-sub { font-size: 0.82rem; color: var(--gray-500); }
 
 .board-open {
   display: inline-flex;
@@ -1338,8 +1336,7 @@ ul { list-style: none; }
   .footer-grid { gap: 40px; }
   .captain-img { height: 260px; }
 
-  .board-title { font-size: 0.95rem; }
-  .board-sub { font-size: 0.78rem; }
+  .board-head { padding: 12px 20px; }
   .board-frame iframe { height: 560px; }
 }
 
