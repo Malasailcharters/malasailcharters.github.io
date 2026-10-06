@@ -2,12 +2,18 @@
 
 ## Deployment
 - The site deploys **only via GitHub Pages** (push to `master` triggers `pages build and deployment`).
-- URL: https://aramil13.github.io/web-alex-hasi/
+- Publishing remote: `nueva` → `git@github.com:Malasailcharters/malasailcharters.github.io.git` (SSH, branch `master`).
+- URL: https://malasailcharters.github.io/
+- `origin` (`aramil13/web-alex-hasi`, HTTPS) is a **stale backup**; pushes to it hang on Git Credential Manager. Do not use it.
 - **Cloudflare has nothing to do with this project.** Do not use wrangler/Cloudflare Pages for this site. Ignore the `.wrangler/` folder (gitignored, leftover from an unrelated setup).
 
 ## Site
 - Static site: `index.html` + `styles.css` + `app.js` + `images/`.
 - All site text must be in English.
+- Brand: **Mālā Sail Charters**. The navbar wordmark shows only `MĀLĀ` (one word); the full name lives in the footer.
+- Logo: inline SVG of an anchor with a flower offering — three copies in `index.html` (navbar, footer, newsletter).
+- Fonts: DM Sans (body), Fraunces (display), Questrial (nav links), Montserrat 700 (wordmark).
+- No emoji icons. `★` is rating data, `→` is typography.
 
 ## Workflow
 - Always commit and push to `master` at the end of every task (do not ask first).
