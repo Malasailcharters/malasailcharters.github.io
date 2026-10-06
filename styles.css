@@ -271,12 +271,11 @@ ul { list-style: none; }
 .navbar .logo-text { margin-right: -0.14em; }
 
 /* Both marks on the navbar lockup are drawn here, not typed. The bar clears
-   Montserrat's cap height (0.708em) by 0.05em; `top` resolves against the
-   inline box, whose top sits 0.972em above the baseline. The round dot floats
-   inside the counter of the A the way the AMANAY wordmark sets it: centred on
-   the glyph (0.35em from its origin), 0.10em across, at 0.36em over the
-   baseline: high enough to clear the crossbar, low enough that the counter is
-   still wide around it. */
+   Montserrat's cap height (0.7em) by 0.05em; `top` resolves against the
+   inline box, whose top sits 0.972em above the baseline. The round dot sits on
+   the glyph's own axis (0.35em from its origin, where both pairs of A edges
+   cross), 0.10em across, a touch under halfway up the 0.64em opening the
+   crossbar used to close — the AMANAY weight, balanced inside the pyramid. */
 .navbar .logo-text .macron::after {
   top: 0.154em;
   height: 0.06em;
@@ -291,9 +290,10 @@ ul { list-style: none; }
    bounded by the glyph's own inner edges (0.0592em + 0.4534em per em of
    height on the left, mirrored on the right, measured off Montserrat 300) and
    reaches from 0.26em over the baseline — just above the bar at 0.24em — down
-   past the baseline where there is no ink. The legs, the apex, the macron and
-   the dot all sit outside the wedge, so they are untouched. */
-.navbar .logo-text .macron {
+   past the baseline where there is no ink. The cut lives on the letter itself,
+   so the macron and the dot hang off the wrapper and stay whole however low
+   they sit. */
+.navbar .logo-text .macron .glyph {
   clip-path: polygon(0 1.2222em, 0.0592em 1.2222em, 0.0592em 0.9722em,
     0.1771em 0.7122em, 0.5242em 0.7122em, 0.6425em 0.9722em,
     0.6425em 1.2222em, 0.9em 1.2222em, 0.9em 0, 0 0);
@@ -303,7 +303,7 @@ ul { list-style: none; }
   content: "";
   position: absolute;
   left: 0.30em;
-  bottom: 0.56em;
+  bottom: 0.50em;
   width: 0.10em;
   height: 0.10em;
   border-radius: 50%;
