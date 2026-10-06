@@ -717,6 +717,9 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
+  /* Cards size to their own content. Without this they stretch to the
+     tallest item in the row and turn into half-empty boxes. */
+  align-items: start;
 }
 
 .cal-month {

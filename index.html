@@ -363,36 +363,39 @@
             </a>
           </div>
         </div>
+      </div>
 
-        <!-- ===== PADLET BOARD =====
-             Recommended format: STREAM (feed). Order then depends on when
-             something is posted rather than on the event date, so no host
-             can knock the board out of place by forgetting to date a post.
+      <!-- ===== PADLET BOARD =====
+           Kept outside .calendar-grid on purpose: inside the grid it shares a
+           row with the two season cards, so the row grows to the height of the
+           iframe and both cards stretch into huge half-empty boxes.
+           Recommended format: STREAM (feed). Order then depends on when
+           something is posted rather than on the event date, so no host
+           can knock the board out of place by forgetting to date a post.
 
-             To change it: open your Padlet, Share -> Embed, and replace the
-             URL below. It must look like:
-             https://padlet.com/embed/TU_ID
-             (padlet.ws/p/TU_ID is the older short domain; padlet.com/embed
-             is the current one and is what is used here.) -->
-        <div class="board-embed" id="trip-board">
-          <!-- No title here on purpose: the Padlet board carries its own,
-               and two stacked headings read as a mistake. Only the
-               full-size link stays in this strip. -->
-          <div class="board-head">
-            <a class="board-open" id="board-open-link" href="https://padlet.com/aalonsop92/who-s-aboard-s0247wnbgw1jnozy4pag" target="_blank" rel="noopener">
-              Open board <span aria-hidden="true">→</span>
-            </a>
-          </div>
-          <div class="board-frame">
-            <iframe
-              id="board-iframe"
-              src="https://padlet.com/embed/s0247wnbgw1jnozy4pag"
-              title="Mālā Sail Charters community board"
-              loading="lazy"
-              allowfullscreen="true"></iframe>
-          </div>
-          <p class="board-note">The board is hosted on Padlet. On a small screen you can open it full size with the button above.</p>
+           To change it: open your Padlet, Share -> Embed, and replace the
+           URL below. It must look like:
+           https://padlet.com/embed/TU_ID
+           (padlet.ws/p/TU_ID is the older short domain; padlet.com/embed
+           is the current one and is what is used here.) -->
+      <div class="board-embed" id="trip-board">
+        <!-- No title here on purpose: the Padlet board carries its own,
+             and two stacked headings read as a mistake. Only the
+             full-size link stays in this strip. -->
+        <div class="board-head">
+          <a class="board-open" id="board-open-link" href="https://padlet.com/aalonsop92/who-s-aboard-s0247wnbgw1jnozy4pag" target="_blank" rel="noopener">
+            Open board <span aria-hidden="true">→</span>
+          </a>
         </div>
+        <div class="board-frame">
+          <iframe
+            id="board-iframe"
+            src="https://padlet.com/embed/s0247wnbgw1jnozy4pag"
+            title="Mālā Sail Charters community board"
+            loading="lazy"
+            allowfullscreen="true"></iframe>
+        </div>
+        <p class="board-note">The board is hosted on Padlet. On a small screen you can open it full size with the button above.</p>
       </div>
     </div>
   </section>
