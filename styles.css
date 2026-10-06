@@ -259,17 +259,43 @@ ul { list-style: none; }
   color: var(--ink);
 }
 
-/* Top bar: AWA-style, a single bold geometric word. Tracking is much tighter
-   than the AMANAY lockup it replaces, because that mark was hand-drawn wide
-   while this one is set type. */
+/* Top bar: AWA-style single word, but set light and tracked wide like the
+   AMANAY lockup: the letters carry the mark, so they stay fine and airy. */
 .navbar .nav-logo {
   font-family: var(--font-wordmark);
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
 }
 /* letter-spacing also pads the last glyph, which skews the lockup right. */
-.navbar .logo-text { margin-right: -0.08em; }
+.navbar .logo-text { margin-right: -0.14em; }
+
+/* Both marks on the navbar lockup are drawn here, not typed. The bar clears
+   Montserrat's cap height (0.708em) by 0.05em; `top` resolves against the
+   inline box, whose top sits 0.972em above the baseline. The round dot floats
+   inside the counter of the A the way the AMANAY wordmark sets it: centred on
+   the glyph (0.35em from its origin), 0.10em across, at 0.36em over the
+   baseline: high enough to clear the crossbar, low enough that the counter is
+   still wide around it. */
+.navbar .logo-text .macron::after {
+  top: 0.154em;
+  height: 0.06em;
+  left: 0.13em;
+  right: auto;
+  width: 0.44em;
+  border-radius: 0.02em;
+}
+
+.navbar .logo-text .macron::before {
+  content: "";
+  position: absolute;
+  left: 0.30em;
+  bottom: 0.56em;
+  width: 0.10em;
+  height: 0.10em;
+  border-radius: 50%;
+  background: currentColor;
+}
 
 /* Footer keeps the full name, quiet, on the lighter navigational face. */
 .footer-brand .nav-logo {
