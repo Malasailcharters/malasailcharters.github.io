@@ -123,6 +123,34 @@ ul { list-style: none; }
   background-clip: text;
 }
 
+/* The macron over the two a's of Mālā is drawn here instead of using the ā
+   glyph: Fraunces sets a short, thin bar that some browsers position
+   differently, so we place it ourselves. The percentages resolve against the
+   letter's own advance box (0.565em) and `top` against the top of that box,
+   which sits 0.9833em above the baseline in Fraunces. The result is a 0.43em
+   bar, 0.1em thick, starting 0.04em above the x-height: wider, thicker and
+   closer to the letter than the font's own mark. */
+.macron {
+  position: relative;
+}
+
+.macron::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 0.37em;
+  height: 0.1em;
+  border-radius: 0.03em;
+  background: currentColor;
+}
+
+/* Inside the gradient title the letters are painted with the gradient rather
+   than with `color`, so the bar has to take the gradient's first stop. */
+.section-title .highlight .macron::after {
+  background: var(--cyan);
+}
+
 /* --- BUTTONS --- */
 .btn {
   display: inline-flex;
