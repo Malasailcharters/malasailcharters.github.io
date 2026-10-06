@@ -286,6 +286,19 @@ ul { list-style: none; }
   border-radius: 0.02em;
 }
 
+/* The A loses its crossbar and becomes a bare pyramid, dot in the middle.
+   Instead of redrawing the letter we cut the crossbar out: the wedge below is
+   bounded by the glyph's own inner edges (0.0592em + 0.4534em per em of
+   height on the left, mirrored on the right, measured off Montserrat 300) and
+   reaches from 0.26em over the baseline — just above the bar at 0.24em — down
+   past the baseline where there is no ink. The legs, the apex, the macron and
+   the dot all sit outside the wedge, so they are untouched. */
+.navbar .logo-text .macron {
+  clip-path: polygon(0 1.2222em, 0.0592em 1.2222em, 0.0592em 0.9722em,
+    0.1771em 0.7122em, 0.5242em 0.7122em, 0.6425em 0.9722em,
+    0.6425em 1.2222em, 0.9em 1.2222em, 0.9em 0, 0 0);
+}
+
 .navbar .logo-text .macron::before {
   content: "";
   position: absolute;
