@@ -713,8 +713,8 @@
             <a href="https://wa.me/34678089234?text=Hi%20M%C4%81l%C4%81%20Sail%20Charters%2C%20I%27d%20like%20to%20know%20more%20about%20your%202027%20retreats." target="_blank" rel="noopener" class="contact-method" id="contact-whatsapp">
               <div><strong>WhatsApp</strong><span>+34 678 08 92 34</span></div>
             </a>
-            <a href="mailto:hola@malasailcharters.com" class="contact-method" id="contact-email">
-              <div><strong>Email</strong><span>hola@malasailcharters.com</span></div>
+            <a href="mailto:malasailcharters@gmail.com" class="contact-method" id="contact-email">
+              <div><strong>Email</strong><span>malasailcharters@gmail.com</span></div>
             </a>
             <a href="https://www.instagram.com/Ale.trav3ls" class="contact-method" id="contact-instagram">
               <div><strong>Instagram</strong><span>@Ale_trav3ls</span></div>
@@ -722,7 +722,16 @@
           </div>
         </div>
         <div class="contact-right">
-          <form class="contact-form" id="contact-form" onsubmit="handleFormSubmit(event)">
+          <!-- Delivered by Web3Forms. The access key is public by design: it only
+               routes the submission to our own inbox, it cannot read anything else.
+               While it is empty the script falls back to opening the visitor's
+               mail app, so the form never claims to have sent something it did not. -->
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFormSubmit(event)">
+            <input type="hidden" name="access_key" value="" />
+            <input type="hidden" name="subject" value="New enquiry from the Mala Sail Charters website" />
+            <input type="hidden" name="from_name" value="Mala Sail Charters website" />
+            <!-- Spam trap: invisible to people, bots fill it in. -->
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
             <div class="form-group">
               <label for="form-name">Name</label>
               <input type="text" id="form-name" name="name" placeholder="Your full name" required />
@@ -748,7 +757,9 @@
               <label for="form-message">Message</label>
               <textarea id="form-message" name="message" placeholder="Tell us about yourself and your preferred dates..." rows="4"></textarea>
             </div>
+            <p class="form-message" id="form-error" role="alert" style="display:none"></p>
             <button type="submit" class="btn btn-primary btn-full" id="form-submit">Send Message</button>
+            <p class="form-legal">We use these details only to answer your enquiry. No newsletter, no sharing.</p>
           </form>
           <div class="form-success" id="form-success" style="display:none">
             <h3>Message sent!</h3>
@@ -782,10 +793,15 @@
       </svg>
       <h2>Subscribe and Win a <span class="highlight">Free Trip</span></h2>
       <p>Join our newsletter to receive updates, exclusive offers and enter the draw for a free sailing trip.</p>
-      <form class="newsletter-form" id="newsletter-form" onsubmit="handleNewsletter(event)">
-        <input type="email" id="newsletter-email" placeholder="you@email.com" required />
+      <form class="newsletter-form" id="newsletter-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleNewsletter(event)">
+        <input type="hidden" name="access_key" value="" />
+        <input type="hidden" name="subject" value="Newsletter signup from the Mala Sail Charters website" />
+        <input type="hidden" name="from_name" value="Mala Sail Charters website" />
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+        <input type="email" id="newsletter-email" name="email" placeholder="you@email.com" required />
         <button type="submit" id="newsletter-submit">Subscribe</button>
       </form>
+      <p class="form-message" id="newsletter-error" role="alert" style="display:none"></p>
       <div id="newsletter-success" class="newsletter-success" style="display:none">Thank you! You're on the list. Good luck!</div>
       <p class="newsletter-legal">By signing up, you agree to receive marketing emails. No spam, promise.</p>
     </div>

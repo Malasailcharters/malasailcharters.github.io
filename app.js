@@ -201,21 +201,84 @@ document.querySelectorAll('.cal-trip').forEach(link => {
   });
 });
 
+// ---- FORMS (Web3Forms) ----
+// Both forms post to Web3Forms, which mails the submission to our inbox. The
+// access key lives in the markup with the form, not here. While it is empty the
+// handler falls back to opening the visitor's own mail app, so a form never
+// claims to have sent something it did not.
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+const CONTACT_EMAIL = 'malasailcharters@gmail.com';
+
+function formAccessKey(form) {
+  return form.elements.access_key ? form.elements.access_key.value.trim() : '';
+}
+
+function postForm(form) {
+  return fetch(FORM_ENDPOINT, {
+    method: 'POST',
+    headers: { Accept: 'application/json' },
+    body: new FormData(form)
+  }).then(res => res.json().then(data => {
+    if (!res.ok || !data.success) throw new Error(data.message || 'Send failed');
+    return data;
+  }));
+}
+
+function showFormMessage(node, tone, text) {
+  node.textContent = text;
+  node.className = 'form-message form-message--' + tone;
+  node.style.display = 'block';
+}
+
+// Hands the visitor's own mail app a ready-made message, so the enquiry still
+// lands in the inbox while the access key is missing.
+function openMailFallback(subject, body) {
+  window.location.href = 'mailto:' + CONTACT_EMAIL +
+    '?subject=' + encodeURIComponent(subject) +
+    '&body=' + encodeURIComponent(body);
+}
+
 // ---- CONTACT FORM ----
 function handleFormSubmit(e) {
   e.preventDefault();
   const form    = document.getElementById('contact-form');
   const success = document.getElementById('form-success');
+  const error   = document.getElementById('form-error');
   const btn     = document.getElementById('form-submit');
 
   btn.textContent = 'Sending...';
   btn.disabled = true;
+  error.style.display = 'none';
 
-  // Simulate send
-  setTimeout(() => {
-    form.style.display    = 'none';
-    success.style.display = 'block';
-  }, 1200);
+  if (!formAccessKey(form)) {
+    const data = new FormData(form);
+    openMailFallback('Enquiry from the Mala Sail Charters website', [
+      'Name: ' + (data.get('name') || ''),
+      'Email: ' + (data.get('email') || ''),
+      'Trip of interest: ' + (data.get('trip') || 'Not decided yet'),
+      '',
+      data.get('message') || ''
+    ].join('\n'));
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+    showFormMessage(error, 'notice',
+      'Opening your email app with the message ready. If nothing happens, write to ' +
+      CONTACT_EMAIL + ' or use WhatsApp.');
+    return;
+  }
+
+  postForm(form)
+    .then(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(() => {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      showFormMessage(error, 'error',
+        'Sorry, that could not be sent. Please write to ' + CONTACT_EMAIL +
+        ' or message us on WhatsApp.');
+    });
 }
 
 // ---- NEWSLETTER FORM ----
@@ -223,15 +286,34 @@ function handleNewsletter(e) {
   e.preventDefault();
   const form    = document.getElementById('newsletter-form');
   const success = document.getElementById('newsletter-success');
+  const error   = document.getElementById('newsletter-error');
   const btn     = document.getElementById('newsletter-submit');
 
   btn.textContent = 'Subscribing...';
   btn.disabled = true;
+  error.style.display = 'none';
 
-  setTimeout(() => {
-    form.style.display    = 'none';
-    success.style.display = 'block';
-  }, 1000);
+  if (!formAccessKey(form)) {
+    openMailFallback('Newsletter signup from the Mala Sail Charters website',
+      'Please add this address to the newsletter list: ' + (form.elements.email.value || ''));
+    btn.textContent = 'Subscribe';
+    btn.disabled = false;
+    showFormMessage(error, 'notice',
+      'Opening your email app to confirm. If nothing happens, write to ' + CONTACT_EMAIL + '.');
+    return;
+  }
+
+  postForm(form)
+    .then(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(() => {
+      btn.textContent = 'Subscribe';
+      btn.disabled = false;
+      showFormMessage(error, 'error',
+        'That did not go through. Please try again, or write to ' + CONTACT_EMAIL + '.');
+    });
 }
 
 // ---- SMOOTH SCROLL (for older Safari) ----

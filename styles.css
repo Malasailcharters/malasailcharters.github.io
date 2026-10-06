@@ -1273,6 +1273,34 @@ ul { list-style: none; }
 .form-success h3 { font-size: 1.4rem; margin-bottom: 8px; }
 .form-success p { color: var(--ink-muted); }
 
+/* Feedback for the contact and newsletter forms. `notice` is the honest
+   middle ground while nothing is wired to a mailbox; `error` only appears
+   when a submission really failed. */
+.form-message {
+  border: 1px solid;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.form-message--notice {
+  background: rgba(176,134,82,0.10);
+  border-color: rgba(176,134,82,0.4);
+  color: var(--ink-muted);
+}
+.form-message--error {
+  background: rgba(160,60,44,0.08);
+  border-color: rgba(160,60,44,0.35);
+  color: #8d3527;
+}
+
+.form-legal {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-top: -4px;
+}
+
 /* =============================================
    NEWSLETTER
    ============================================= */
