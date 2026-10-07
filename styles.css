@@ -754,25 +754,6 @@ ul { list-style: none; }
 .trips-cta { text-align: center; }
 
 /* =============================================
-   GALLERY STRIP
-   ============================================= */
-.gallery-strip {
-  display: flex;
-  height: 200px;
-  overflow: hidden;
-}
-.gallery-strip img {
-  flex: 1;
-  object-fit: cover;
-  filter: none;
-  transition: var(--transition);
-}
-.gallery-strip img:hover {
-  flex: 2.5;
-  filter: none;
-}
-
-/* =============================================
    CALENDAR
    ============================================= */
 .calendar-section {
@@ -1661,10 +1642,6 @@ ul { list-style: none; }
   .board-head { flex-wrap: wrap; padding: 16px 20px; }
   .board-frame iframe { height: 640px; }
   .board-note { padding: 12px 20px 14px; }
-
-  .gallery-strip { height: 150px; overflow-x: auto; scroll-snap-type: x mandatory; }
-  .gallery-strip img { flex: 0 0 45vw; scroll-snap-align: start; }
-  .gallery-strip img:hover { flex: 0 0 45vw; filter: none; }
 
   .form-group input,
   .form-group select,
