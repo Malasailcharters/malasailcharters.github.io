@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Mālā Sail Charters">
+  <rect width="48" height="48" rx="10" fill="#33261a"/>
+  <g transform="translate(2.6 2.6) scale(0.9)">
+    <g fill="#efe6d6">
+      <path d="M17.8 11.6C13.2 12.2 9.2 10 7.6 5.8 12.2 5.2 16.2 7.6 17.8 11.6Z"/>
+      <path d="M30.2 11.6C34.8 12.2 38.8 10 40.4 5.8 35.8 5.2 31.8 7.6 30.2 11.6Z"/>
+      <circle cx="24" cy="8.1" r="3"/><circle cx="27.5" cy="10.7" r="3"/>
+      <circle cx="26.2" cy="14.8" r="3"/><circle cx="21.8" cy="14.8" r="3"/>
+      <circle cx="20.5" cy="10.7" r="3"/><circle cx="24" cy="11.8" r="1.9"/>
+    </g>
+    <g stroke="#efe6d6" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <circle cx="24" cy="21.5" r="3"/>
+      <path d="M24 24.5V34.5"/><path d="M15 28H33"/>
+      <path d="M24 34.5C24 40.5 19 44 13.5 42 10 40.7 8.5 37 9.5 33"/>
+      <path d="M24 34.5C24 40.5 29 44 34.5 42 38 40.7 40 37 39.5 33"/>
+    </g>
+    <g fill="#d4b484">
+      <path d="M9.5 33 5 26 13 29.5Z"/><path d="M38.5 33 43 26 35 29.5Z"/>
+    </g>
+  </g>
+</svg>
