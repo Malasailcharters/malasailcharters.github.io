@@ -44,7 +44,7 @@ backToTop.addEventListener('click', () => {
 
 // ---- SCROLL REVEAL ----
 const revealEls = document.querySelectorAll(
-  '.feature-card, .trip-card, .cal-month, .review-card, .faq-item, .captain-grid, .contact-grid'
+  '.feature-card, .trip-card, .cal-month, .review-card, .faq-item, .captain-grid, .contact-grid, .sustainability-card'
 );
 revealEls.forEach(el => el.classList.add('reveal'));
 
