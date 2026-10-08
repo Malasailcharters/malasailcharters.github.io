@@ -843,8 +843,9 @@
       <div class="contact-grid">
         <div class="contact-left">
           <div class="section-label">Ready to set sail?</div>
-          <h2 class="section-title">Contact us and <span class="highlight">Book Your Spot</span></h2>
-          <p class="contact-desc">Write to us with your preferred dates and any questions. We reply within 24 hours.</p>
+          <h2 class="section-title">Start planning your <span class="highlight">trip</span></h2>
+          <p class="contact-desc">Tell us when you would like to sail and who is coming. We will check availability across our 2027 retreats and reply within 24 hours &mdash; no obligation.</p>
+          <p class="contact-direct-label">Or reach us directly:</p>
           <div class="contact-methods">
             <a href="https://wa.me/34678089234?text=Hi%20M%C4%81l%C4%81%20Sail%20Charters%2C%20I%27d%20like%20to%20know%20more%20about%20your%202027%20retreats." target="_blank" rel="noopener" class="contact-method" id="contact-whatsapp">
               <div><strong>WhatsApp</strong><span>+34 678 08 92 34</span></div>
@@ -865,38 +866,71 @@
             <input type="hidden" name="from_name" value="Mala Sail Charters website" />
             <!-- Spam trap: invisible to people, bots fill it in. -->
             <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
-            <div class="form-group">
-              <label for="form-name">Name</label>
-              <input type="text" id="form-name" name="name" placeholder="Your full name" required />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="form-name">Your name</label>
+                <input type="text" id="form-name" name="name" placeholder="Sarah &amp; James" required />
+              </div>
+              <div class="form-group">
+                <label for="form-email">Email</label>
+                <input type="email" id="form-email" name="email" placeholder="you@email.com" required />
+              </div>
             </div>
-            <div class="form-group">
-              <label for="form-email">Email</label>
-              <input type="email" id="form-email" name="email" placeholder="you@email.com" required />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="form-dates">Preferred dates</label>
+                <input type="text" id="form-dates" name="dates" placeholder="e.g. 12&ndash;19 September 2027, or flexible" />
+              </div>
+              <div class="form-group">
+                <label for="form-guests">Travellers</label>
+                <select id="form-guests" name="guests">
+                  <option value="">Select...</option>
+                  <option value="1">1 guest</option>
+                  <option value="2">2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                  <option value="5">5 guests</option>
+                  <option value="6">6 guests</option>
+                  <option value="7+">7 or more</option>
+                </select>
+              </div>
             </div>
             <div class="form-group">
               <label for="form-trip">Trip of interest</label>
               <select id="form-trip" name="trip">
-                <option value="">Select destination...</option>
-                <option value="amalfi">Italy</option>
-                <option value="ionian">Greece</option>
-                <option value="ibiza">Spain</option>
+                <option value="">Select a destination...</option>
+                <option value="italy">Italy &mdash; Amalfi Coast</option>
+                <option value="greece">Greece &mdash; Ionian Sea</option>
+                <option value="spain">Spain &mdash; Ibiza</option>
+                <option value="portugal">Portugal &mdash; Algarve</option>
                 <option value="antigua">Antigua &amp; Barbuda</option>
-                <option value="thailand">Thailand</option>
                 <option value="mauritius">Mauritius</option>
+                <option value="thailand">Thailand &mdash; Krabi</option>
                 <option value="other">Other / Not decided yet</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="form-message">Message</label>
-              <textarea id="form-message" name="message" placeholder="Tell us about yourself and your preferred dates..." rows="4"></textarea>
+              <label for="form-message">Anything else? <span class="form-optional">(optional)</span></label>
+              <textarea id="form-message" name="message" placeholder="Questions, special occasions, cabin preferences..." rows="4"></textarea>
             </div>
             <p class="form-message" id="form-error" role="alert" style="display:none"></p>
-            <button type="submit" class="btn btn-primary btn-full" id="form-submit">Send Message</button>
+            <button type="submit" class="btn btn-primary btn-full" id="form-submit">Check availability &amp; get pricing</button>
+            <p class="form-note">We read every enquiry personally &middot; Usually reply within 24 hours</p>
             <p class="form-legal">We use these details only to answer your enquiry. No newsletter, no sharing. See our <a href="privacy.html">Privacy Policy</a>.</p>
           </form>
           <div class="form-success" id="form-success" style="display:none">
-            <h3>Message sent!</h3>
-            <p>We'll get back to you within 24 hours. Get ready to set sail!</p>
+            <div class="form-success-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </div>
+            <h3>Thank you &mdash; we're on it!</h3>
+            <p>Your enquiry has reached us. We'll be in touch within 24 hours to confirm availability and answer any questions.</p>
+            <p class="form-success-sub">In the meantime, feel free to reach out directly:</p>
+            <div class="form-success-actions">
+              <a href="https://wa.me/34678089234?text=Hi%20M%C4%81l%C4%81%20Sail%20Charters%2C%20I%27d%20like%20to%20know%20more%20about%20your%202027%20retreats." target="_blank" rel="noopener" class="btn btn-primary">WhatsApp us</a>
+              <a href="#book" class="btn btn-outline" data-open-booking>Prefer to talk?</a>
+            </div>
           </div>
         </div>
       </div>

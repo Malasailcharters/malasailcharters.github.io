@@ -298,11 +298,13 @@ function handleFormSubmit(e) {
     openMailFallback('Enquiry from the Mala Sail Charters website', [
       'Name: ' + (data.get('name') || ''),
       'Email: ' + (data.get('email') || ''),
+      'Preferred dates: ' + (data.get('dates') || 'Flexible'),
+      'Travellers: ' + (data.get('guests') || 'Not specified'),
       'Trip of interest: ' + (data.get('trip') || 'Not decided yet'),
       '',
       data.get('message') || ''
     ].join('\n'));
-    btn.textContent = 'Send Message';
+    btn.textContent = 'Check availability & get pricing';
     btn.disabled = false;
     showFormMessage(error, 'notice',
       'Opening your email app with the message ready. If nothing happens, write to ' +
@@ -316,7 +318,7 @@ function handleFormSubmit(e) {
       success.style.display = 'block';
     })
     .catch(() => {
-      btn.textContent = 'Send Message';
+      btn.textContent = 'Check availability & get pricing';
       btn.disabled = false;
       showFormMessage(error, 'error',
         'Sorry, that could not be sent. Please write to ' + CONTACT_EMAIL +
