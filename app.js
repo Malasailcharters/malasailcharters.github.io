@@ -359,9 +359,51 @@ function handleNewsletter(e) {
     });
 }
 
+// ---- BOOK A CALL MODAL (HubSpot Meetings) ----
+const bookingModal = document.getElementById('book');
+const bookingTriggers = document.querySelectorAll('[data-open-booking]');
+const bookingCloseEls = document.querySelectorAll('[data-close-booking]');
+let hubspotMeetingsLoaded = false;
+
+function loadHubSpotMeetings() {
+  if (hubspotMeetingsLoaded) return;
+  hubspotMeetingsLoaded = true;
+  const script = document.createElement('script');
+  script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+  script.async = true;
+  document.body.appendChild(script);
+}
+
+function openBooking(e) {
+  if (e) e.preventDefault();
+  if (!bookingModal) return;
+  bookingModal.classList.add('is-open');
+  bookingModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('booking-open');
+  loadHubSpotMeetings();
+  const closeBtn = bookingModal.querySelector('.booking-modal-close');
+  if (closeBtn) closeBtn.focus();
+}
+
+function closeBooking() {
+  if (!bookingModal) return;
+  bookingModal.classList.remove('is-open');
+  bookingModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('booking-open');
+}
+
+bookingTriggers.forEach(trigger => trigger.addEventListener('click', openBooking));
+bookingCloseEls.forEach(el => el.addEventListener('click', closeBooking));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && bookingModal && bookingModal.classList.contains('is-open')) {
+    closeBooking();
+  }
+});
+
 // ---- SMOOTH SCROLL (for older Safari) ----
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
+    if (this.hasAttribute('data-open-booking')) return;
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       e.preventDefault();
