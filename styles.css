@@ -561,7 +561,7 @@ ul { list-style: none; }
    ============================================= */
 .why-us {
   padding: 100px 0;
-  background: linear-gradient(180deg, var(--ocean-deep) 0%, var(--ocean-mid) 100%);
+  background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%);
 }
 
 .features-grid {
@@ -626,7 +626,7 @@ ul { list-style: none; }
    ============================================= */
 .trips-section {
   padding: 100px 0;
-  background: var(--ocean-mid);
+  background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%);
 }
 
 .trips-grid {
@@ -911,7 +911,7 @@ ul { list-style: none; }
    ============================================= */
 .captain-section {
   padding: 100px 0;
-  background: var(--ocean-deep);
+  background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%);
   overflow: hidden;
 }
 
@@ -1106,7 +1106,7 @@ ul { list-style: none; }
    ============================================= */
 .faq-section {
   padding: 100px 0;
-  background: var(--ocean-deep);
+  background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%);
 }
 
 .faq-container { max-width: 800px; }
