@@ -31,7 +31,7 @@
 --gradient-hero: linear-gradient(100deg, rgba(18,13,7,0.5) 0%, rgba(20,15,8,0.28) 38%, rgba(24,18,10,0.04) 68%, rgba(24,18,10,0) 100%);
   --gradient-card: linear-gradient(180deg, transparent 40%, rgba(24,16,10,0.95) 100%);
   --font-main:    'DM Sans', sans-serif;
-  --font-display: 'Fraunces', serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
   /* Top navigation only, so the bar reads as its own thing.
      Questrial is the closest free match to the AMANAY wordmark: the same
      geometric skeleton (monolinear, no serifs, pointed A, M vertex that
@@ -65,9 +65,9 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Display face for headings. Fraunces is high-contrast, so the very heavy
-   weights look blacker here than they did in Outfit. Kept deliberately light
-   (500) so the titles read thinner, airier and more elegant. */
+/* Display face for headings. Cormorant Garamond is an airy, high-contrast
+   old-style serif: even at weight 500 it reads far finer and more elegant
+   than a heavy serif, which is exactly the look we want for the titles. */
 h1, h2, h3, h4,
 .hero-title,
 .hero-title-accent,
@@ -79,7 +79,7 @@ h1, h2, h3, h4,
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 
 img { max-width: 100%; display: block; }
@@ -111,9 +111,9 @@ ul { list-style: none; }
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(2.15rem, 4.3vw, 3.05rem);
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.24;
   margin-bottom: 48px;
   color: var(--ink);
 }
@@ -220,24 +220,37 @@ ul { list-style: none; }
 /* =============================================
    NAVBAR
    ============================================= */
-/* The bar is solid white from the first pixel, not only once scrolled:
-   it sat over the dark hero photo and read as a black band. Text and
-   logo therefore use ink colours, not white, from the start. */
+/* At the very top the bar floats transparent over the hero photo, with no
+   white band. The moment the page scrolls down it acquires the solid white
+   band, the hairline and the shadow, and the type returns to ink. Over the
+   photo the type is white, kept readable by the soft scrim on the overlay. */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
   padding: 16px 0;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(176,134,82,0.18);
-  box-shadow: 0 4px 30px rgba(51,38,26,0.07);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
   transition: var(--transition);
 }
 .navbar.scrolled {
   padding: 12px 0;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(176,134,82,0.18);
   box-shadow: 0 4px 30px rgba(51,38,26,0.1);
 }
+
+/* Light type while the bar is transparent over the hero photo. */
+.navbar:not(.scrolled) .nav-logo { color: #fff; }
+.navbar:not(.scrolled) .nav-link { color: rgba(255,255,255,0.92); }
+.navbar:not(.scrolled) .nav-link:hover {
+  background: rgba(255,255,255,0.16);
+  color: #fff;
+}
+.navbar:not(.scrolled) .burger-btn span { background: #fff; }
+.navbar:not(.scrolled) .logo-icon-svg { color: #fff; }
 
 .nav-container {
   max-width: 1200px;
@@ -427,7 +440,11 @@ ul { list-style: none; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: var(--gradient-hero);
+  /* A soft dark wash across the top so the transparent white bar stays
+     readable over the bright sky; it fades out well before the content. */
+  background:
+    linear-gradient(180deg, rgba(18,13,7,0.5) 0%, rgba(18,13,7,0.24) 6%, rgba(18,13,7,0) 16%),
+    var(--gradient-hero);
 }
 
 .hero-content {
@@ -456,9 +473,9 @@ ul { list-style: none; }
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.7rem, 6.4vw, 4.9rem);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.14;
   margin-bottom: 24px;
   color: #fff;
   animation: fadeInUp 0.8s ease 0.2s both;
@@ -611,7 +628,7 @@ ul { list-style: none; }
 }
 
 .feature-title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 12px;
   color: var(--ink);
@@ -723,7 +740,7 @@ ul { list-style: none; }
 .trip-date { font-size: 0.8rem; color: var(--gray-500); }
 
 .trip-title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 10px;
   color: var(--ink);
@@ -1043,7 +1060,7 @@ ul { list-style: none; }
 }
 .sustainability-card:hover::before { transform: scaleX(1); }
 .sustainability-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: var(--ink);
   margin: 16px 0 8px;
@@ -1338,7 +1355,7 @@ ul { list-style: none; }
 
 .booking-modal-title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-size: clamp(1.62rem, 2.8vw, 2.26rem);
   text-align: center;
   margin: 2px 0 10px;
   color: var(--ink);
@@ -1504,7 +1521,7 @@ body.booking-open { overflow: hidden; }
 }
 .form-success h3 {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.72rem;
   margin-bottom: 12px;
 }
 .form-success p {
@@ -1583,7 +1600,7 @@ body.booking-open { overflow: hidden; }
 }
 
 .newsletter-container h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.72rem, 3.2vw, 2.35rem);
   font-weight: 500;
 }
 
@@ -1690,7 +1707,7 @@ body.booking-open { overflow: hidden; }
 }
 
 .footer-links h4 {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -1930,8 +1947,8 @@ body.booking-open { overflow: hidden; }
 
 @media (max-width: 480px) {
   .features-grid { grid-template-columns: 1fr; }
-  .hero-title { font-size: 1.9rem; }
-  .section-title { font-size: 1.7rem; margin-bottom: 32px; }
+  .hero-title { font-size: 2.05rem; }
+  .section-title { font-size: 1.85rem; margin-bottom: 32px; }
   .hero-stats { flex-wrap: wrap; gap: 16px; }
   .hero-stat-divider { display: none; }
   .hero-scroll-hint { display: none; }

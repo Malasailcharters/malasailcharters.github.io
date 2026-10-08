@@ -12,7 +12,7 @@
 - All site text must be in English.
 - Brand: **Mālā Sail Charters**. The navbar wordmark shows only `MĀLĀ` (one word); the full name lives in the footer.
 - Logo: inline SVG of an anchor with a flower offering — three copies in `index.html` (navbar, footer, newsletter).
-- Fonts: DM Sans (body), Fraunces (display), Questrial (nav links), Montserrat 700 (wordmark).
+- Fonts: DM Sans (body), Cormorant Garamond (display), Questrial (nav links), Montserrat 700 (wordmark).
 - No emoji icons. `★` is rating data, `→` is typography.
 
 ## Workflow
