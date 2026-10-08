@@ -968,12 +968,39 @@ ul { list-style: none; }
 }
 
 /* =============================================
-   SUSTAINABILITY
+   COMMITMENT (inside the Captain section)
    ============================================= */
-.sustainability-section {
-  padding: 100px 0;
-  background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%);
+.commitment {
+  margin-top: 90px;
 }
+.commitment-head {
+  text-align: center;
+}
+.commitment .section-title { margin-bottom: 16px; }
+/* Only the personal-practice cards hide; the two nature cards stay put. */
+.sustainability-grid.is-collapsed .commitment-card { display: none; }
+.badge-commitment {
+  color: var(--white);
+  background: linear-gradient(135deg, var(--cyan), var(--gold));
+  border-color: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+.badge-commitment::after {
+  content: '↓';
+  font-size: 0.72rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+.badge-commitment:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(160,122,73,0.28);
+}
+.badge-commitment[aria-expanded="true"]::after { transform: rotate(180deg); }
 .sustainability-intro {
   max-width: 720px;
   margin: 0 auto 48px;
@@ -1042,6 +1069,14 @@ ul { list-style: none; }
   font-size: 0.78rem;
   color: var(--ink-faint);
 }
+/* Tree-Nation Climate Action label (renders its own 167x58 iframe) */
+.tree-nation-widget {
+  margin-top: 18px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+}
+.tree-nation-widget iframe { display: block; border: none; }
 
 /* =============================================
    REVIEWS

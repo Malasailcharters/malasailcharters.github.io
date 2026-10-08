@@ -87,6 +87,23 @@ if (tripsMore && tripsGrid && tripsTotal > 0) {
   });
 }
 
+// ---- CAPTAIN: MY COMMITMENT ----
+// The captain's personal practices stay behind the badge next to
+// "100% safety". The two nature cards (iNaturalist, One boat one tree)
+// are deliberately left out of the collapse.
+const commitmentGrid = document.getElementById('commitment-grid');
+const commitmentToggle = document.getElementById('commitment-toggle');
+
+if (commitmentToggle && commitmentGrid) {
+  commitmentToggle.addEventListener('click', () => {
+    const nowOpen = commitmentGrid.classList.toggle('is-collapsed') === false;
+    commitmentToggle.setAttribute('aria-expanded', String(nowOpen));
+    if (nowOpen) {
+      commitmentGrid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+}
+
 // ---- REVIEWS: SHOW ALL (desktop) ----
 // Above 768px only the first row shows; the rest wait behind the
 // button. On phones the swipe strip shows everything, so the button
