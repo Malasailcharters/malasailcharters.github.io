@@ -61,6 +61,32 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => revealObserver.observe(el));
 
+// ---- DESTINATIONS: SHOW ALL ----
+// The destination cards stay hidden until the visitor asks to see them,
+// keeping the page short on both desktop and mobile.
+const tripsGrid = document.getElementById('trips-grid');
+const tripsMore = document.getElementById('trips-more');
+const tripsTotal = tripsGrid
+  ? tripsGrid.querySelectorAll('.trip-card').length
+  : 0;
+
+if (tripsMore && tripsGrid && tripsTotal > 0) {
+  const label = tripsMore.querySelector('.trips-more-text');
+
+  const setTripsLabel = (open) => {
+    label.textContent = open
+      ? 'Show fewer destinations'
+      : `Show all ${tripsTotal} destinations`;
+  };
+  setTripsLabel(false);
+
+  tripsMore.addEventListener('click', () => {
+    const nowOpen = tripsGrid.classList.toggle('is-collapsed') === false;
+    tripsMore.setAttribute('aria-expanded', String(nowOpen));
+    setTripsLabel(nowOpen);
+  });
+}
+
 // ---- REVIEWS: SHOW ALL (desktop) ----
 // Above 768px only the first row shows; the rest wait behind the
 // button. On phones the swipe strip shows everything, so the button

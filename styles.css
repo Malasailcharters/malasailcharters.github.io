@@ -635,6 +635,7 @@ ul { list-style: none; }
   gap: 28px;
   margin-bottom: 48px;
 }
+.trips-grid.is-collapsed { display: none; }
 
 .trips-group-title {
   grid-column: 1 / -1;
@@ -757,7 +758,13 @@ ul { list-style: none; }
 .spots-dot.empty { background: rgba(51,38,26,0.15); }
 .spots-text { font-size: 0.75rem; color: var(--gray-500); margin-left: 6px; }
 
-.trips-cta { text-align: center; }
+.trips-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
 
 /* =============================================
    CALENDAR

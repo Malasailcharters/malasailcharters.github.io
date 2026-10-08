@@ -160,7 +160,7 @@
     <div class="container">
       <div class="section-label">Upcoming Trips</div>
       <h2 class="section-title">Explore our <span class="highlight">Destinations</span></h2>
-      <div class="trips-grid">
+      <div class="trips-grid is-collapsed" id="trips-grid">
 
         <div class="trip-card" id="trip-amalfi">
           <div class="trip-card-img-wrap">
@@ -230,7 +230,7 @@
           <div class="trip-card-body">
             <div class="trip-meta">
               <span class="trip-location">Ibiza, Spain</span>
-              <span class="trip-date">Oct 17–24</span>
+              <span class="trip-date">Jun 3–10</span>
             </div>
             <h3 class="trip-title">Spain</h3>
             <p class="trip-desc">Crystal-clear coves, hidden beaches and golden sunsets under the spell of Es Vedrà.</p>
@@ -366,6 +366,9 @@
 
       </div>
       <div class="trips-cta">
+        <button type="button" class="btn btn-outline" id="trips-more" aria-expanded="false" aria-controls="trips-grid">
+          <span class="trips-more-text">Show all destinations</span>
+        </button>
         <a href="#calendar" class="btn btn-outline" id="view-all-trips">See all trips →</a>
       </div>
     </div>
