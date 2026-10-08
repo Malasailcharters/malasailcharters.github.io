@@ -1278,6 +1278,38 @@ ul { list-style: none; }
 }
 
 /* =============================================
+   BOOK A CALL (HubSpot Meetings)
+   ============================================= */
+.booking-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%);
+}
+.booking-head { text-align: center; }
+.booking-head .section-title { margin-bottom: 16px; }
+.booking-intro {
+  max-width: 620px;
+  margin: 0 auto 48px;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.booking-embed {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid rgba(176,134,82,0.45);
+  border-radius: var(--radius-lg);
+  padding: 10px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+/* HubSpot injects its own iframe (min 312px wide, ~756px tall) and
+   resizes it by postMessage, so we only reserve room and round it. */
+.booking-embed .meetings-iframe-container { min-height: 640px; }
+.booking-embed iframe { border-radius: var(--radius-md); }
+
+/* =============================================
    CONTACT
    ============================================= */
 .contact-section {
