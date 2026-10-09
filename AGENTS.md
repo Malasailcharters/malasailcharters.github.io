@@ -10,7 +10,7 @@
 ## Site
 - Static site: `index.html` + `styles.css` + `app.js` + `images/`.
 - All site text must be in English.
-- Brand: **Mālā Sail Charters**. The navbar wordmark shows only `MĀLĀ` (one word); the full name lives in the footer.
+- Brand: **Mālā Sail Charters**. The navbar wordmark stacks `MĀLĀ` with `SAIL CHARTERS` tracked wide beneath it (mirroring the og-card); the full name also lives in the footer.
 - Logo: inline SVG of an anchor with a flower offering — three copies in `index.html` (navbar, footer, newsletter).
 - Fonts: DM Sans (body), Cormorant Garamond (display), Questrial (nav links), Montserrat 700 (wordmark).
 - No emoji icons. `★` is rating data, `→` is typography.

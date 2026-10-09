@@ -285,6 +285,24 @@ ul { list-style: none; }
 /* letter-spacing also pads the last glyph, which skews the lockup right. */
 .navbar .logo-text { margin-right: -0.14em; }
 
+/* The top-bar lockup stacks the wordmark over its descriptor, matching the
+   link-preview card: the big MALA, then SAIL CHARTERS tracked wide beneath. */
+.navbar .logo-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+.navbar .logo-tagline {
+  font-family: var(--font-wordmark);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.36em;
+  margin-top: 5px;
+  margin-right: -0.36em;
+  opacity: 0.72;
+}
+
 /* Both marks on the navbar lockup are drawn here, not typed. The bar clears
    Montserrat's cap height (0.7em) by 0.05em; `top` resolves against the
    inline box, whose top sits 0.972em above the baseline. The round dot sits on
