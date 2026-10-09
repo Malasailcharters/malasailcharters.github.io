@@ -1217,6 +1217,23 @@ ul { list-style: none; }
    and this button are each shown in one place only. */
 .reviews-more { display: none; }
 
+/* Invitation to leave a review. Sits after the grid and shows on every
+   breakpoint, since the form is the same on mobile and desktop. */
+.reviews-cta {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+.reviews-cta-text {
+  max-width: 560px;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
 /* =============================================
    FAQ
    ============================================= */
@@ -1505,7 +1522,20 @@ ul { list-style: none; }
 .booking-embed .meetings-iframe-container { min-height: 620px; }
 .booking-embed iframe { width: 100% !important; min-height: 600px; border-radius: var(--radius-sm); }
 
-body.booking-open { overflow: hidden; }
+body.booking-open,
+body.review-open { overflow: hidden; }
+
+/* — Leave-a-review modal: a slimmer dialog that reuses the booking shell — */
+.review-modal-dialog { max-width: 620px; padding: 34px 26px 26px; }
+.review-modal .booking-modal-intro { margin-bottom: 18px; }
+.review-modal .review-form {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  gap: 16px;
+}
+.review-modal .review-form .form-note { margin-top: 0; }
 
 /* =============================================
    CONTACT

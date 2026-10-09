@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20261009" />
+  <link rel="stylesheet" href="styles.css?v=20261009b" />
 
   <link rel="canonical" href="https://malasailcharters.github.io/" />
   <meta name="theme-color" content="#33261a" />
@@ -757,6 +757,10 @@
         <span class="reviews-more-text">Show all reviews</span>
         <span class="reviews-hint-arrow"></span>
       </button>
+      <div class="reviews-cta">
+        <p class="reviews-cta-text">Travelled with us or hosted a retreat on board? We read every review personally and would love to hear how it went.</p>
+        <button type="button" class="btn btn-outline" data-open-review>Leave a review</button>
+      </div>
     </div>
   </section>
 
@@ -1083,8 +1087,99 @@
     </div>
   </div>
 
+  <!-- =========== LEAVE A REVIEW (modal) =========== -->
+  <div class="booking-modal review-modal" id="review" role="dialog" aria-modal="true" aria-label="Leave a review" aria-hidden="true">
+    <div class="booking-modal-backdrop" data-close-review></div>
+    <div class="booking-modal-dialog review-modal-dialog" role="document">
+      <button type="button" class="booking-modal-close" data-close-review aria-label="Close">&times;</button>
+      <h2 class="booking-modal-title">Share your <span class="highlight">experience</span></h2>
+      <p class="booking-modal-intro">Travelled with us or hosted a retreat on board? Leave your review below. We read every one personally and publish it here after a quick check.</p>
+
+      <!-- Delivered by Web3Forms. The access key is public by design: it only
+           routes the submission to our own inbox, it cannot read anything else.
+           While it is empty the script falls back to opening the visitor's
+           mail app, so the form never claims to have sent something it did not. -->
+      <form class="contact-form review-form" id="review-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleReviewSubmit(event)">
+        <input type="hidden" name="access_key" value="bd819dd0-a73c-4949-8143-c3093b98d150" />
+        <input type="hidden" name="subject" value="New review submitted via the Mala Sail Charters website" />
+        <input type="hidden" name="from_name" value="Mala Sail Charters website" />
+        <!-- Spam trap: invisible to people, bots fill it in. -->
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="review-name">Your name</label>
+            <input type="text" id="review-name" name="name" placeholder="How it should appear" required />
+          </div>
+          <div class="form-group">
+            <label for="review-email">Email <span class="form-optional">(optional, kept private)</span></label>
+            <input type="email" id="review-email" name="email" placeholder="you@email.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="review-role">You are a&hellip;</label>
+            <select id="review-role" name="role" required>
+              <option value="">Select&hellip;</option>
+              <option value="Traveler or guest">Traveler or guest</option>
+              <option value="Retreat host or facilitator">Retreat host or facilitator</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="review-trip">Trip</label>
+            <select id="review-trip" name="trip">
+              <option value="">Select a destination&hellip;</option>
+              <option value="italy">Italy &mdash; Amalfi Coast</option>
+              <option value="greece">Greece &mdash; Ionian Sea</option>
+              <option value="spain">Spain &mdash; Ibiza</option>
+              <option value="portugal">Portugal &mdash; Algarve</option>
+              <option value="antigua">Antigua &amp; Barbuda</option>
+              <option value="mauritius">Mauritius</option>
+              <option value="thailand">Thailand &mdash; Krabi</option>
+              <option value="other">Other / Not decided yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="review-rating">Rating</label>
+          <select id="review-rating" name="rating" required>
+            <option value="">Select&hellip;</option>
+            <option value="5">★★★★★ &mdash; Excellent</option>
+            <option value="4">★★★★ &mdash; Very good</option>
+            <option value="3">★★★ &mdash; Good</option>
+            <option value="2">★★ &mdash; Fair</option>
+            <option value="1">★ &mdash; Poor</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="review-text">Your review</label>
+          <textarea id="review-text" name="review" placeholder="What stood out? The skipper, the anchorages, the food, the group&hellip;" rows="6" required></textarea>
+        </div>
+        <p class="form-message" id="review-error" role="alert" style="display:none"></p>
+        <button type="submit" class="btn btn-primary btn-full" id="review-submit">Send my review</button>
+        <p class="form-note">Reviews are published after a quick check &middot; We never edit your words</p>
+        <p class="form-legal">We use these details only to check and publish your review. See our <a href="privacy.html">Privacy Policy</a>.</p>
+      </form>
+
+      <div class="form-success" id="review-success" style="display:none">
+        <div class="form-success-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </div>
+        <h3>Thank you &mdash; review received!</h3>
+        <p>We've got your words. We read every review personally and will publish it on the site shortly.</p>
+        <p class="form-success-sub">If you'd like to add anything:</p>
+        <div class="form-success-actions">
+          <a href="https://wa.me/34678089234?text=Hi%20M%C4%81l%C4%81%20Sail%20Charters%2C%20I%27d%20like%20to%20add%20to%20my%20review." target="_blank" rel="noopener" class="btn btn-primary">WhatsApp us</a>
+          <button type="button" class="btn btn-outline" data-close-review>Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
-  <script src="app.js?v=20261009"></script>
+  <script src="app.js?v=20261009b"></script>
   <script src="https://widgets.tree-nation.com/js/widgets/v3/widgets.min.js"></script>
 </body>
 </html>

@@ -361,6 +361,82 @@ function handleNewsletter(e) {
     });
 }
 
+// ---- REVIEW FORM ----
+// Same Web3Forms route as the contact form. Reviews are curated by hand, so a
+// successful send only thanks the visitor; nothing is published automatically.
+function handleReviewSubmit(e) {
+  e.preventDefault();
+  const form    = document.getElementById('review-form');
+  const success = document.getElementById('review-success');
+  const error   = document.getElementById('review-error');
+  const btn     = document.getElementById('review-submit');
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  error.style.display = 'none';
+
+  if (!formAccessKey(form)) {
+    const data = new FormData(form);
+    openMailFallback('Review from the Mala Sail Charters website', [
+      'Name: ' + (data.get('name') || ''),
+      'Email: ' + (data.get('email') || ''),
+      'Role: ' + (data.get('role') || ''),
+      'Trip: ' + (data.get('trip') || 'Not specified'),
+      'Rating: ' + (data.get('rating') || '') + ' / 5',
+      '',
+      data.get('review') || ''
+    ].join('\n'));
+    btn.textContent = 'Send my review';
+    btn.disabled = false;
+    showFormMessage(error, 'notice',
+      'Opening your email app with the review ready. If nothing happens, write to ' +
+      CONTACT_EMAIL + ' or use WhatsApp.');
+    return;
+  }
+
+  postForm(form)
+    .then(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    })
+    .catch(() => {
+      btn.textContent = 'Send my review';
+      btn.disabled = false;
+      showFormMessage(error, 'error',
+        'Sorry, that could not be sent. Please write to ' + CONTACT_EMAIL +
+        ' or message us on WhatsApp.');
+    });
+}
+
+// ---- LEAVE A REVIEW MODAL ----
+const reviewModal = document.getElementById('review');
+const reviewTriggers = document.querySelectorAll('[data-open-review]');
+const reviewCloseEls = document.querySelectorAll('[data-close-review]');
+
+function openReview(e) {
+  if (e) e.preventDefault();
+  if (!reviewModal) return;
+  reviewModal.classList.add('is-open');
+  reviewModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('review-open');
+  const dialog = reviewModal.querySelector('.booking-modal-dialog');
+  if (dialog) dialog.scrollTop = 0;
+  const firstField = reviewModal.querySelector('#review-name');
+  if (firstField) firstField.focus();
+}
+function closeReview() {
+  if (!reviewModal) return;
+  reviewModal.classList.remove('is-open');
+  reviewModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('review-open');
+}
+reviewTriggers.forEach(el => el.addEventListener('click', openReview));
+reviewCloseEls.forEach(el => el.addEventListener('click', closeReview));
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && reviewModal && reviewModal.classList.contains('is-open')) closeReview();
+});
+
 // ---- BOOK A DISCOVERY CALL MODAL (HubSpot Meetings) ----
 const bookingModal = document.getElementById('book');
 const bookingTriggers = document.querySelectorAll('[data-open-booking]');
