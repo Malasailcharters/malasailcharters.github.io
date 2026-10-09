@@ -361,7 +361,7 @@ function handleNewsletter(e) {
     });
 }
 
-// ---- BOOK A CALL MODAL (HubSpot Meetings) ----
+// ---- BOOK A DISCOVERY CALL MODAL (HubSpot Meetings) ----
 const bookingModal = document.getElementById('book');
 const bookingTriggers = document.querySelectorAll('[data-open-booking]');
 const bookingCloseEls = document.querySelectorAll('[data-close-booking]');
@@ -382,6 +382,8 @@ function openBooking(e) {
   bookingModal.classList.add('is-open');
   bookingModal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('booking-open');
+  const dialog = bookingModal.querySelector('.booking-modal-dialog');
+  if (dialog) dialog.scrollTop = 0;
   loadHubSpotMeetings();
   const closeBtn = bookingModal.querySelector('.booking-modal-close');
   if (closeBtn) closeBtn.focus();
@@ -401,6 +403,106 @@ document.addEventListener('keydown', (e) => {
     closeBooking();
   }
 });
+
+// ---- BOOKING GALLERY (swipeable trip moments before the calendar) ----
+(function initBookingGallery() {
+  const gallery = document.querySelector('[data-gallery]');
+  if (!gallery) return;
+  const track = gallery.querySelector('[data-gallery-track]');
+  if (!track) return;
+  const slides = Array.from(track.children);
+  if (!slides.length) return;
+
+  const dotsWrap = gallery.querySelector('[data-gallery-dots]');
+  const prevBtn = gallery.querySelector('[data-gallery-prev]');
+  const nextBtn = gallery.querySelector('[data-gallery-next]');
+  const cta = gallery.parentElement
+    ? gallery.parentElement.querySelector('[data-gallery-cta]')
+    : null;
+
+  let currentIndex = 0;
+  let programmaticUntil = 0;
+
+  // Build the dots once.
+  if (dotsWrap) {
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'booking-gallery-dot' + (i === 0 ? ' is-active' : '');
+      dot.setAttribute('aria-label', 'Go to image ' + (i + 1) + ' of ' + slides.length);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+  }
+  const dots = dotsWrap ? Array.from(dotsWrap.children) : [];
+
+  function setIndex(i) {
+    currentIndex = i;
+    dots.forEach((dot, di) => dot.classList.toggle('is-active', di === i));
+  }
+
+  function goTo(i) {
+    const target = Math.max(0, Math.min(i, slides.length - 1));
+    programmaticUntil = Date.now() + 650;
+    track.scrollTo({ left: target * track.clientWidth, behavior: 'smooth' });
+    setIndex(target);
+  }
+
+  // Keep the dots in sync when the user swipes natively.
+  track.addEventListener('scroll', () => {
+    window.requestAnimationFrame(() => {
+      if (!track.clientWidth || Date.now() < programmaticUntil) return;
+      const i = Math.round(track.scrollLeft / track.clientWidth);
+      if (i !== currentIndex) setIndex(i);
+    });
+  }, { passive: true });
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+
+  // Mouse drag on desktop (touch devices swipe natively).
+  let dragging = false;
+  let startX = 0;
+  let startScroll = 0;
+
+  track.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse') return;
+    dragging = true;
+    startX = e.clientX;
+    startScroll = track.scrollLeft;
+    track.classList.add('is-dragging');
+    if (track.setPointerCapture) {
+      try { track.setPointerCapture(e.pointerId); } catch (err) {}
+    }
+  });
+  track.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    e.preventDefault();
+    track.scrollLeft = startScroll - (e.clientX - startX);
+  });
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    track.classList.remove('is-dragging');
+    const i = track.clientWidth ? Math.round(track.scrollLeft / track.clientWidth) : 0;
+    goTo(i);
+  }
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointerleave', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+
+  // "Choose a day & time" slides the modal down to the calendar.
+  if (cta && bookingModal) {
+    cta.addEventListener('click', () => {
+      const embed = bookingModal.querySelector('.booking-embed');
+      const dialog = bookingModal.querySelector('.booking-modal-dialog');
+      if (embed && dialog) {
+        programmaticUntil = 0;
+        dialog.scrollTo({ top: embed.offsetTop - 12, behavior: 'smooth' });
+      }
+    });
+  }
+})();
 
 // ---- SMOOTH SCROLL (for older Safari) ----
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

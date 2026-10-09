@@ -1026,7 +1026,7 @@
           <li><a href="#captain">The Captain</a></li>
           <li><a href="#sustainability">Sustainability</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="#book" data-open-booking>Book a call</a></li>
+          <li><a href="#book" data-open-booking>Book a discovery call</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -1047,13 +1047,48 @@
     </div>
   </footer>
 
-  <!-- =========== BOOK A CALL (modal) =========== -->
-  <div class="booking-modal" id="book" role="dialog" aria-modal="true" aria-label="Book a call" aria-hidden="true">
+  <!-- =========== BOOK A DISCOVERY CALL (modal) =========== -->
+  <div class="booking-modal" id="book" role="dialog" aria-modal="true" aria-label="Book a discovery call" aria-hidden="true">
     <div class="booking-modal-backdrop" data-close-booking></div>
     <div class="booking-modal-dialog" role="document">
       <button type="button" class="booking-modal-close" data-close-booking aria-label="Close">&times;</button>
-      <h2 class="booking-modal-title">Book a <span class="highlight">call</span></h2>
-      <p class="booking-modal-intro">Pick a time that suits you for a video call. No commitment, just a conversation.</p>
+      <h2 class="booking-modal-title">Book a <span class="highlight">discovery call</span></h2>
+      <p class="booking-modal-intro">Take a little journey through our trips, then pick a day and time that suits you. No commitment, just a conversation.</p>
+
+      <div class="booking-gallery" data-gallery aria-roledescription="carousel" aria-label="Moments from our sailing trips">
+        <div class="booking-gallery-track" data-gallery-track>
+          <figure class="booking-gallery-slide">
+            <img src="images/hero_sailing.png" alt="Under sail in the Mediterranean" loading="lazy" decoding="async" />
+            <figcaption>Under sail</figcaption>
+          </figure>
+          <figure class="booking-gallery-slide">
+            <img src="images/amalfi.png" alt="Amalfi Coast, Italy" loading="lazy" decoding="async" />
+            <figcaption>The Amalfi Coast, Italy</figcaption>
+          </figure>
+          <figure class="booking-gallery-slide">
+            <img src="images/antigua.png" alt="Antigua &amp; Barbuda, Caribbean" loading="lazy" decoding="async" />
+            <figcaption>Antigua &amp; Barbuda, Caribbean</figcaption>
+          </figure>
+          <figure class="booking-gallery-slide">
+            <img src="images/mauritius.jpg" alt="Mauritius, Indian Ocean" loading="lazy" decoding="async" />
+            <figcaption>Mauritius, Indian Ocean</figcaption>
+          </figure>
+          <figure class="booking-gallery-slide">
+            <img src="images/thailand.png" alt="Krabi, Thailand" loading="lazy" decoding="async" />
+            <figcaption>Krabi, Thailand</figcaption>
+          </figure>
+          <figure class="booking-gallery-slide">
+            <img src="images/ibiza.png" alt="Ibiza, Spain" loading="lazy" decoding="async" />
+            <figcaption>Ibiza, Spain</figcaption>
+          </figure>
+        </div>
+        <button type="button" class="booking-gallery-nav is-prev" data-gallery-prev aria-label="Previous image">&#8249;</button>
+        <button type="button" class="booking-gallery-nav is-next" data-gallery-next aria-label="Next image">&#8250;</button>
+        <div class="booking-gallery-dots" data-gallery-dots></div>
+      </div>
+      <p class="booking-gallery-hint">Swipe to explore our trips</p>
+      <button type="button" class="booking-gallery-cta" data-gallery-cta>Choose a day &amp; time &darr;</button>
+
       <div class="booking-embed">
         <!-- HubSpot Meetings: the calendar is loaded the first time the modal opens. -->
         <div class="meetings-iframe-container" data-src="https://meetings-eu1.hubspot.com/malasailcharters?embed=true"></div>

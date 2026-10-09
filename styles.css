@@ -1297,7 +1297,7 @@ ul { list-style: none; }
 }
 
 /* =============================================
-   BOOK A CALL (HubSpot Meetings, modal)
+   BOOK A DISCOVERY CALL (HubSpot Meetings, modal)
    ============================================= */
 .booking-modal {
   position: fixed;
@@ -1368,6 +1368,143 @@ ul { list-style: none; }
   color: var(--ink-muted);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+/* — Discovery-call gallery: swipeable trip moments above the calendar — */
+.booking-gallery {
+  position: relative;
+  margin: 0 0 12px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #120d07;
+  border: 1px solid rgba(176,134,82,0.32);
+  box-shadow: var(--shadow-sm);
+}
+.booking-gallery-track {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.booking-gallery-track::-webkit-scrollbar { display: none; }
+.booking-gallery-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+.booking-gallery-slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  height: clamp(220px, 40vh, 420px);
+  margin: 0;
+  scroll-snap-align: center;
+}
+.booking-gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+.booking-gallery-slide figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 46px 22px 30px;
+  background: linear-gradient(180deg, rgba(18,13,7,0) 0%, rgba(18,13,7,0.82) 100%);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.35);
+}
+.booking-gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 50%;
+  background: rgba(18,13,7,0.4);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: var(--transition);
+}
+.booking-gallery-nav:hover {
+  background: rgba(18,13,7,0.62);
+  border-color: rgba(255,255,255,0.6);
+}
+.booking-gallery-nav.is-prev { left: 14px; }
+.booking-gallery-nav.is-next { right: 14px; }
+@media (hover: hover) and (pointer: fine) {
+  .booking-gallery-nav { display: flex; }
+}
+.booking-gallery-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.booking-gallery-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.45);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.booking-gallery-dot.is-active {
+  width: 20px;
+  background: #fff;
+}
+.booking-gallery-hint {
+  margin: 0 0 14px;
+  text-align: center;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
+}
+.booking-gallery-cta {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 13px 30px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--cyan), var(--gold));
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+.booking-gallery-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .booking-embed {
