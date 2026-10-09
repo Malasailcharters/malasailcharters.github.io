@@ -437,6 +437,16 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && reviewModal && reviewModal.classList.contains('is-open')) closeReview();
 });
 
+// Deep link: .../#leave-review opens the form straight away, so the URL can be
+// shared on its own (WhatsApp, email, a QR code...). #review also works,
+// since that is the modal's own id.
+function maybeOpenReviewFromHash() {
+  const h = window.location.hash;
+  if (h === '#leave-review' || h === '#leave-a-review' || h === '#review') openReview();
+}
+maybeOpenReviewFromHash();
+window.addEventListener('hashchange', maybeOpenReviewFromHash);
+
 // ---- BOOK A DISCOVERY CALL MODAL (HubSpot Meetings) ----
 const bookingModal = document.getElementById('book');
 const bookingTriggers = document.querySelectorAll('[data-open-booking]');
