@@ -621,4 +621,17 @@ const sectionObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.4 });
 
-sections.forEach(s => sectionObserver.observe(s));
+// Hide Padlet board if requested (shareable link without the community board).
+function hidePadletIfRequested() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('nopadlet') || params.get('nopadlet') === '1') {
+    document.body.classList.add('hide-padlet');
+    const iframe = document.getElementById('board-iframe');
+    if (iframe) iframe.setAttribute('src', 'about:blank');
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', hidePadletIfRequested);
+} else {
+  hidePadletIfRequested();
+}
