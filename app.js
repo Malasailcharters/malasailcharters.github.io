@@ -624,7 +624,9 @@ const sectionObserver = new IntersectionObserver((entries) => {
 // Hide Padlet board if requested (shareable link without the community board).
 function hidePadletIfRequested() {
   const params = new URLSearchParams(window.location.search);
-  if (params.has('nopadlet') || params.get('nopadlet') === '1') {
+  if (params.has('nopadlet') || params.get('nopadlet') === '1' ||
+      params.has('noboard') || params.get('noboard') === '1' ||
+      params.has('quiet') || params.get('quiet') === '1') {
     document.body.classList.add('hide-padlet');
     const iframe = document.getElementById('board-iframe');
     if (iframe) iframe.setAttribute('src', 'about:blank');
