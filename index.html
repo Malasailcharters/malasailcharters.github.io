@@ -10,43 +10,203 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=20261012c" />
 
-  <link rel="canonical" href="https://malasailcharters.github.io/" />
+  <link rel="canonical" href="https://malasailcharters.com/" />
   <meta name="theme-color" content="#33261a" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
   <!-- Tab icon: the anchor-and-flower mark, vector where supported. -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-  <!-- Link previews. Absolute URLs are required by WhatsApp, Instagram, X and the rest. -->
+  <meta name="author" content="Mālā Sail Charters" />
+
+  <!-- Link previews. Absolute URLs are required by WhatsApp, Instagram, X and the rest.
+       They point at the custom domain, which is where malasailcharters.github.io
+       already redirects, so a pasted link shows one single, correct preview. -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Mālā Sail Charters" />
   <meta property="og:title" content="Mālā Sail Charters — Conscious Sailing Retreats" />
   <meta property="og:description" content="Mālā Sail Charters: conscious sailing retreats across the Mediterranean, Caribbean and Asia. Small groups, authentic experiences, the rhythm of the sea." />
-  <meta property="og:url" content="https://malasailcharters.github.io/" />
-  <meta property="og:image" content="https://malasailcharters.github.io/images/og-card.jpg" />
+  <meta property="og:url" content="https://malasailcharters.com/" />
+  <meta property="og:image" content="https://malasailcharters.com/images/og-card.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Mālā Sail Charters — conscious sailing retreats" />
+  <meta property="og:image:alt" content="Mālā Sail Charters — a sailboat under a Mediterranean sunset" />
   <meta property="og:locale" content="en" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mālā Sail Charters — Conscious Sailing Retreats" />
   <meta name="twitter:description" content="Mālā Sail Charters: conscious sailing retreats across the Mediterranean, Caribbean and Asia. Small groups, authentic experiences, the rhythm of the sea." />
-  <meta name="twitter:image" content="https://malasailcharters.github.io/images/og-card.jpg" />
+  <meta name="twitter:image" content="https://malasailcharters.com/images/og-card.jpg" />
+  <meta name="twitter:image:alt" content="Mālā Sail Charters — a sailboat under a Mediterranean sunset" />
 
+  <!-- Everything Google needs to understand the business: who we are, where we
+       sail, what we sell, and the answers already published in the FAQ. Kept as
+       a single graph so the nodes can reference each other by @id. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": "Mālā Sail Charters",
-    "url": "https://malasailcharters.github.io/",
-    "description": "Mālā Sail Charters: conscious sailing retreats across the Mediterranean, Caribbean and Asia. Small groups, authentic experiences, the rhythm of the sea.",
-    "logo": "https://malasailcharters.github.io/apple-touch-icon.png",
-    "image": "https://malasailcharters.github.io/images/og-card.jpg",
-    "email": "malasailcharters@gmail.com",
-    "telephone": "+34678089234",
-    "sameAs": ["https://www.instagram.com/Ale.trav3ls"],
-    "areaServed": ["Mediterranean", "Caribbean", "Indian Ocean", "Southeast Asia"]
+    "@graph": [
+      {
+        "@type": "TravelAgency",
+        "@id": "https://malasailcharters.com/#business",
+        "name": "Mālā Sail Charters",
+        "alternateName": "Mala Sail Charters",
+        "url": "https://malasailcharters.com/",
+        "description": "Mālā Sail Charters: conscious sailing retreats across the Mediterranean, Caribbean and Asia. Small groups, authentic experiences, the rhythm of the sea.",
+        "logo": "https://malasailcharters.com/apple-touch-icon.png",
+        "image": "https://malasailcharters.com/images/og-card.jpg",
+        "email": "malasailcharters@gmail.com",
+        "telephone": "+34678089234",
+        "priceRange": "€€€",
+        "currenciesAccepted": "EUR",
+        "paymentAccepted": "Credit Card, Google Pay, Apple Pay, PayPal, Amazon Pay, Bank transfer",
+        "knowsLanguage": ["en", "es"],
+        "sameAs": ["https://www.instagram.com/Ale.trav3ls"],
+        "areaServed": ["Mediterranean", "Caribbean", "Indian Ocean", "Southeast Asia"],
+        "founder": {
+          "@type": "Person",
+          "name": "Alejandro Alonso",
+          "jobTitle": "Professional skipper and Captain 200GT"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "5",
+          "reviewCount": "21"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://malasailcharters.com/#website",
+        "url": "https://malasailcharters.com/",
+        "name": "Mālā Sail Charters",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://malasailcharters.com/#business" }
+      },
+      {
+        "@type": "TouristTrip",
+        "@id": "https://malasailcharters.com/#trip-amalfi",
+        "name": "Italy — Amalfi Coast sailing trip",
+        "description": "Cliffside villages, turquoise coves and the green island of Ischia, sailing the most romantic coast in the Mediterranean.",
+        "image": "https://malasailcharters.com/images/amalfi.png",
+        "url": "https://malasailcharters.com/#trip-amalfi",
+        "touristType": ["Small groups", "No sailing experience required"],
+        "itinerary": { "@type": "Place", "name": "Amalfi Coast, Italy" },
+        "provider": { "@id": "https://malasailcharters.com/#business" },
+        "offers": { "@type": "Offer", "price": "2900", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://malasailcharters.com/#contact" }
+      },
+      {
+        "@type": "TouristTrip",
+        "@id": "https://malasailcharters.com/#trip-ionian",
+        "name": "Greece — Ionian Sea sailing trip",
+        "description": "Emerald waters, sheltered bays and the wild green beauty of the Ionian islands, far from the crowds.",
+        "image": "https://malasailcharters.com/images/greece.jpeg",
+        "url": "https://malasailcharters.com/#trip-ionian",
+        "touristType": ["Small groups", "No sailing experience required"],
+        "itinerary": { "@type": "Place", "name": "Ionian Sea, Greece" },
+        "provider": { "@id": "https://malasailcharters.com/#business" },
+        "offers": { "@type": "Offer", "price": "2600", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://malasailcharters.com/#contact" }
+      },
+      {
+        "@type": "TouristTrip",
+        "@id": "https://malasailcharters.com/#trip-ibiza",
+        "name": "Spain — Ibiza sailing trip",
+        "description": "Crystal-clear coves, hidden beaches and golden sunsets under the spell of Es Vedrà.",
+        "image": "https://malasailcharters.com/images/ibiza.png",
+        "url": "https://malasailcharters.com/#trip-ibiza",
+        "touristType": ["Small groups", "No sailing experience required"],
+        "itinerary": { "@type": "Place", "name": "Ibiza, Spain" },
+        "provider": { "@id": "https://malasailcharters.com/#business" },
+        "offers": { "@type": "Offer", "price": "2200", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://malasailcharters.com/#contact" }
+      },
+      {
+        "@type": "TouristTrip",
+        "@id": "https://malasailcharters.com/#trip-algarve",
+        "name": "Portugal — Algarve sailing trip",
+        "description": "Golden cliffs, secluded sandy coves, crystal-clear water and peaceful anchorages along the stunning Algarve coastline.",
+        "image": "https://malasailcharters.com/images/malta.png",
+        "url": "https://malasailcharters.com/#trip-algarve",
+        "touristType": ["Small groups", "No sailing experience required"],
+        "itinerary": { "@type": "Place", "name": "Algarve, Portugal" },
+        "provider": { "@id": "https://malasailcharters.com/#business" },
+        "offers": { "@type": "Offer", "price": "2200", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://malasailcharters.com/#contact" }
+      },
+      {
+        "@type": "TouristTrip",
+        "@id": "https://malasailcharters.com/#trip-antigua",
+        "name": "Antigua & Barbuda sailing trip",
+        "description": "Turquoise water, steady trade winds and the yachting heart of the Caribbean around Antigua & Barbuda.",
+        "image": "https://malasailcharters.com/images/antigua.png",
+        "url": "https://malasailcharters.com/#trip-antigua",
+        "touristType": ["Small groups", "No sailing experience required"],
+        "itinerary": { "@type": "Place", "name": "Antigua & Barbuda, Caribbean" },
+        "provider": { "@id": "https://malasailcharters.com/#business" },
+        "offers": { "@type": "Offer", "price": "3200", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://malasailcharters.com/#contact" }
+      },
+      {
+        "@type": "TouristTrip",
+        "@id": "https://malasailcharters.com/#trip-mauritius",
+        "name": "Mauritius sailing trip",
+        "description": "Turquoise lagoons, coral reefs and sugar-white beaches around the volcanic island of Mauritius.",
+        "image": "https://malasailcharters.com/images/mauritius.jpg",
+        "url": "https://malasailcharters.com/#trip-mauritius",
+        "touristType": ["Small groups", "No sailing experience required"],
+        "itinerary": { "@type": "Place", "name": "Mauritius, Indian Ocean" },
+        "provider": { "@id": "https://malasailcharters.com/#business" },
+        "offers": { "@type": "Offer", "price": "2900", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://malasailcharters.com/#contact" }
+      },
+      {
+        "@type": "TouristTrip",
+        "@id": "https://malasailcharters.com/#trip-thailand",
+        "name": "Thailand — Krabi sailing trip",
+        "description": "Limestone cliffs, hidden lagoons and the iconic longtail boats of the Andaman Sea.",
+        "image": "https://malasailcharters.com/images/thailand.png",
+        "url": "https://malasailcharters.com/#trip-thailand",
+        "touristType": ["Small groups", "No sailing experience required"],
+        "itinerary": { "@type": "Place", "name": "Krabi, Thailand" },
+        "provider": { "@id": "https://malasailcharters.com/#business" },
+        "offers": { "@type": "Offer", "price": "2500", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://malasailcharters.com/#contact" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://malasailcharters.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do I need sailing experience?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No, not at all. Our trips are designed to be enjoyed by anyone, regardless of experience. The captain takes care of everything. If you want to learn how to sail, we'd be happy to teach you!" }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the trip price include?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The price includes accommodation on the boat (cabin), boat expenses (fuel, moorings, fees), and the captain's guidance. It doesn't include flights, meals or optional activities on land. We send you a full list when you book." }
+          },
+          {
+            "@type": "Question",
+            "name": "How many people will be on the boat?",
+            "acceptedAnswer": { "@type": "Answer", "text": "We work with groups of between 6 and 12 people. Enough to create a dynamic and fun atmosphere, but small enough that everyone really gets to know each other." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the accommodation like on the boat?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The sailboats feature double or single cabins with comfortable beds, a bathroom on board, a fully equipped kitchen and plenty of deck space to relax. It's a different way to sleep, but very special!" }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I book my spot?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It's very simple: book a call, write to us on WhatsApp or use the contact form. We confirm availability and send you the steps to complete the booking with a deposit. The rest is all adventure." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I cancel the booking?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, we have a flexible cancellation policy. The deposit is refundable if you cancel more than 60 days in advance. More info in our Terms and Conditions." }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
