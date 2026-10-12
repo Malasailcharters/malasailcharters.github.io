@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Catalogue — Mālā Sail Charters</title>
+  <meta name="description" content="Mālā Sail Charters product catalogue: small-group sailing weeks across the Mediterranean, the Caribbean and the Indian Ocean. What's included, the yacht, and how to host your own week." />
+  <meta name="robots" content="noindex, follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20261012c" />
+
+  <style>
+    /* =============================================
+       PRODUCT CATALOGUE — page-scoped styles.
+       Reuses the site tokens (colours, fonts, buttons,
+       cards) from styles.css so nothing drifts.
+       ============================================= */
+    .cat-page { background: var(--ocean-deep); }
+
+    /* ---------- COVER ---------- */
+    .cat-cover {
+      position: relative;
+      padding: 160px 0 84px;
+      background: #2b2013;
+      color: #fff;
+      overflow: hidden;
+    }
+    .cat-cover-bg { position: absolute; inset: 0; }
+    .cat-cover-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .cat-cover-bg::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: var(--gradient-hero);
+    }
+    .cat-cover .container { position: relative; z-index: 2; }
+    .cat-eyebrow {
+      display: inline-block;
+      font-family: var(--font-main);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: #fff;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 7px 18px; border-radius: 999px;
+      margin-bottom: 26px;
+      backdrop-filter: blur(6px);
+    }
+    .cat-cover h1 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.5rem, 6vw, 4.4rem);
+      line-height: 1.06;
+      letter-spacing: 0.005em;
+      max-width: 16ch;
+      margin-bottom: 22px;
+    }
+    .cat-cover h1 em { font-style: italic; color: var(--gold-light); }
+    .cat-cover-sub {
+      font-size: 1.05rem;
+      max-width: 52ch;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+      margin-bottom: 34px;
+    }
+    .cat-cover-meta {
+      display: flex; flex-wrap: wrap; gap: 10px 28px;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 22px;
+      font-family: var(--font-main);
+    }
+
+    /* ---------- GENERIC SECTION ---------- */
+    .cat-section { padding: 84px 0; }
+    .cat-section.alt { background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%); }
+    .cat-lead {
+      max-width: 62ch;
+      font-size: 1.02rem;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      margin: -28px 0 44px;
+    }
+
+    /* ---------- PILLARS ---------- */
+    .cat-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .cat-pillar {
+      background: var(--card);
+      border: 1px solid rgba(176,134,82,0.45);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .cat-pillar .num {
+      font-family: var(--font-display);
+      font-size: 1.6rem; color: var(--gold);
+      line-height: 1; margin-bottom: 14px;
+    }
+    .cat-pillar h3 {
+      font-size: 1.35rem; font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .cat-pillar p { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.7; }
+
+    /* ---------- INCLUDED / NOT ---------- */
+    .inc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .inc-card {
+      background: var(--card);
+      border: 1px solid rgba(176,134,82,0.45);
+      border-radius: var(--radius-lg);
+      padding: 32px 30px;
+      box-shadow: var(--shadow-sm);
+    }
+    .inc-card h3 {
+      font-size: 1.3rem; font-weight: 500; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .inc-card h3 .tick {
+      width: 22px; height: 22px; flex-shrink: 0;
+      color: var(--cyan);
+    }
+    .inc-card.muted h3 .tick { color: var(--gray-300); }
+    .inc-list { display: grid; gap: 12px; }
+    .inc-list li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 0.9rem; color: var(--ink-muted); line-height: 1.55;
+    }
+    .inc-list li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 7px; height: 7px; margin-top: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+    }
+    .inc-card.muted .inc-list li::before { background: var(--gray-300); }
+
+    /* ---------- DESTINATION CARDS ---------- */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+      margin-bottom: 56px;
+    }
+    .cat-card {
+      background: var(--card);
+      border: 1px solid rgba(176,134,82,0.45);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex; flex-direction: column;
+    }
+    .cat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(176,134,82,0.6);
+    }
+    .cat-card-img { position: relative; height: 220px; overflow: hidden; }
+    .cat-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .cat-card:hover .cat-card-img img { transform: scale(1.07); }
+    .cat-badge {
+      position: absolute; top: 16px; left: 16px; z-index: 2;
+      background: rgba(43,32,19,0.72);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      padding: 6px 14px; border-radius: 999px;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .cat-badge.new { background: linear-gradient(135deg, var(--cyan), #8a6437); }
+    .cat-card-body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
+    .cat-card-kicker {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 8px;
+    }
+    .cat-card h3 {
+      font-size: 1.5rem; font-weight: 500; margin-bottom: 4px;
+    }
+    .cat-card .where {
+      font-size: 0.85rem; color: var(--gray-500); margin-bottom: 14px;
+    }
+    .cat-card p.desc {
+      font-size: 0.9rem; color: var(--ink-muted); line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .cat-specs {
+      display: grid; gap: 9px;
+      padding: 18px 0;
+      margin-top: auto;
+      border-top: 1px solid rgba(51,38,26,0.1);
+      border-bottom: 1px solid rgba(51,38,26,0.1);
+    }
+    .cat-specs div {
+      display: flex; justify-content: space-between; gap: 12px;
+      font-size: 0.82rem;
+    }
+    .cat-specs dt, .cat-specs .k { color: var(--gray-500); }
+    .cat-specs .v { color: var(--ink); font-weight: 600; }
+
+    /* ---------- SPEC TABLE ---------- */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid rgba(176,134,82,0.45);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .spec-table caption {
+      caption-side: top;
+      text-align: left;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--cyan);
+      padding-bottom: 14px;
+    }
+    .spec-table th, .spec-table td {
+      text-align: left;
+      padding: 15px 22px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(51,38,26,0.08);
+    }
+    .spec-table tr:last-child th, .spec-table tr:last-child td { border-bottom: none; }
+    .spec-table th {
+      font-weight: 600; color: var(--gray-500);
+      width: 42%;
+      font-family: var(--font-main);
+    }
+    .spec-table td { color: var(--ink); font-weight: 500; }
+
+    /* ---------- HOST BLOCK ---------- */
+    .host-block {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 0;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(176,134,82,0.45);
+      box-shadow: var(--shadow-md);
+      background: var(--card);
+    }
+    .host-content { padding: 52px 46px; }
+    .host-content h2 {
+      font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+      font-weight: 500; line-height: 1.15; margin-bottom: 18px;
+    }
+    .host-content p {
+      font-size: 0.95rem; color: var(--ink-muted); line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .host-perks { display: grid; gap: 14px; margin-bottom: 30px; }
+    .host-perks li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 0.92rem; color: var(--ink);
+    }
+    .host-perks li svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--cyan); margin-top: 2px; }
+    .host-aside {
+      background: linear-gradient(160deg, #2b2013, #4a3826);
+      color: #fff;
+      padding: 52px 40px;
+      display: flex; flex-direction: column; justify-content: center;
+      gap: 26px;
+    }
+    .host-aside .stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2.4rem; font-weight: 500; color: var(--gold-light);
+      line-height: 1; margin-bottom: 6px;
+    }
+    .host-aside .stat span {
+      font-size: 0.82rem; letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.78); line-height: 1.5;
+    }
+    .host-aside .divider { height: 1px; background: rgba(255,255,255,0.18); }
+
+    /* ---------- CTA STRIP ---------- */
+    .cat-cta {
+      text-align: center;
+      padding: 84px 0;
+      background: linear-gradient(180deg, var(--ocean-deep), var(--ocean-light));
+      border-top: 1px solid rgba(176,134,82,0.25);
+    }
+    .cat-cta h2 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .cat-cta p {
+      max-width: 54ch; margin: 0 auto 32px;
+      color: var(--ink-muted); font-size: 1rem; line-height: 1.7;
+    }
+    .cat-cta-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+    /* ---------- CATALOGUE FOOTER ---------- */
+    .cat-foot {
+      background: var(--ocean-mid);
+      padding: 46px 0;
+      border-top: 1px solid rgba(176,134,82,0.25);
+    }
+    .cat-foot .container {
+      display: flex; flex-wrap: wrap; gap: 20px;
+      justify-content: space-between; align-items: center;
+    }
+    .cat-foot p { font-size: 0.82rem; color: var(--gray-500); }
+    .cat-foot .wordmark {
+      font-family: var(--font-wordmark);
+      font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--ink);
+      font-size: 0.95rem;
+    }
+    .cat-foot .wordmark small {
+      display: block; font-size: 0.55rem; letter-spacing: 0.4em;
+      font-weight: 400; opacity: 0.7; margin-top: 4px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 860px) {
+      .inc-grid { grid-template-columns: 1fr; }
+      .host-block { grid-template-columns: 1fr; }
+      .host-content, .host-aside { padding: 40px 28px; }
+      .cat-cover { padding: 130px 0 64px; }
+    }
+    @media (max-width: 480px) {
+      .cat-grid { grid-template-columns: 1fr; }
+      .spec-table th { width: 50%; }
+      .cat-section { padding: 60px 0; }
+    }
+
+    /* ---------- PRINT / PDF ---------- */
+    @media print {
+      .navbar, .cat-cta-actions, .cat-cover-bg { display: none !important; }
+      .cat-page, .cat-section, .cat-cta, body { background: #fff !important; }
+      .cat-cover {
+        padding: 40px 0 26px; background: #fff !important; color: var(--ink);
+      }
+      .cat-cover h1, .cat-cover-sub, .cat-cover-meta, .cat-eyebrow { color: var(--ink) !important; }
+      .cat-cover-meta { border-top-color: rgba(51,38,26,0.2); }
+      .cat-eyebrow { background: var(--ocean-mid); border-color: rgba(176,134,82,0.5); }
+      .cat-section { padding: 26px 0; page-break-inside: avoid; }
+      .cat-card, .inc-card, .host-block, .spec-table { box-shadow: none; page-break-inside: avoid; }
+      .cat-region { page-break-before: always; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+
+<body class="cat-page">
+
+  <!-- =========== NAVBAR (links back to the main site) =========== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="Mālā Sail Charters">
+        <svg class="logo-icon-svg" width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <g fill="currentColor">
+            <path d="M17.8 11.6C13.2 12.2 9.2 10 7.6 5.8 12.2 5.2 16.2 7.6 17.8 11.6Z"/>
+            <path d="M30.2 11.6C34.8 12.2 38.8 10 40.4 5.8 35.8 5.2 31.8 7.6 30.2 11.6Z"/>
+            <circle cx="24" cy="7.5" r="2.8"/>
+            <circle cx="28.2" cy="10.4" r="2.8"/>
+            <circle cx="26.8" cy="14.8" r="2.8"/>
+            <circle cx="21.2" cy="14.8" r="2.8"/>
+            <circle cx="19.8" cy="10.4" r="2.8"/>
+            <circle cx="24" cy="11.6" r="2.2"/>
+          </g>
+          <g stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <circle cx="24" cy="21.5" r="3"/>
+            <path d="M24 24.5V34.5"/><path d="M15 28H33"/>
+            <path d="M24 34.5C24 40.5 19 44 13.5 42 10 40.7 8.5 37 9.5 33"/>
+            <path d="M24 34.5C24 40.5 29 44 34.5 42 38 40.7 40 37 39.5 33"/>
+          </g>
+          <g fill="currentColor">
+            <path d="M9.5 33 5 26 13 29.5Z"/><path d="M38.5 33 43 26 35 29.5Z"/>
+          </g>
+        </svg>
+        <span class="logo-lockup">
+          <span class="logo-text">M<span class="macron"><span class="glyph">a</span></span>l<span class="macron"><span class="glyph">a</span></span></span>
+          <span class="logo-tagline">Sail Charters</span>
+        </span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#trips" class="nav-link">Trips</a></li>
+        <li><a href="index.html#about" class="nav-link">About Us</a></li>
+        <li><a href="index.html#calendar" class="nav-link">Calendar</a></li>
+        <li><a href="index.html#reviews" class="nav-link">Reviews</a></li>
+        <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =========== COVER =========== -->
+  <header class="cat-cover">
+    <div class="cat-cover-bg">
+      <img src="images/trips_header_bg.jpg" alt="" />
+    </div>
+    <div class="container">
+      <span class="cat-eyebrow">Product Catalogue · 2027 Season</span>
+      <h1>Small-group sailing,<br>wherever the water is <em>warm</em>.</h1>
+      <p class="cat-cover-sub">
+        Seven nights. One boat. Four to eight guests. Everything arranged — the route,
+        the moorings, the meals, the captain. Our guests only choose the week and
+        who they bring with them.
+      </p>
+      <div class="cat-cover-meta">
+        <span>Mediterranean</span>
+        <span>Caribbean</span>
+        <span>Indian Ocean</span>
+        <span>Southeast Asia</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========== THE PRODUCT =========== -->
+  <section class="cat-section">
+    <div class="container">
+      <div class="section-label">The Product</div>
+      <h2 class="section-title">A week aboard, <span class="highlight">fully hosted</span></h2>
+      <p class="cat-lead">
+        Mālā Sail Charters is a small-group sailing venue. We take one crewed yacht,
+        one professional captain and a handful of guests, and turn a route into a
+        week that feels curated rather than booked — a floating boutique with
+        organic amenities and no crowds.
+      </p>
+
+      <div class="cat-pillars">
+        <article class="cat-pillar">
+          <div class="num">01</div>
+          <h3>Small groups</h3>
+          <p>From 4 to 8 guests on board, depending on the yacht. Double-occupancy cabins, with the option of a single-occupancy cabin for those who want the space to themselves.</p>
+        </article>
+        <article class="cat-pillar">
+          <div class="num">02</div>
+          <h3>Everything organised</h3>
+          <p>Boat, itinerary, safety and logistics handled for you. Breakfast to sunset, the week is set up before you step aboard — down to the specialty coffee that starts the day gently.</p>
+        </article>
+        <article class="cat-pillar">
+          <div class="num">03</div>
+          <h3>Authentic experiences</h3>
+          <p>Slower days, real anchorages, local food and stories under the sun — occasionally alongside guest hosts and facilitators who bring their own craft on board.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== INCLUDED =========== -->
+  <section class="cat-section alt">
+    <div class="container">
+      <div class="section-label">What's In The Price</div>
+      <h2 class="section-title">Included, and <span class="highlight">not included</span></h2>
+      <p class="cat-lead">Every Mālā week is priced per person, all-inclusive of the boat and everything that happens on it.</p>
+
+      <div class="inc-grid">
+        <div class="inc-card">
+          <h3>
+            <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
+            Included
+          </h3>
+          <ul class="inc-list">
+            <li>The yacht for seven nights — modern sailing catamaran, 4 cabins</li>
+            <li>Professional skipper and captain (Captain 200GT) on board</li>
+            <li>Full board — breakfast, lunch and dinner prepared aboard</li>
+            <li>Drinking water, specialty coffee and tea</li>
+            <li>Itinerary planning, permits, mooring and marine-park fees</li>
+            <li>Safety equipment, tender, paddleboards and snorkelling gear</li>
+            <li>Bedding, bath towels and biodegradable onboard amenities</li>
+          </ul>
+        </div>
+
+        <div class="inc-card muted">
+          <h3>
+            <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 12h6"/></svg>
+            Not included
+          </h3>
+          <ul class="inc-list">
+            <li>Flights and airport transfers</li>
+            <li>Alcohol and drinks ashore</li>
+            <li>Meals eaten off the boat</li>
+            <li>Travel and medical insurance</li>
+            <li>Excursions and personal expenses</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== DESTINATIONS =========== -->
+  <section class="cat-section">
+    <div class="container">
+      <div class="section-label">Destinations</div>
+      <h2 class="section-title">Seven weeks, <span class="highlight">four waters</span></h2>
+      <p class="cat-lead">Each week runs seven nights, with no sailing experience required. Prices are per person and start from the figure shown.</p>
+
+      <!-- Mediterranean -->
+      <div class="cat-region">
+        <div class="trips-group-title">Mediterranean</div>
+        <div class="cat-grid">
+
+          <article class="cat-card">
+            <div class="cat-card-img">
+              <span class="cat-badge new">New</span>
+              <img src="images/amalfi.png" alt="Amalfi Coast, Italy" />
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-kicker">September · 7 nights</div>
+              <h3>Italy</h3>
+              <div class="where">Amalfi Coast &amp; Ischia</div>
+              <p class="desc">Cliffside villages, turquoise coves and the green island of Ischia — the most romantic coast in the Mediterranean.</p>
+              <div class="cat-specs">
+                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
+                <div><span class="k">Skipper</span><span class="v">Included</span></div>
+              </div>
+              <div class="trip-footer">
+                <span class="trip-price">from <strong>€2,900</strong></span>
+                <div class="trip-spots">
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span>
+                  <span class="spots-text">5 spots left</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="cat-card">
+            <div class="cat-card-img">
+              <img src="images/greece.jpeg" alt="Ionian Sea, Greece" />
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-kicker">July · 7 nights</div>
+              <h3>Greece</h3>
+              <div class="where">Ionian Sea</div>
+              <p class="desc">Emerald water, sheltered bays and the wild green beauty of the Ionian islands, far from the crowds.</p>
+              <div class="cat-specs">
+                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Hosted by</span><span class="v">Creation Medicine Collective</span></div>
+                <div><span class="k">Skipper</span><span class="v">Included</span></div>
+              </div>
+              <div class="trip-footer">
+                <span class="trip-price">from <strong>€2,600</strong></span>
+                <div class="trip-spots">
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span>
+                  <span class="spots-text">5 spots left</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="cat-card">
+            <div class="cat-card-img">
+              <img src="images/ibiza.png" alt="Ibiza, Spain" />
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-kicker">June · 7 nights</div>
+              <h3>Spain</h3>
+              <div class="where">Ibiza &amp; Formentera</div>
+              <p class="desc">Crystal-clear coves, hidden beaches and golden sunsets under the spell of Es Vedrà.</p>
+              <div class="cat-specs">
+                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Hosted by</span><span class="v">The Loving Collaborative Heart</span></div>
+                <div><span class="k">Skipper</span><span class="v">Included</span></div>
+              </div>
+              <div class="trip-footer">
+                <span class="trip-price">from <strong>€2,200</strong></span>
+                <div class="trip-spots">
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-text">5 spots left</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="cat-card">
+            <div class="cat-card-img">
+              <img src="images/malta.png" alt="Algarve, Portugal" />
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-kicker">August · 7 nights</div>
+              <h3>Portugal</h3>
+              <div class="where">Algarve</div>
+              <p class="desc">Golden cliffs, secluded sandy coves and peaceful anchorages along the stunning Algarve coastline.</p>
+              <div class="cat-specs">
+                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
+                <div><span class="k">Skipper</span><span class="v">Included</span></div>
+              </div>
+              <div class="trip-footer">
+                <span class="trip-price">from <strong>€2,200</strong></span>
+                <div class="trip-spots">
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-text">5 spots left</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Caribbean -->
+      <div class="cat-region">
+        <div class="trips-group-title">Caribbean</div>
+        <div class="cat-grid">
+          <article class="cat-card">
+            <div class="cat-card-img">
+              <span class="cat-badge">Popular</span>
+              <img src="images/antigua.png" alt="Antigua and Barbuda" />
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-kicker">March · 7 nights</div>
+              <h3>Antigua &amp; Barbuda</h3>
+              <div class="where">Antigua, English Harbour</div>
+              <p class="desc">Turquoise water, steady trade winds and the yachting heart of the Caribbean — one anchorage for every day of the week.</p>
+              <div class="cat-specs">
+                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
+                <div><span class="k">Skipper</span><span class="v">Included</span></div>
+              </div>
+              <div class="trip-footer">
+                <span class="trip-price">from <strong>€3,200</strong></span>
+                <div class="trip-spots">
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span>
+                  <span class="spots-text">5 spots left</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Asia & Indian Ocean -->
+      <div class="cat-region">
+        <div class="trips-group-title">Asia &amp; Indian Ocean</div>
+        <div class="cat-grid">
+
+          <article class="cat-card">
+            <div class="cat-card-img">
+              <span class="cat-badge">Popular</span>
+              <img src="images/mauritius.jpg" alt="Mauritius" />
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-kicker">February · 7 nights</div>
+              <h3>Mauritius</h3>
+              <div class="where">Indian Ocean</div>
+              <p class="desc">Turquoise lagoons, coral reefs and sugar-white beaches around the volcanic island of Mauritius.</p>
+              <div class="cat-specs">
+                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
+                <div><span class="k">Skipper</span><span class="v">Included</span></div>
+              </div>
+              <div class="trip-footer">
+                <span class="trip-price">from <strong>€2,900</strong></span>
+                <div class="trip-spots">
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span>
+                  <span class="spots-text">5 spots left</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="cat-card">
+            <div class="cat-card-img">
+              <img src="images/thailand.png" alt="Krabi, Thailand" />
+            </div>
+            <div class="cat-card-body">
+              <div class="cat-card-kicker">January · 7 nights</div>
+              <h3>Thailand</h3>
+              <div class="where">Phang Nga Bay &amp; the Andaman Sea</div>
+              <p class="desc">Limestone cliffs, hidden lagoons and the iconic longtail boats of the Andaman Sea, sailing out of Phuket.</p>
+              <div class="cat-specs">
+                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
+                <div><span class="k">Skipper</span><span class="v">Included</span></div>
+              </div>
+              <div class="trip-footer">
+                <span class="trip-price">from <strong>€2,500</strong></span>
+                <div class="trip-spots">
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-dot"></span><span class="spots-dot"></span>
+                  <span class="spots-text">5 spots left</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== THE YACHT =========== -->
+  <section class="cat-section alt">
+    <div class="container">
+      <div class="section-label">On Board</div>
+      <h2 class="section-title">The <span class="highlight">yacht</span></h2>
+      <p class="cat-lead">Example configuration. The exact yacht is confirmed with your booking; every boat we sail is a modern, fully equipped, crewed catamaran.</p>
+
+      <table class="spec-table">
+        <caption>Typical week on board</caption>
+        <tbody>
+          <tr><th>Type</th><td>Sailing catamaran, 4 cabins</td></tr>
+          <tr><th>Guest cabins</th><td>4 double cabins, plus saloon berths</td></tr>
+          <tr><th>Guests</th><td>4 to 8, double or single occupancy</td></tr>
+          <tr><th>Crew</th><td>1 professional skipper (optional host on board)</td></tr>
+          <tr><th>Comforts</th><td>Shaded cockpit, trampolines, swim platform, paddleboards, snorkelling gear</td></tr>
+          <tr><th>Duration</th><td>7 nights · boarding from 16:00 on day 1, off by 09:00 on day 8</td></tr>
+          <tr><th>Experience needed</th><td>None — just curiosity</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- =========== HOST YOUR OWN WEEK =========== -->
+  <section class="cat-section">
+    <div class="container">
+      <div class="host-block">
+        <div class="host-content">
+          <div class="section-label">For Creators &amp; Facilitators</div>
+          <h2>Host your own <span class="highlight">Mālā week</span></h2>
+          <p>
+            You have a community that trusts you. We have the boat, the captain and the sea.
+            Bring a small group from your audience and host the week your way — a retreat,
+            a reset, a content trip, or simply a week at sea with your people.
+          </p>
+          <ul class="host-perks">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
+              <span><strong>Your berth is on us</strong> — a full week aboard, all meals included.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
+              <span><strong>Your fee is 100% yours</strong> — you set the price for your group.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
+              <span><strong>We handle everything else</strong> — boat, captain, food, route, safety.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
+              <span><strong>Content of the whole week</strong> — photos and video, free to use.</span>
+            </li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/34678089234?text=Hi%20Alejandro%2C%20I%27d%20like%20to%20host%20a%20M%C4%81l%C4%81%20week.%20Could%20you%20send%20me%20the%20details%3F" target="_blank" rel="noopener">Talk to the captain</a>
+        </div>
+        <aside class="host-aside">
+          <div class="stat">
+            <strong>6</strong>
+            <span>guests is all it takes to run a private week — your group, your name on it.</span>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <strong>7</strong>
+            <span>nights aboard, one boat, one captain, and every detail arranged.</span>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <strong>0</strong>
+            <span>logistics for you. No boat, no catering, no risk to manage.</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== CTA =========== -->
+  <section class="cat-cta">
+    <div class="container">
+      <div class="section-label">Reserve A Place</div>
+      <h2>Weeks are filling for <span class="highlight">2027</span></h2>
+      <p>Tell us which week you're drawn to and how many people are coming. We'll send the itinerary, the boat and the price — and hold your place while you decide.</p>
+      <div class="cat-cta-actions">
+        <a class="btn btn-primary" href="index.html#contact">Request the itinerary</a>
+        <a class="btn btn-outline" href="https://wa.me/34678089234?text=Hi%2C%20I%27m%20interested%20in%20a%20M%C4%81l%C4%81%20sailing%20week%20in%202027." target="_blank" rel="noopener">WhatsApp the captain</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== FOOTER =========== -->
+  <footer class="cat-foot">
+    <div class="container">
+      <div class="wordmark">Mālā<small>Sail Charters</small></div>
+      <p>Small-group conscious sailing weeks · Mediterranean · Caribbean · Indian Ocean · Southeast Asia</p>
+      <p>© 2026 Mālā Sail Charters · Product catalogue · 2027 season</p>
+    </div>
+  </footer>
+
+</body>
+</html>
