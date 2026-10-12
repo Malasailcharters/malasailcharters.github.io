@@ -342,18 +342,79 @@
     }
 
     /* ---------- PRINT / PDF ---------- */
+    @page { size: A4; margin: 0; }
+
     @media print {
-      .navbar, .cat-cta-actions, .cat-cover-bg { display: none !important; }
-      .cat-page, .cat-section, .cat-cta, body { background: #fff !important; }
-      .cat-cover {
-        padding: 40px 0 26px; background: #fff !important; color: var(--ink);
+      html, body {
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
       }
-      .cat-cover h1, .cat-cover-sub, .cat-cover-meta, .cat-eyebrow { color: var(--ink) !important; }
-      .cat-cover-meta { border-top-color: rgba(51,38,26,0.2); }
-      .cat-eyebrow { background: var(--ocean-mid); border-color: rgba(176,134,82,0.5); }
-      .cat-section { padding: 26px 0; page-break-inside: avoid; }
-      .cat-card, .inc-card, .host-block, .spec-table { box-shadow: none; page-break-inside: avoid; }
-      .cat-region { page-break-before: always; }
+      .navbar, .cat-cover-bg { display: none !important; }
+
+      /* --- Cover: full-bleed, its own page --- */
+      .cat-cover {
+        height: 296mm;
+        padding: 0 22mm;
+        margin: 0;
+        background: #2b2013 !important;
+        color: #fff !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        page-break-after: always;
+        break-after: page;
+      }
+      .cat-cover .container { padding: 0; max-width: none; }
+      .cat-cover h1 { font-size: 42pt; color: #fff !important; max-width: 15ch; line-height: 1.05; }
+      .cat-cover-sub { color: rgba(255,255,255,0.88) !important; font-size: 11pt; max-width: 46ch; }
+      .cat-cover-meta {
+        color: rgba(255,255,255,0.82) !important;
+        border-top-color: rgba(255,255,255,0.28);
+        font-size: 8pt;
+      }
+      .cat-eyebrow {
+        color: #fff !important;
+        background: rgba(255,255,255,0.12) !important;
+        border-color: rgba(255,255,255,0.35) !important;
+      }
+
+      /* --- Content pages --- */
+      .container { max-width: none; padding: 0; }
+      .cat-section, .cat-cta { padding: 16mm 22mm; }
+      .cat-section.alt { background: #fff !important; }
+      .section-title { font-size: 22pt; margin-bottom: 7mm; line-height: 1.2; }
+      .cat-lead { margin: 0 0 9mm; font-size: 10pt; }
+      .section-label { margin-bottom: 6mm; }
+      .cat-pillar, .inc-card, .spec-table { box-shadow: none; }
+
+      /* --- Destinations: 2-up grid, cards never split --- */
+      .cat-grid { grid-template-columns: 1fr 1fr; gap: 7mm; margin-bottom: 0; }
+      .cat-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+      }
+      .cat-card-img { height: 38mm; }
+      .cat-card-body { padding: 6mm; }
+      .cat-card h3 { font-size: 15pt; }
+      .cat-region { break-before: page; page-break-before: always; }
+      .trips-group-title { margin-bottom: 6mm; }
+      .cat-region:first-of-type { break-before: auto; page-break-before: auto; }
+
+      /* --- Pillars & included lists side by side --- */
+      .cat-pillars { grid-template-columns: 1fr 1fr 1fr; gap: 5mm; }
+      .cat-pillar { padding: 6mm; }
+      .inc-grid { gap: 6mm; }
+
+      /* --- Host block & closing --- */
+      .host-block { break-inside: avoid; page-break-inside: avoid; }
+      .host-content, .host-aside { padding: 9mm; }
+      .cat-cta { break-before: page; page-break-before: always; text-align: left; }
+      .cat-cta h2, .cat-cta p { margin-left: 0; text-align: left; }
+      .cat-cta-actions { display: none !important; }
+      .cat-foot { padding: 8mm 22mm; }
+      .cat-foot .container { padding: 0; }
       a { color: inherit; }
     }
   </style>
