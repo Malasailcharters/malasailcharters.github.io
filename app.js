@@ -250,7 +250,7 @@ document.querySelectorAll('.cal-trip').forEach(link => {
 // handler falls back to opening the visitor's own mail app, so a form never
 // claims to have sent something it did not.
 const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
-const CONTACT_EMAIL = 'malasailcharters@gmail.com';
+const CONTACT_EMAIL = 'info@malasailcharters.com';
 
 function formAccessKey(form) {
   return form.elements.access_key ? form.elements.access_key.value.trim() : '';
