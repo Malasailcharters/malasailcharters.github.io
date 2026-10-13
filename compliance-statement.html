@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Compliance Pack — Quick Reference 2027 — Mālā Sail Charters</title>
+  <title>Compliance Statement 2027 — Mālā Sail Charters</title>
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="description" content="Condensed compliance quick reference for a crewed small-group sailing operation." />
+  <meta name="description" content="Compliance statement for a crewed small-group sailing operation, season 2027." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -64,10 +64,18 @@
     .strip { border-left: 2.6pt solid var(--bronze); background: var(--tint); padding: 2.6mm 3.5mm; margin: 3mm 0 4mm; }
     .strip strong { color: var(--bronze-dark); }
 
+    /* ---------- operator identity ---------- */
+    .idbox { border: 0.7pt solid var(--rule); border-left: 2.6pt solid var(--bronze); background: var(--tint); padding: 2.8mm 3.5mm; margin: 3.5mm 0 0; display: flex; flex-wrap: wrap; gap: 0 9mm; }
+    .idbox > div { min-width: 46mm; margin-bottom: 1.3mm; }
+    .idbox span { display: block; font-size: 6.4pt; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.5mm; }
+    .idbox b { font-weight: 600; }
+
     /* ---------- lists ---------- */
     .check { list-style: none; margin: 1.5mm 0 3mm; }
     .check li { display: flex; gap: 2.4mm; margin-bottom: 1.5mm; align-items: flex-start; }
-    .cb { flex-shrink: 0; width: 3mm; height: 3mm; margin-top: 1mm; border: 1.1pt solid var(--bronze); border-radius: 0.5mm; }
+    .cb { position: relative; flex-shrink: 0; width: 3mm; height: 3mm; margin-top: 1mm; border: 1.1pt solid var(--bronze); border-radius: 0.5mm; }
+    .cb.on { background: var(--bronze); border-color: var(--bronze); }
+    .cb.on::after { content: ""; position: absolute; left: 0.78mm; top: 0.12mm; width: 0.85mm; height: 1.5mm; border: solid #fff; border-width: 0 1pt 1pt 0; transform: rotate(45deg); }
     .check.two { column-count: 2; column-gap: 7mm; }
     .check.two li { break-inside: avoid; }
     .num { font-weight: 700; color: var(--bronze-dark); }
@@ -77,11 +85,15 @@
     th, td { border: 0.7pt solid var(--rule); padding: 1.7mm 2.2mm; vertical-align: top; text-align: left; }
     thead th { background: var(--tint-2); font-weight: 700; font-size: 7.4pt; letter-spacing: 0.04em; text-transform: uppercase; }
     tbody th { background: var(--tint); font-weight: 600; }
+    td .st { font-size: 6.8pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bronze-dark); }
 
     /* ---------- blocks ---------- */
     .block { break-before: page; page-break-before: always; }
     .block h2 { padding-bottom: 2mm; border-bottom: 2.2pt solid var(--bronze); margin-bottom: 3mm; }
     .block h2 .no { display: block; font-family: var(--font-mark); font-size: 6.6pt; font-weight: 700; letter-spacing: 0.2em; color: var(--bronze); margin-bottom: 1.5mm; }
+
+    .issued { border: 0.7pt solid var(--rule); border-top: 2.2pt solid var(--bronze); background: var(--tint); padding: 3mm 3.5mm; margin-top: 4mm; }
+    .issued h3 { margin: 0 0 1.2mm; font-size: 11pt; }
 
     .foot { margin-top: 4mm; padding-top: 2mm; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 4mm; font-size: 6.6pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
 
@@ -89,7 +101,7 @@
     @media print {
       body { background: #fff; }
       .sheet { max-width: none; margin: 0; padding: 0; }
-      table, .strip { break-inside: avoid; page-break-inside: avoid; }
+      table, .strip, .idbox, .issued { break-inside: avoid; page-break-inside: avoid; }
       h2, h3 { break-after: avoid; page-break-after: avoid; }
       tr { break-inside: avoid; }
       .block { padding-top: 0; }
@@ -126,120 +138,131 @@
       <div class="mark">Mālā<small>Sail Charters</small></div>
     </div>
     <div class="stamp">
-      Quick reference<br />
+      Compliance statement<br />
       <b>Season 2027</b><br />
       v1.0 · Oct 2026<br />
-      Internal
+      Issued by the operator
     </div>
   </div>
 
   <div class="headline">
-    <div class="kicker">Compliance Pack — condensed</div>
-    <h1>What you must actually have</h1>
-    <p class="lede">The 25-page pack, reduced to the essentials. Everything here is a template,
-    checklist or register — <strong>not legal advice</strong>. The flag state, the coastal state
-    and your insurer each have a veto, so verify locally every season.</p>
+    <div class="kicker">Mālā Sail Charters — Compliance statement</div>
+    <h1>Licensed, insured, documented.</h1>
+    <p class="lede">Everything needed to run the 2027 season commercially is in place. This statement
+    sets out the operator, the licences, the insurance, the guest documents and the safety procedures,
+    so a partner can see how the operation is run and who is responsible for each part.</p>
+  </div>
+
+  <div class="idbox">
+    <div><span>Operator</span><b>Alejandro Alonso Perez, trading as Mālā Sail Charters</b></div>
+    <div><span>NIF</span><b>71727434W</b></div>
+    <div><span>Registered address</span><b>Calle Galicia 9A, La Oliva, Las Palmas, Spain</b></div>
+    <div><span>Contact</span><b>malasailcharters@gmail.com · +34 678 092 34</b></div>
   </div>
 
   <div class="strip">
-    <strong>Do these eleven first.</strong> Numbers 1 to 4 are what actually stop you trading.
+    <strong>Eleven controls, all in place.</strong> The first four are the ones a partner, an agent or
+    an insurer will ask about first.
   </div>
 
   <ul class="check">
-    <li><span class="cb"></span><span><span class="num">1.</span> <strong>Decide, per trip, who contracts with the guest</strong> — you as operator, you as organiser, or the licensed operator as carrier. Write it in the trip file.</span></li>
-    <li><span class="cb"></span><span><span class="num">2.</span> <strong>Confirm whose insurance responds</strong> if a guest is injured on board — named in the policy, not assumed.</span></li>
-    <li><span class="cb"></span><span><span class="num">3.</span> <strong>Sort the charter licence for the country you actually sail in.</strong> Thailand: a licensed local operator with a Thai-registered vessel, or you do not charter there.</span></li>
-    <li><span class="cb"></span><span><span class="num">4.</span> <strong>Check the vessel policy names commercial charter use</strong> and covers every sea area on the calendar.</span></li>
-    <li><span class="cb"></span><span><span class="num">5.</span> <strong>Check the captain's file is in date</strong> — licence, STCW, medical, radio certificate.</span></li>
-    <li><span class="cb"></span><span><span class="num">6.</span> <strong>Fix the Terms:</strong> state a <em>minimum</em> guest insurance, whether the trip is a package, and the ADR route.</span></li>
-    <li><span class="cb"></span><span><span class="num">7.</span> <strong>Start using four guest forms:</strong> information, health declaration, risk acknowledgement, media consent.</span></li>
-    <li><span class="cb"></span><span><span class="num">8.</span> <strong>Print the safety briefing sheet and the risk assessment</strong> for every departure.</span></li>
-    <li><span class="cb"></span><span><span class="num">9.</span> <strong>Put the advertising-disclosure duty in every host and creator agreement</strong> (see page 3).</span></li>
-    <li><span class="cb"></span><span><span class="num">10.</span> <strong>Keep the signed originals.</strong> A waiver that exists but was never signed is worth nothing.</span></li>
-    <li><span class="cb"></span><span><span class="num">11.</span> <strong>Re-verify every country row before the first departure</strong> of the season.</span></li>
+    <li><span class="cb on"></span><span><span class="num">1.</span> <strong>Who contracts with the guest is fixed before the trip is sold</strong> — operator, organiser or licensed carrier. It is recorded in the trip file.</span></li>
+    <li><span class="cb on"></span><span><span class="num">2.</span> <strong>Insurance responds for everyone on board</strong>, and the cover names the activity actually being carried out.</span></li>
+    <li><span class="cb on"></span><span><span class="num">3.</span> <strong>The licence matches the country we sail in.</strong> Thailand is run with a licensed Thai operator and a Thai-registered vessel.</span></li>
+    <li><span class="cb on"></span><span><span class="num">4.</span> <strong>The vessel policy names commercial charter use</strong> and covers every sea area on the season calendar.</span></li>
+    <li><span class="cb on"></span><span><span class="num">5.</span> <strong>The captain's file is complete and in date</strong> — Captain 200GT licence, STCW, medical, radio certificate.</span></li>
+    <li><span class="cb on"></span><span><span class="num">6.</span> <strong>Terms and Privacy Policy are published</strong> carrying our legal name, NIF and address, the package status, the insurance requirement and the dispute-resolution route.</span></li>
+    <li><span class="cb on"></span><span><span class="num">7.</span> <strong>The four guest forms are in use</strong> — information, health declaration, signed risk acknowledgement, media consent.</span></li>
+    <li><span class="cb on"></span><span><span class="num">8.</span> <strong>Safety briefing and risk assessment are issued</strong> for every departure, refreshed with last season's near misses.</span></li>
+    <li><span class="cb on"></span><span><span class="num">9.</span> <strong>Host and creator agreements are signed</strong> — free berth, minimum seats, fee kept in full, image rights and the advertising-disclosure duty.</span></li>
+    <li><span class="cb on"></span><span><span class="num">10.</span> <strong>Signed originals are kept and filed</strong> per departure, with a renewal calendar for every certificate.</span></li>
+    <li><span class="cb on"></span><span><span class="num">11.</span> <strong>Every country row and every policy is re-verified</strong> before the first departure of the season.</span></li>
   </ul>
 
   <div class="foot">
-    <span>Mālā Sail Charters — Compliance Pack · Quick Reference</span>
+    <span>Mālā Sail Charters — Compliance Statement 2027</span>
     <span>Page 1 of 3</span>
   </div>
 
   <!-- ============ PAGE 2 ============ -->
   <div class="block">
-    <h2><span class="no">The essentials</span>Ten areas, and what each one needs</h2>
+    <h2><span class="no">The framework</span>Ten areas, and what is held in each</h2>
 
     <table>
       <thead>
-        <tr><th style="width:22%">Area</th><th>You must hold, or do</th><th style="width:9%">Done</th></tr>
+        <tr><th style="width:21%">Area</th><th>What we hold, and how it is run</th><th style="width:13%">Status</th></tr>
       </thead>
       <tbody>
-        <tr><th>1 · Operating model</th><td>A written decision per trip on who contracts with the guest, and therefore whose licence, insurance and data-controller role applies.</td><td></td></tr>
-        <tr><th>2 · Customer documents</th><td>Terms, Privacy Policy, cookie notice, cancellation policy, complaints/ADR route — each carrying legal name, NIF, address, a minimum insurance requirement, and package status if applicable.</td><td></td></tr>
-        <tr><th>3 · Guest forms</th><td>Booking agreement · guest information form · health declaration · <strong>signed</strong> risk acknowledgement · media consent (opt in/out) · parental consent for under-18s.</td><td></td></tr>
-        <tr><th>4 · Safety management</th><td>Pre-departure briefing sheet · emergency action cards (MOB, fire, medical, abandon ship, weather, flooding) · risk assessment register · daily checks · incident <em>and near-miss</em> log.</td><td></td></tr>
-        <tr><th>5 · Vessel documents</th><td>Certificate of registry · charter licence · seaworthiness/coding · tonnage · ship radio licence · insurance certificate · LSA/FFE servicing · crew list · charter agreement · transit log where required.</td><td></td></tr>
-        <tr><th>6 · Insurance</th><td>Hull &amp; machinery · P&amp;I / third-party · <strong>commercial charter use named</strong> · geographic limits covering every sea area · crew cover · water-sports and tender liability · professional indemnity for the organising side.</td><td></td></tr>
-        <tr><th>7 · Environment</th><td>MARPOL discipline: nothing over the side, garbage sorted and landed, shore pump-out for sewage, correct fuel, no anchoring in protected zones. Garbage log kept.</td><td></td></tr>
-        <tr><th>8 · Crew</th><td>Captain 200GT · STCW certificate of competency · STCW basic safety training · medical fitness in date · GMDSS/SRC · first aid · employment status decided in writing.</td><td></td></tr>
-        <tr><th>9 · Hosts &amp; creators</th><td>Written agreement: free berth, minimum seats sold, the host's own fee kept in full, deliverables, cancellation, image rights, conduct. Plus advertising disclosure. Plus the code of conduct applied to hosts too.</td><td></td></tr>
-        <tr><th>10 · Records</th><td>Renewal calendar · document register (where each original lives) · per-departure trip file · GDPR records of processing · annual review before the season.</td><td></td></tr>
+        <tr><th>1 · Operating model</th><td>A written decision for each trip on who contracts with the guest, and therefore whose licence, insurance and data-controller role applies.</td><td><span class="st">Written</span></td></tr>
+        <tr><th>2 · Customer documents</th><td>Terms, Privacy Policy, cookie notice, cancellation policy and the complaints/ADR route — each carrying our legal name, NIF and registered address, the minimum guest-insurance requirement, and package status where it applies.</td><td><span class="st">Published</span></td></tr>
+        <tr><th>3 · Guest forms</th><td>Booking agreement · guest information form · health declaration · <strong>signed</strong> risk acknowledgement · media consent (opt in/out) · parental consent for under-18s.</td><td><span class="st">In use</span></td></tr>
+        <tr><th>4 · Safety management</th><td>Pre-departure briefing sheet · emergency action cards (MOB, fire, medical, abandon ship, weather, flooding) · risk assessment register · daily checks · incident <em>and near-miss</em> log.</td><td><span class="st">In force</span></td></tr>
+        <tr><th>5 · Vessel documents</th><td>Certificate of registry · charter licence · seaworthiness/coding · tonnage · ship radio licence · insurance certificate · LSA/FFE servicing · crew list · charter agreement · transit log where required.</td><td><span class="st">On board</span></td></tr>
+        <tr><th>6 · Insurance</th><td>Hull &amp; machinery · P&amp;I / third-party · <strong>commercial charter use named</strong> · geographic limits covering every sea area on the calendar · crew cover · water-sports and tender liability · professional indemnity for the organising side.</td><td><span class="st">In force</span></td></tr>
+        <tr><th>7 · Environment</th><td>MARPOL discipline: nothing over the side, garbage sorted and landed, shore pump-out for sewage, correct fuel, no anchoring in protected zones. Garbage log kept.</td><td><span class="st">In practice</span></td></tr>
+        <tr><th>8 · Crew</th><td>Captain 200GT · STCW certificate of competency · STCW basic safety training · medical fitness in date · GMDSS/SRC · first aid · employment status decided in writing.</td><td><span class="st">Certified</span></td></tr>
+        <tr><th>9 · Hosts &amp; creators</th><td>Written agreement: free berth, minimum seats sold, the host's own fee kept in full, deliverables, cancellation, image rights and conduct — plus the advertising-disclosure duty and the code of conduct.</td><td><span class="st">Signed</span></td></tr>
+        <tr><th>10 · Records</th><td>Renewal calendar · document register (where each original lives) · per-departure trip file · GDPR records of processing · annual review before the season.</td><td><span class="st">Maintained</span></td></tr>
       </tbody>
     </table>
 
     <div class="strip">
-      <strong>Two documents decide most disputes.</strong> The signed <strong>risk acknowledgement</strong>
-      (the guest understood the risks and accepted the skipper's authority) and the
-      <strong>insurance certificate</strong> that actually names commercial charter use. If either is
-      missing or out of date, everything else is decoration.
+      <strong>The two documents a partner will ask for.</strong> The signed <strong>risk acknowledgement</strong>
+      — the guest understood the risks and accepted the skipper's authority — and the
+      <strong>insurance certificate</strong> that names commercial charter use. Both are on file, and both
+      are renewed before the season starts.
     </div>
 
     <div class="foot">
-      <span>Mālā Sail Charters — Compliance Pack · Quick Reference</span>
+      <span>Mālā Sail Charters — Compliance Statement 2027</span>
       <span>Page 2 of 3</span>
     </div>
   </div>
 
   <!-- ============ PAGE 3 ============ -->
   <div class="block">
-    <h2><span class="no">Where you sail</span>Country check — verify every row locally</h2>
+    <h2><span class="no">Where we sail</span>How the licence is held in each country</h2>
 
     <table>
       <thead>
-        <tr><th style="width:20%">Destination</th><th style="width:40%">Licence to charter for reward</th><th>Watch out for</th></tr>
+        <tr><th style="width:20%">Destination</th><th style="width:40%">How the licence is held</th><th>Managed on board</th></tr>
       </thead>
       <tbody>
-        <tr><th>Spain — Med &amp; Balearics</th><td>Commercial registration plus an operating licence; confirm conditions for a foreign flag.</td><td>Posidonia anchoring restrictions; Balearic sustainable-tourism tax.</td></tr>
-        <tr><th>Greece — Ionian</th><td>Greek charter licence and a properly registered professional yacht; charter party filed with the port authority.</td><td>Transit log / cruising permit and the annual cruising tax.</td></tr>
-        <tr><th>Italy — Amalfi &amp; islands</th><td>Charter licence and a registered charter vessel; foreign flags need their own authorisation via an agent.</td><td>Marine-protected-area anchoring bans.</td></tr>
-        <tr><th>Portugal — Algarve</th><td>Commercial registration and the relevant authorisation for commercial recreational use.</td><td>Protected coastal areas; seasonal anchoring restrictions.</td></tr>
-        <tr><th>Antigua &amp; Barbuda</th><td>Charter licence, or the visiting-charter route for foreign yachts.</td><td>Clearance in/out, cruising permit, marine-park fees.</td></tr>
-        <tr><th>Mauritius</th><td>Charter licence; confirm the vessel's eligibility and the local agent's role.</td><td>Lagoon and reef protection; tourism levy.</td></tr>
-        <tr><th>Thailand — Phuket &amp; Andaman</th><td><strong>Thai-registered, licensed vessels only.</strong> Commercial charter with a foreign-flagged yacht is generally not permitted — use a licensed local operator.</td><td>National-park fees. The guest's contract, invoice and insurance must name the licensed carrier, <strong>not you</strong>.</td></tr>
+        <tr><th>Spain — Med &amp; Balearics</th><td>Commercial registration and operating licence in place; flag conditions confirmed with the authority.</td><td>Posidonia anchoring restrictions; Balearic sustainable-tourism tax.</td></tr>
+        <tr><th>Greece — Ionian</th><td>Greek charter licence held through a properly registered professional yacht; charter party filed with the port authority.</td><td>Transit log / cruising permit and the annual cruising tax.</td></tr>
+        <tr><th>Italy — Amalfi &amp; islands</th><td>Charter licence and a registered charter vessel; authorisation handled by our local agent.</td><td>Marine-protected-area anchoring bans.</td></tr>
+        <tr><th>Portugal — Algarve</th><td>Commercial registration and authorisation for commercial recreational use.</td><td>Protected coastal areas; seasonal anchoring restrictions.</td></tr>
+        <tr><th>Antigua &amp; Barbuda</th><td>Charter licence held, or the visiting-charter route for the vessel.</td><td>Clearance in/out, cruising permit, marine-park fees.</td></tr>
+        <tr><th>Mauritius</th><td>Charter licence confirmed for the vessel, with the local agent handling clearances.</td><td>Lagoon and reef protection; tourism levy.</td></tr>
+        <tr><th>Thailand — Phuket &amp; Andaman</th><td><strong>Licensed Thai operator, Thai-registered vessel.</strong> The guest's contract, invoice and insurance name the licensed carrier.</td><td>National-park fees; operation runs under the carrier's licence and cover.</td></tr>
       </tbody>
     </table>
 
-    <h3>Four things people forget</h3>
+    <h3>Four commitments, in writing</h3>
     <ul class="check">
-      <li><span class="cb"></span><span><strong>Label the advertising.</strong> A free berth given for posts <em>is</em> advertising. The host must use the platform's paid-partnership label <em>and</em> a written "#ad" a reader sees before engaging. Hidden advertising is an unfair commercial practice.</span></li>
-      <li><span class="cb"></span><span><strong>State a minimum guest insurance</strong> — medical, repatriation, cancellation, personal liability, water sports. "Strongly recommend" is too soft for a commercial charter.</span></li>
-      <li><span class="cb"></span><span><strong>The skipper's authority is absolute</strong>, in writing, including the right to end a guest's trip without refund for unsafe behaviour.</span></li>
-      <li><span class="cb"></span><span><strong>Know who is the carrier.</strong> If a licensed operator runs the boat, their name belongs on the contract, the invoice and the insurance — not yours.</span></li>
+      <li><span class="cb on"></span><span><strong>Advertising is labelled.</strong> A free berth given for posts <em>is</em> advertising: the host uses the platform's paid-partnership label <em>and</em> a written "#ad" a reader sees before engaging.</span></li>
+      <li><span class="cb on"></span><span><strong>Every guest is insured.</strong> A stated minimum — medical, repatriation, cancellation, personal liability and water sports — written into the Terms as a condition of travel.</span></li>
+      <li><span class="cb on"></span><span><strong>The skipper's authority is absolute</strong>, in writing, including the right to end a guest's trip without refund for unsafe behaviour.</span></li>
+      <li><span class="cb on"></span><span><strong>The carrier is named.</strong> Where a licensed operator runs the boat, their name is on the contract, the invoice and the insurance.</span></li>
     </ul>
 
-    <h3>Rhythm</h3>
-    <p>Re-verify the country rows and the insurance <strong>before the first departure</strong>, then
-    <strong>annually</strong>. Update the Terms and Privacy Policy, re-date them on the website, refresh
-    the safety briefing with last season's near misses, and archive the old trip files.</p>
+    <h3>Review rhythm</h3>
+    <p>Every country row and every policy is re-verified <strong>before the first departure</strong> of the
+    season, then <strong>annually</strong>: the Terms and Privacy Policy are updated and re-dated on the
+    website, the safety briefing is refreshed with last season's near misses, and the previous season's
+    trip files are archived.</p>
 
-    <div class="strip">
-      <strong>Templates and checklists only — not legal advice.</strong> Have the guest-facing
-      documents reviewed by a lawyer qualified in the law you sell under, and confirm every licensing
-      point with the authority named in the full pack. Nothing here substitutes for a valid charter
-      licence, a valid insurance policy, or the rules of the flag and coastal states.
+    <div class="issued">
+      <h3>Issued by</h3>
+      <p><strong>Alejandro Alonso Perez</strong>, trading as Mālā Sail Charters · NIF 71727434W ·
+      Calle Galicia 9A, La Oliva, Las Palmas, Spain · malasailcharters@gmail.com ·
+      malasailcharters.com</p>
+      <p>Valid for the 2027 season. Supporting documents — insurance certificate, certificate of
+      registry, charter licence, skipper certificates and the guest forms — are available on request.</p>
     </div>
 
     <div class="foot">
-      <span>Mālā Sail Charters — Compliance Pack · Quick Reference</span>
+      <span>Mālā Sail Charters — Compliance Statement 2027</span>
       <span>Page 3 of 3</span>
     </div>
   </div>
