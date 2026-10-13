@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compliance Pack — Quick Reference 2027 — Mālā Sail Charters</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Condensed compliance quick reference for a crewed small-group sailing operation." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #33261a;
+      --ink-muted: #5d4c3b;
+      --ink-soft: #7d6a58;
+      --bronze: #a8763f;
+      --bronze-dark: #8a5f2c;
+      --tint: #faf6ef;
+      --tint-2: #f3ece0;
+      --rule: rgba(51,38,26,0.14);
+      --font-body: 'DM Sans', sans-serif;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-mark: 'Montserrat', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: #e9e2d6;
+      line-height: 1.42;
+      font-size: 9.2pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .sheet { max-width: 210mm; margin: 30px auto; background: #fff; padding: 14mm 15mm; }
+
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: 0.005em; }
+    h1 { font-size: 27pt; line-height: 1.05; }
+    h2 { font-size: 16pt; line-height: 1.15; margin-bottom: 1mm; }
+    h3 { font-size: 12pt; margin: 4.5mm 0 1.5mm; }
+    p { margin-bottom: 2mm; }
+    strong { font-weight: 700; }
+    em { font-style: italic; }
+    a { color: var(--bronze-dark); text-decoration: none; }
+
+    /* ---------- masthead ---------- */
+    .masthead { display: flex; align-items: flex-start; justify-content: space-between; gap: 6mm; padding-bottom: 3mm; border-bottom: 2.2pt solid var(--bronze); }
+    .brandline { display: flex; align-items: center; gap: 8px; }
+    .brandline svg { width: 26px; height: 26px; color: var(--bronze); flex-shrink: 0; }
+    .brandline .mark { font-family: var(--font-mark); font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; font-size: 9pt; line-height: 1; }
+    .brandline .mark small { display: block; font-size: 5pt; letter-spacing: 0.4em; font-weight: 400; margin-top: 3px; opacity: 0.72; }
+    .masthead .stamp { text-align: right; font-size: 6.6pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.7; }
+    .masthead .stamp b { color: var(--bronze-dark); font-weight: 700; }
+
+    .headline { margin: 5mm 0 3mm; }
+    .headline .kicker { font-size: 7pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); margin-bottom: 2mm; }
+    .headline .lede { color: var(--ink-muted); max-width: 168mm; }
+
+    /* ---------- notice strip ---------- */
+    .strip { border-left: 2.6pt solid var(--bronze); background: var(--tint); padding: 2.6mm 3.5mm; margin: 3mm 0 4mm; }
+    .strip strong { color: var(--bronze-dark); }
+
+    /* ---------- lists ---------- */
+    .check { list-style: none; margin: 1.5mm 0 3mm; }
+    .check li { display: flex; gap: 2.4mm; margin-bottom: 1.5mm; align-items: flex-start; }
+    .cb { flex-shrink: 0; width: 3mm; height: 3mm; margin-top: 1mm; border: 1.1pt solid var(--bronze); border-radius: 0.5mm; }
+    .check.two { column-count: 2; column-gap: 7mm; }
+    .check.two li { break-inside: avoid; }
+    .num { font-weight: 700; color: var(--bronze-dark); }
+
+    /* ---------- tables ---------- */
+    table { width: 100%; border-collapse: collapse; margin: 2mm 0 3mm; font-size: 8.2pt; }
+    th, td { border: 0.7pt solid var(--rule); padding: 1.7mm 2.2mm; vertical-align: top; text-align: left; }
+    thead th { background: var(--tint-2); font-weight: 700; font-size: 7.4pt; letter-spacing: 0.04em; text-transform: uppercase; }
+    tbody th { background: var(--tint); font-weight: 600; }
+
+    /* ---------- blocks ---------- */
+    .block { break-before: page; page-break-before: always; }
+    .block h2 { padding-bottom: 2mm; border-bottom: 2.2pt solid var(--bronze); margin-bottom: 3mm; }
+    .block h2 .no { display: block; font-family: var(--font-mark); font-size: 6.6pt; font-weight: 700; letter-spacing: 0.2em; color: var(--bronze); margin-bottom: 1.5mm; }
+
+    .foot { margin-top: 4mm; padding-top: 2mm; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 4mm; font-size: 6.6pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+
+    @page { size: A4; margin: 12mm 13mm; }
+    @media print {
+      body { background: #fff; }
+      .sheet { max-width: none; margin: 0; padding: 0; }
+      table, .strip { break-inside: avoid; page-break-inside: avoid; }
+      h2, h3 { break-after: avoid; page-break-after: avoid; }
+      tr { break-inside: avoid; }
+      .block { padding-top: 0; }
+    }
+  </style>
+
+  <!-- Print-only static font faces: keeps the PDF embedding real TrueType instead of Type3 -->
+  <link rel="stylesheet" href="print-fonts.css" />
+</head>
+<body>
+<div class="sheet">
+
+  <!-- ============ PAGE 1 ============ -->
+  <div class="masthead">
+    <div class="brandline">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="currentColor">
+          <path d="M17.8 11.6C13.2 12.2 9.2 10 7.6 5.8 12.2 5.2 16.2 7.6 17.8 11.6Z"/>
+          <path d="M30.2 11.6C34.8 12.2 38.8 10 40.4 5.8 35.8 5.2 31.8 7.6 30.2 11.6Z"/>
+          <circle cx="24" cy="7.5" r="2.8"/><circle cx="28.2" cy="10.4" r="2.8"/>
+          <circle cx="26.8" cy="14.8" r="2.8"/><circle cx="21.2" cy="14.8" r="2.8"/>
+          <circle cx="19.8" cy="10.4" r="2.8"/><circle cx="24" cy="11.6" r="2.2"/>
+        </g>
+        <g stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <circle cx="24" cy="21.5" r="3"/>
+          <path d="M24 24.5V34.5"/><path d="M15 28H33"/>
+          <path d="M24 34.5C24 40.5 19 44 13.5 42 10 40.7 8.5 37 9.5 33"/>
+          <path d="M24 34.5C24 40.5 29 44 34.5 42 38 40.7 40 37 39.5 33"/>
+        </g>
+        <g fill="currentColor">
+          <path d="M9.5 33 5 26 13 29.5Z"/><path d="M38.5 33 43 26 35 29.5Z"/>
+        </g>
+      </svg>
+      <div class="mark">Mālā<small>Sail Charters</small></div>
+    </div>
+    <div class="stamp">
+      Quick reference<br />
+      <b>Season 2027</b><br />
+      v1.0 · Oct 2026<br />
+      Internal
+    </div>
+  </div>
+
+  <div class="headline">
+    <div class="kicker">Compliance Pack — condensed</div>
+    <h1>What you must actually have</h1>
+    <p class="lede">The 25-page pack, reduced to the essentials. Everything here is a template,
+    checklist or register — <strong>not legal advice</strong>. The flag state, the coastal state
+    and your insurer each have a veto, so verify locally every season.</p>
+  </div>
+
+  <div class="strip">
+    <strong>Do these twelve first.</strong> Numbers 1 to 5 are what actually stop you trading.
+  </div>
+
+  <ul class="check">
+    <li><span class="cb"></span><span><span class="num">1.</span> <strong>Register the business.</strong> Legal name, NIF, registered address — then put them in the Terms, the Privacy Policy and every invoice. Right now they are missing.</span></li>
+    <li><span class="cb"></span><span><span class="num">2.</span> <strong>Decide, per trip, who contracts with the guest</strong> — you as operator, you as organiser, or the licensed operator as carrier. Write it in the trip file.</span></li>
+    <li><span class="cb"></span><span><span class="num">3.</span> <strong>Confirm whose insurance responds</strong> if a guest is injured on board — named in the policy, not assumed.</span></li>
+    <li><span class="cb"></span><span><span class="num">4.</span> <strong>Sort the charter licence for the country you actually sail in.</strong> Thailand: a licensed local operator with a Thai-registered vessel, or you do not charter there.</span></li>
+    <li><span class="cb"></span><span><span class="num">5.</span> <strong>Check the vessel policy names commercial charter use</strong> and covers every sea area on the calendar.</span></li>
+    <li><span class="cb"></span><span><span class="num">6.</span> <strong>Check the captain's file is in date</strong> — licence, STCW, medical, radio certificate.</span></li>
+    <li><span class="cb"></span><span><span class="num">7.</span> <strong>Fix the Terms:</strong> state a <em>minimum</em> guest insurance, whether the trip is a package, and the ADR route.</span></li>
+    <li><span class="cb"></span><span><span class="num">8.</span> <strong>Start using four guest forms:</strong> information, health declaration, risk acknowledgement, media consent.</span></li>
+    <li><span class="cb"></span><span><span class="num">9.</span> <strong>Print the safety briefing sheet and the risk assessment</strong> for every departure.</span></li>
+    <li><span class="cb"></span><span><span class="num">10.</span> <strong>Put the advertising-disclosure duty in every host and creator agreement</strong> (see page 3).</span></li>
+    <li><span class="cb"></span><span><span class="num">11.</span> <strong>Keep the signed originals.</strong> A waiver that exists but was never signed is worth nothing.</span></li>
+    <li><span class="cb"></span><span><span class="num">12.</span> <strong>Re-verify every country row before the first departure</strong> of the season.</span></li>
+  </ul>
+
+  <div class="foot">
+    <span>Mālā Sail Charters — Compliance Pack · Quick Reference</span>
+    <span>Page 1 of 3</span>
+  </div>
+
+  <!-- ============ PAGE 2 ============ -->
+  <div class="block">
+    <h2><span class="no">The essentials</span>Ten areas, and what each one needs</h2>
+
+    <table>
+      <thead>
+        <tr><th style="width:22%">Area</th><th>You must hold, or do</th><th style="width:9%">Done</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>1 · Operating model</th><td>A written decision per trip on who contracts with the guest, and therefore whose licence, insurance and data-controller role applies.</td><td></td></tr>
+        <tr><th>2 · Customer documents</th><td>Terms, Privacy Policy, cookie notice, cancellation policy, complaints/ADR route — each carrying legal name, NIF, address, a minimum insurance requirement, and package status if applicable.</td><td></td></tr>
+        <tr><th>3 · Guest forms</th><td>Booking agreement · guest information form · health declaration · <strong>signed</strong> risk acknowledgement · media consent (opt in/out) · parental consent for under-18s.</td><td></td></tr>
+        <tr><th>4 · Safety management</th><td>Pre-departure briefing sheet · emergency action cards (MOB, fire, medical, abandon ship, weather, flooding) · risk assessment register · daily checks · incident <em>and near-miss</em> log.</td><td></td></tr>
+        <tr><th>5 · Vessel documents</th><td>Certificate of registry · charter licence · seaworthiness/coding · tonnage · ship radio licence · insurance certificate · LSA/FFE servicing · crew list · charter agreement · transit log where required.</td><td></td></tr>
+        <tr><th>6 · Insurance</th><td>Hull &amp; machinery · P&amp;I / third-party · <strong>commercial charter use named</strong> · geographic limits covering every sea area · crew cover · water-sports and tender liability · professional indemnity for the organising side.</td><td></td></tr>
+        <tr><th>7 · Environment</th><td>MARPOL discipline: nothing over the side, garbage sorted and landed, shore pump-out for sewage, correct fuel, no anchoring in protected zones. Garbage log kept.</td><td></td></tr>
+        <tr><th>8 · Crew</th><td>Captain 200GT · STCW certificate of competency · STCW basic safety training · medical fitness in date · GMDSS/SRC · first aid · employment status decided in writing.</td><td></td></tr>
+        <tr><th>9 · Hosts &amp; creators</th><td>Written agreement: free berth, minimum seats sold, the host's own fee kept in full, deliverables, cancellation, image rights, conduct. Plus advertising disclosure. Plus the code of conduct applied to hosts too.</td><td></td></tr>
+        <tr><th>10 · Records</th><td>Renewal calendar · document register (where each original lives) · per-departure trip file · GDPR records of processing · annual review before the season.</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="strip">
+      <strong>Two documents decide most disputes.</strong> The signed <strong>risk acknowledgement</strong>
+      (the guest understood the risks and accepted the skipper's authority) and the
+      <strong>insurance certificate</strong> that actually names commercial charter use. If either is
+      missing or out of date, everything else is decoration.
+    </div>
+
+    <div class="foot">
+      <span>Mālā Sail Charters — Compliance Pack · Quick Reference</span>
+      <span>Page 2 of 3</span>
+    </div>
+  </div>
+
+  <!-- ============ PAGE 3 ============ -->
+  <div class="block">
+    <h2><span class="no">Where you sail</span>Country check — verify every row locally</h2>
+
+    <table>
+      <thead>
+        <tr><th style="width:20%">Destination</th><th style="width:40%">Licence to charter for reward</th><th>Watch out for</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>Spain — Med &amp; Balearics</th><td>Commercial registration plus an operating licence; confirm conditions for a foreign flag.</td><td>Posidonia anchoring restrictions; Balearic sustainable-tourism tax.</td></tr>
+        <tr><th>Greece — Ionian</th><td>Greek charter licence and a properly registered professional yacht; charter party filed with the port authority.</td><td>Transit log / cruising permit and the annual cruising tax.</td></tr>
+        <tr><th>Italy — Amalfi &amp; islands</th><td>Charter licence and a registered charter vessel; foreign flags need their own authorisation via an agent.</td><td>Marine-protected-area anchoring bans.</td></tr>
+        <tr><th>Portugal — Algarve</th><td>Commercial registration and the relevant authorisation for commercial recreational use.</td><td>Protected coastal areas; seasonal anchoring restrictions.</td></tr>
+        <tr><th>Antigua &amp; Barbuda</th><td>Charter licence, or the visiting-charter route for foreign yachts.</td><td>Clearance in/out, cruising permit, marine-park fees.</td></tr>
+        <tr><th>Mauritius</th><td>Charter licence; confirm the vessel's eligibility and the local agent's role.</td><td>Lagoon and reef protection; tourism levy.</td></tr>
+        <tr><th>Thailand — Phuket &amp; Andaman</th><td><strong>Thai-registered, licensed vessels only.</strong> Commercial charter with a foreign-flagged yacht is generally not permitted — use a licensed local operator.</td><td>National-park fees. The guest's contract, invoice and insurance must name the licensed carrier, <strong>not you</strong>.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Four things people forget</h3>
+    <ul class="check">
+      <li><span class="cb"></span><span><strong>Label the advertising.</strong> A free berth given for posts <em>is</em> advertising. The host must use the platform's paid-partnership label <em>and</em> a written "#ad" a reader sees before engaging. Hidden advertising is an unfair commercial practice.</span></li>
+      <li><span class="cb"></span><span><strong>State a minimum guest insurance</strong> — medical, repatriation, cancellation, personal liability, water sports. "Strongly recommend" is too soft for a commercial charter.</span></li>
+      <li><span class="cb"></span><span><strong>The skipper's authority is absolute</strong>, in writing, including the right to end a guest's trip without refund for unsafe behaviour.</span></li>
+      <li><span class="cb"></span><span><strong>Know who is the carrier.</strong> If a licensed operator runs the boat, their name belongs on the contract, the invoice and the insurance — not yours.</span></li>
+    </ul>
+
+    <h3>Rhythm</h3>
+    <p>Re-verify the country rows and the insurance <strong>before the first departure</strong>, then
+    <strong>annually</strong>. Update the Terms and Privacy Policy, re-date them on the website, refresh
+    the safety briefing with last season's near misses, and archive the old trip files.</p>
+
+    <div class="strip">
+      <strong>Templates and checklists only — not legal advice.</strong> Have the guest-facing
+      documents reviewed by a lawyer qualified in the law you sell under, and confirm every licensing
+      point with the authority named in the full pack. Nothing here substitutes for a valid charter
+      licence, a valid insurance policy, or the rules of the flag and coastal states.
+    </div>
+
+    <div class="foot">
+      <span>Mālā Sail Charters — Compliance Pack · Quick Reference</span>
+      <span>Page 3 of 3</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
