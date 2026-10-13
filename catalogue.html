@@ -20,6 +20,11 @@
        ============================================= */
     .cat-page { background: var(--ocean-deep); }
 
+    /* The sheet wrappers exist for the printed PDF only: three fixed A4 pages.
+       On screen they vanish, so the web page still flows as one piece. */
+    .sheet { display: contents; }
+    .print-contact, .print-legal { display: none; }
+
     /* ---------- COVER ---------- */
     .cat-cover {
       position: relative;
@@ -113,7 +118,7 @@
     /* ---------- INCLUDED / NOT ---------- */
     .inc-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 28px;
     }
     .inc-card {
@@ -145,6 +150,14 @@
       background: var(--cyan);
     }
     .inc-card.muted .inc-list li::before { background: var(--gray-300); }
+    .inc-card.extra { display: flex; flex-direction: column; border-color: rgba(160,122,73,0.65); }
+    .inc-card.extra h3 .tick { color: var(--gold); }
+    .inc-card.extra .inc-list li::before { background: var(--gold); }
+    .inc-note {
+      margin-top: auto; padding-top: 18px;
+      border-top: 1px solid rgba(51,38,26,0.1);
+      font-size: 0.85rem; color: var(--gray-500); line-height: 1.6;
+    }
 
     /* ---------- DESTINATION CARDS ---------- */
     .cat-grid {
@@ -328,14 +341,14 @@
       font-weight: 400; opacity: 0.7; margin-top: 4px;
     }
 
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 860px) {
+    /* ---------- RESPONSIVE (screen only: the print layout has its own sheet rules) ---------- */
+    @media screen and (max-width: 860px) {
       .inc-grid { grid-template-columns: 1fr; }
       .host-block { grid-template-columns: 1fr; }
       .host-content, .host-aside { padding: 40px 28px; }
       .cat-cover { padding: 130px 0 64px; }
     }
-    @media (max-width: 480px) {
+    @media screen and (max-width: 480px) {
       .cat-grid { grid-template-columns: 1fr; }
       .spec-table th { width: 50%; }
       .cat-section { padding: 60px 0; }
@@ -350,72 +363,119 @@
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
-      .navbar, .cat-cover-bg { display: none !important; }
+      .navbar { display: none !important; }
 
-      /* --- Cover: full-bleed, its own page --- */
+      /* --- Three fixed A4 sheets, one printed page each --- */
+      .sheet { display: block; padding: 13mm 14mm; }
+      .sheet + .sheet { break-before: page; page-break-before: always; }
+      .container { max-width: none; padding: 0; }
+      a { color: inherit; }
+
+      /* --- Cover: dark photo band at the top of page 1 --- */
       .cat-cover {
-        height: 296mm;
-        padding: 0 22mm;
-        margin: 0;
+        display: block;
+        height: auto;
+        padding: 11mm 14mm 7mm;
+        margin: -13mm -14mm 4mm;
         background: #2b2013 !important;
         color: #fff !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        page-break-after: always;
-        break-after: page;
+      }
+      .cat-cover-bg { display: block; }
+      .cat-cover-bg::after {
+        background: linear-gradient(100deg, rgba(38,28,16,0.94) 0%, rgba(38,28,16,0.80) 46%, rgba(38,28,16,0.58) 100%);
       }
       .cat-cover .container { padding: 0; max-width: none; }
-      .cat-cover h1 { font-size: 42pt; color: #fff !important; max-width: 15ch; line-height: 1.05; }
-      .cat-cover-sub { color: rgba(255,255,255,0.88) !important; font-size: 11pt; max-width: 46ch; }
-      .cat-cover-meta {
-        color: rgba(255,255,255,0.82) !important;
-        border-top-color: rgba(255,255,255,0.28);
-        font-size: 8pt;
-      }
       .cat-eyebrow {
+        font-size: 6.5pt;
+        padding: 1.2mm 3mm;
         color: #fff !important;
         background: rgba(255,255,255,0.12) !important;
         border-color: rgba(255,255,255,0.35) !important;
       }
-
-      /* --- Content pages --- */
-      .container { max-width: none; padding: 0; }
-      .cat-section, .cat-cta { padding: 16mm 22mm; }
-      .cat-section.alt { background: #fff !important; }
-      .section-title { font-size: 22pt; margin-bottom: 7mm; line-height: 1.2; }
-      .cat-lead { margin: 0 0 9mm; font-size: 10pt; }
-      .section-label { margin-bottom: 6mm; }
-      .cat-pillar, .inc-card, .spec-table { box-shadow: none; }
-
-      /* --- Destinations: 2-up grid, cards never split --- */
-      .cat-grid { grid-template-columns: 1fr 1fr; gap: 7mm; margin-bottom: 0; }
-      .cat-card {
-        break-inside: avoid;
-        page-break-inside: avoid;
-        box-shadow: none;
+      .cat-cover h1 { font-size: 22pt; color: #fff !important; max-width: 26ch; line-height: 1.06; margin-bottom: 3.5mm; }
+      .cat-cover-sub { color: rgba(255,255,255,0.88) !important; font-size: 9.5pt; max-width: none; line-height: 1.45; }
+      .cat-cover-meta {
+        color: rgba(255,255,255,0.82) !important;
+        border-top-color: rgba(255,255,255,0.28);
+        font-size: 7pt;
+        margin-top: 4mm;
+        padding-top: 2.5mm;
       }
-      .cat-card-img { height: 38mm; }
-      .cat-card-body { padding: 6mm; }
-      .cat-card h3 { font-size: 15pt; }
-      .cat-region { break-before: page; page-break-before: always; }
-      .trips-group-title { margin-bottom: 6mm; }
-      .cat-region:first-of-type { break-before: auto; page-break-before: auto; }
 
-      /* --- Pillars & included lists side by side --- */
-      .cat-pillars { grid-template-columns: 1fr 1fr 1fr; gap: 5mm; }
-      .cat-pillar { padding: 6mm; }
-      .inc-grid { gap: 6mm; }
+      /* --- Sections: tight, stacked inside each sheet --- */
+      .cat-section, .cat-cta { padding: 3mm 0; }
+      .cat-section.alt { background: #fff !important; }
+      .section-label { font-size: 7pt; margin-bottom: 2mm; }
+      .section-title { font-size: 15pt; margin-bottom: 2mm; line-height: 1.12; }
+      .cat-lead { max-width: none; margin: 0 0 3mm; font-size: 9pt; line-height: 1.45; }
+      .cat-pillar, .inc-card, .spec-table, .cat-card { box-shadow: none; }
 
-      /* --- Host block & closing --- */
-      .host-block { break-inside: avoid; page-break-inside: avoid; }
-      .host-content, .host-aside { padding: 9mm; }
-      .cat-cta { break-before: page; page-break-before: always; text-align: left; }
-      .cat-cta h2, .cat-cta p { margin-left: 0; text-align: left; }
+      /* --- Three pillars --- */
+      .cat-pillars { grid-template-columns: 1fr 1fr 1fr; gap: 4mm; }
+      .cat-pillar { padding: 3.5mm; }
+      .cat-pillar .num { font-size: 11pt; margin-bottom: 1.5mm; }
+      .cat-pillar h3 { font-size: 10.5pt; margin-bottom: 1.5mm; }
+      .cat-pillar p { font-size: 8pt; line-height: 1.4; }
+
+      /* --- Included / not included / optional extras --- */
+      .inc-grid { gap: 4mm; }
+      .inc-card { padding: 3.5mm; }
+      .inc-card h3 { font-size: 10.5pt; margin-bottom: 2.5mm; gap: 2mm; }
+      .inc-card h3 .tick { width: 4mm; height: 4mm; }
+      .inc-list { gap: 1.4mm; }
+      .inc-list li { font-size: 8pt; line-height: 1.35; gap: 2.5mm; }
+      .inc-list li::before { width: 1.5mm; height: 1.5mm; margin-top: 1.3mm; }
+      .inc-note { font-size: 7.5pt; padding-top: 2.5mm; }
+
+      /* --- Destinations: 2-up grid of wide cards, cards never split --- */
+      .cat-grid { grid-template-columns: 1fr 1fr; gap: 4mm; margin-bottom: 3mm; }
+      .cat-card { flex-direction: row; break-inside: avoid; page-break-inside: avoid; }
+      .cat-card-img { flex: 0 0 32mm; width: 32mm; height: auto; }
+      .cat-card-img img { height: 100%; }
+      .cat-badge { font-size: 6pt; padding: 0.8mm 2mm; top: 2mm; left: 2mm; letter-spacing: 0.08em; }
+      .cat-card-body { padding: 3mm 3.5mm; }
+      .cat-card-kicker { font-size: 6.5pt; letter-spacing: 0.1em; margin-bottom: 1.2mm; }
+      .cat-card h3 { font-size: 11.5pt; margin-bottom: 0.5mm; }
+      .cat-card .where { font-size: 7.5pt; margin-bottom: 1.5mm; }
+      .cat-card p.desc { font-size: 8pt; line-height: 1.4; margin-bottom: 2.5mm; }
+      .cat-specs { display: none !important; }
+      .cat-card .trip-footer { padding-top: 2mm; }
+      .cat-card .trip-price { font-size: 7.5pt; }
+      .cat-card .trip-price strong { font-size: 9.5pt; }
+      .cat-card .spots-dot { display: none; }
+      .cat-card .spots-text { font-size: 7pt; margin-left: 0; }
+      .cat-region + .cat-region { margin-top: 4mm; }
+      .trips-group-title { font-size: 8pt; margin: 0 0 2mm; letter-spacing: 0.16em; }
+
+      /* --- Yacht table --- */
+      .spec-table caption { font-size: 7pt; padding-bottom: 2.5mm; }
+      .spec-table th, .spec-table td { padding: 1.8mm 3mm; font-size: 8.5pt; }
+      .spec-table th { width: 32%; }
+
+      /* --- Host block --- */
+      .host-block { break-inside: avoid; page-break-inside: avoid; margin-top: 2mm; box-shadow: none; }
+      .host-content, .host-aside { padding: 5mm; }
+      .host-content h2 { font-size: 15pt; margin-bottom: 2.5mm; }
+      .host-content p { font-size: 8.5pt; line-height: 1.45; margin-bottom: 3mm; }
+      .host-perks { gap: 1.5mm; margin-bottom: 3mm; }
+      .host-perks li { font-size: 8pt; gap: 2mm; }
+      .host-perks li svg { width: 3.6mm; height: 3.6mm; }
+      .host-aside { gap: 3mm; }
+      .host-aside .stat strong { font-size: 14pt; margin-bottom: 1mm; }
+      .host-aside .stat span { font-size: 7.5pt; line-height: 1.35; }
+      .host-content .btn { display: none !important; }
+
+      /* --- Closing strip + footer --- */
+      .cat-cta { text-align: left; break-before: auto; page-break-before: auto; padding: 4mm 0 0; }
+      .cat-cta h2 { font-size: 17pt; margin-bottom: 2.5mm; }
+      .cat-cta p { font-size: 9pt; max-width: none; margin: 0; text-align: left; line-height: 1.5; }
       .cat-cta-actions { display: none !important; }
-      .cat-foot { padding: 8mm 22mm; }
-      .cat-foot .container { padding: 0; }
-      a { color: inherit; }
+      .cat-foot { padding: 5mm 0 0; margin-top: 4mm; }
+      .cat-foot .container { display: block; padding: 0; }
+      .cat-foot p { font-size: 7.5pt; margin: 1mm 0; }
+      .cat-foot .wordmark { font-size: 9.5pt; margin-bottom: 1.5mm; }
+      .print-contact, .print-legal { display: block; }
+      .print-legal { font-size: 6.5pt !important; color: var(--gray-500); }
     }
   </style>
 
@@ -466,6 +526,7 @@
     </div>
   </nav>
 
+  <div class="sheet" data-page="1">
   <!-- =========== COVER =========== -->
   <header class="cat-cover">
     <div class="cat-cover-bg">
@@ -475,9 +536,8 @@
       <span class="cat-eyebrow">Product Catalogue · 2027 Season</span>
       <h1>Small-group sailing,<br>wherever the water is <em>warm</em>.</h1>
       <p class="cat-cover-sub">
-        Seven nights. One boat. Four to eight guests. Everything arranged — the route,
-        the moorings, the meals, the captain. Our guests only choose the week and
-        who they bring with them.
+        Up to six nights. One boat. Five or six guests. Everything arranged — the route,
+        the yacht, the captain. Our guests choose the week and who they bring with them.
       </p>
       <div class="cat-cover-meta">
         <span>Mediterranean</span>
@@ -492,7 +552,7 @@
   <section class="cat-section">
     <div class="container">
       <div class="section-label">The Product</div>
-      <h2 class="section-title">A week aboard, <span class="highlight">fully hosted</span></h2>
+      <h2 class="section-title">A week aboard, <span class="highlight">fully crewed</span></h2>
       <p class="cat-lead">
         Mālā Sail Charters is a small-group sailing venue. We take one crewed yacht,
         one professional captain and a handful of guests, and turn a route into a
@@ -504,17 +564,17 @@
         <article class="cat-pillar">
           <div class="num">01</div>
           <h3>Small groups</h3>
-          <p>From 4 to 8 guests on board, depending on the yacht. Double-occupancy cabins, with the option of a single-occupancy cabin for those who want the space to themselves.</p>
+          <p>Five or six guests on board — small enough to feel like a private trip, big enough to feel like a party. Double-occupancy cabins, with the option of a single-occupancy cabin for those who want the space to themselves.</p>
         </article>
         <article class="cat-pillar">
           <div class="num">02</div>
           <h3>Everything organised</h3>
-          <p>Boat, itinerary, safety and logistics handled for you. Breakfast to sunset, the week is set up before you step aboard — down to the specialty coffee that starts the day gently.</p>
+          <p>Boat, itinerary, safety and logistics handled for you. The route is planned, the anchorages chosen and the yacht ready before you step aboard — you only pack and arrive.</p>
         </article>
         <article class="cat-pillar">
           <div class="num">03</div>
           <h3>Authentic experiences</h3>
-          <p>Slower days, real anchorages, local food and stories under the sun — occasionally alongside guest hosts and facilitators who bring their own craft on board.</p>
+          <p>Slower days, real anchorages and long swims — occasionally alongside guest hosts and facilitators who bring their own craft on board.</p>
         </article>
       </div>
     </div>
@@ -525,7 +585,7 @@
     <div class="container">
       <div class="section-label">What's In The Price</div>
       <h2 class="section-title">Included, and <span class="highlight">not included</span></h2>
-      <p class="cat-lead">Every Mālā week is priced per person, all-inclusive of the boat and everything that happens on it.</p>
+      <p class="cat-lead">Every Mālā week is priced per person and covers the yacht, the crew and her running costs. Provisioning, meals and moorings away from the base sit outside the price — a chef can be arranged on board.</p>
 
       <div class="inc-grid">
         <div class="inc-card">
@@ -534,11 +594,10 @@
             Included
           </h3>
           <ul class="inc-list">
-            <li>The yacht for seven nights — modern sailing catamaran, 4 cabins</li>
-            <li>Professional skipper and captain (Captain 200GT) on board</li>
-            <li>Full board — breakfast, lunch and dinner prepared aboard</li>
-            <li>Drinking water, specialty coffee and tea</li>
-            <li>Itinerary planning, permits, mooring and marine-park fees</li>
+            <li>The yacht for up to six nights — modern sailing catamaran, 4 cabins</li>
+            <li>Professional skipper and captain on board (Captain 200GT)</li>
+            <li>Fuel, the yacht's base berth and her standard running costs</li>
+            <li>Itinerary planning and route design</li>
             <li>Safety equipment, tender, paddleboards and snorkelling gear</li>
             <li>Bedding, bath towels and biodegradable onboard amenities</li>
           </ul>
@@ -550,23 +609,38 @@
             Not included
           </h3>
           <ul class="inc-list">
-            <li>Flights and airport transfers</li>
+            <li>Provisioning and meals on board</li>
+            <li>Marinas and any mooring outside the yacht's base</li>
             <li>Alcohol and drinks ashore</li>
-            <li>Meals eaten off the boat</li>
+            <li>Flights and airport transfers</li>
             <li>Travel and medical insurance</li>
             <li>Excursions and personal expenses</li>
           </ul>
+        </div>
+
+        <div class="inc-card extra">
+          <h3>
+            <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            Optional extras
+          </h3>
+          <ul class="inc-list">
+            <li>A chef or cook on board, to prepare your meals through the week</li>
+          </ul>
+          <p class="inc-note">Tell us when you book and we will have it arranged before you step aboard.</p>
         </div>
       </div>
     </div>
   </section>
 
+  </div><!-- /sheet 1 — cover, product, what's in the price -->
+
+  <div class="sheet" data-page="2">
   <!-- =========== DESTINATIONS =========== -->
   <section class="cat-section">
     <div class="container">
       <div class="section-label">Destinations</div>
       <h2 class="section-title">Seven weeks, <span class="highlight">four waters</span></h2>
-      <p class="cat-lead">Each week runs seven nights, with no sailing experience required. Prices are per person and start from the figure shown.</p>
+      <p class="cat-lead">Each week runs up to six nights, with no sailing experience required. Prices are per person, cover the yacht and the crew, and start from the figure shown.</p>
 
       <!-- Mediterranean -->
       <div class="cat-region">
@@ -579,12 +653,12 @@
               <img src="images/amalfi.png" alt="Amalfi Coast, Italy" />
             </div>
             <div class="cat-card-body">
-              <div class="cat-card-kicker">September · 7 nights</div>
+              <div class="cat-card-kicker">September · up to 6 nights</div>
               <h3>Italy</h3>
               <div class="where">Amalfi Coast &amp; Ischia</div>
               <p class="desc">Cliffside villages, turquoise coves and the green island of Ischia — the most romantic coast in the Mediterranean.</p>
               <div class="cat-specs">
-                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Guests</span><span class="v">5 to 6</span></div>
                 <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
                 <div><span class="k">Skipper</span><span class="v">Included</span></div>
               </div>
@@ -605,12 +679,12 @@
               <img src="images/greece.jpeg" alt="Ionian Sea, Greece" />
             </div>
             <div class="cat-card-body">
-              <div class="cat-card-kicker">July · 7 nights</div>
+              <div class="cat-card-kicker">July · up to 6 nights</div>
               <h3>Greece</h3>
               <div class="where">Ionian Sea</div>
               <p class="desc">Emerald water, sheltered bays and the wild green beauty of the Ionian islands, far from the crowds.</p>
               <div class="cat-specs">
-                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Guests</span><span class="v">5 to 6</span></div>
                 <div><span class="k">Hosted by</span><span class="v">Creation Medicine Collective</span></div>
                 <div><span class="k">Skipper</span><span class="v">Included</span></div>
               </div>
@@ -631,12 +705,12 @@
               <img src="images/ibiza.png" alt="Ibiza, Spain" />
             </div>
             <div class="cat-card-body">
-              <div class="cat-card-kicker">June · 7 nights</div>
+              <div class="cat-card-kicker">June · up to 6 nights</div>
               <h3>Spain</h3>
               <div class="where">Ibiza &amp; Formentera</div>
               <p class="desc">Crystal-clear coves, hidden beaches and golden sunsets under the spell of Es Vedrà.</p>
               <div class="cat-specs">
-                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Guests</span><span class="v">5 to 6</span></div>
                 <div><span class="k">Hosted by</span><span class="v">The Loving Collaborative Heart</span></div>
                 <div><span class="k">Skipper</span><span class="v">Included</span></div>
               </div>
@@ -656,12 +730,12 @@
               <img src="images/malta.png" alt="Algarve, Portugal" />
             </div>
             <div class="cat-card-body">
-              <div class="cat-card-kicker">August · 7 nights</div>
+              <div class="cat-card-kicker">August · up to 6 nights</div>
               <h3>Portugal</h3>
               <div class="where">Algarve</div>
               <p class="desc">Golden cliffs, secluded sandy coves and peaceful anchorages along the stunning Algarve coastline.</p>
               <div class="cat-specs">
-                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Guests</span><span class="v">5 to 6</span></div>
                 <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
                 <div><span class="k">Skipper</span><span class="v">Included</span></div>
               </div>
@@ -689,12 +763,12 @@
               <img src="images/antigua.png" alt="Antigua and Barbuda" />
             </div>
             <div class="cat-card-body">
-              <div class="cat-card-kicker">March · 7 nights</div>
+              <div class="cat-card-kicker">March · up to 6 nights</div>
               <h3>Antigua &amp; Barbuda</h3>
               <div class="where">Antigua, English Harbour</div>
               <p class="desc">Turquoise water, steady trade winds and the yachting heart of the Caribbean — one anchorage for every day of the week.</p>
               <div class="cat-specs">
-                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Guests</span><span class="v">5 to 6</span></div>
                 <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
                 <div><span class="k">Skipper</span><span class="v">Included</span></div>
               </div>
@@ -723,12 +797,12 @@
               <img src="images/mauritius.jpg" alt="Mauritius" />
             </div>
             <div class="cat-card-body">
-              <div class="cat-card-kicker">February · 7 nights</div>
+              <div class="cat-card-kicker">February · up to 6 nights</div>
               <h3>Mauritius</h3>
               <div class="where">Indian Ocean</div>
               <p class="desc">Turquoise lagoons, coral reefs and sugar-white beaches around the volcanic island of Mauritius.</p>
               <div class="cat-specs">
-                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Guests</span><span class="v">5 to 6</span></div>
                 <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
                 <div><span class="k">Skipper</span><span class="v">Included</span></div>
               </div>
@@ -749,12 +823,12 @@
               <img src="images/thailand.png" alt="Krabi, Thailand" />
             </div>
             <div class="cat-card-body">
-              <div class="cat-card-kicker">January · 7 nights</div>
+              <div class="cat-card-kicker">January · up to 6 nights</div>
               <h3>Thailand</h3>
               <div class="where">Phang Nga Bay &amp; the Andaman Sea</div>
               <p class="desc">Limestone cliffs, hidden lagoons and the iconic longtail boats of the Andaman Sea, sailing out of Phuket.</p>
               <div class="cat-specs">
-                <div><span class="k">Guests</span><span class="v">4 to 8</span></div>
+                <div><span class="k">Guests</span><span class="v">5 to 6</span></div>
                 <div><span class="k">Boat</span><span class="v">Sailing catamaran</span></div>
                 <div><span class="k">Skipper</span><span class="v">Included</span></div>
               </div>
@@ -774,6 +848,9 @@
     </div>
   </section>
 
+  </div><!-- /sheet 2 — the seven weeks -->
+
+  <div class="sheet" data-page="3">
   <!-- =========== THE YACHT =========== -->
   <section class="cat-section alt">
     <div class="container">
@@ -786,10 +863,10 @@
         <tbody>
           <tr><th>Type</th><td>Sailing catamaran, 4 cabins</td></tr>
           <tr><th>Guest cabins</th><td>4 double cabins, plus saloon berths</td></tr>
-          <tr><th>Guests</th><td>4 to 8, double or single occupancy</td></tr>
-          <tr><th>Crew</th><td>1 professional skipper (optional host on board)</td></tr>
+          <tr><th>Guests</th><td>5 or 6, double or single occupancy</td></tr>
+          <tr><th>Crew</th><td>1 professional skipper, plus an optional host or chef on board</td></tr>
           <tr><th>Comforts</th><td>Shaded cockpit, trampolines, swim platform, paddleboards, snorkelling gear</td></tr>
-          <tr><th>Duration</th><td>7 nights · boarding from 16:00 on day 1, off by 09:00 on day 8</td></tr>
+          <tr><th>Duration</th><td>Up to 6 nights · boarding from 16:00 on day 1, off by 09:00 on the final morning</td></tr>
           <tr><th>Experience needed</th><td>None — just curiosity</td></tr>
         </tbody>
       </table>
@@ -811,7 +888,7 @@
           <ul class="host-perks">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
-              <span><strong>Your berth is on us</strong> — a full week aboard, all meals included.</span>
+              <span><strong>Your berth is on us</strong> — the whole week aboard, yacht and crew covered.</span>
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
@@ -819,7 +896,7 @@
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
-              <span><strong>We handle everything else</strong> — boat, captain, food, route, safety.</span>
+              <span><strong>We handle everything else</strong> — boat, captain, route, safety.</span>
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg>
@@ -835,7 +912,7 @@
           </div>
           <div class="divider"></div>
           <div class="stat">
-            <strong>7</strong>
+            <strong>6</strong>
             <span>nights aboard, one boat, one captain, and every detail arranged.</span>
           </div>
           <div class="divider"></div>
@@ -867,8 +944,11 @@
       <div class="wordmark">Mālā<small>Sail Charters</small></div>
       <p>Small-group conscious sailing weeks · Mediterranean · Caribbean · Indian Ocean · Southeast Asia</p>
       <p>© 2026 Mālā Sail Charters · Product catalogue · 2027 season</p>
+      <p class="print-contact">malasailcharters.com · info@malasailcharters.com · WhatsApp +34 678 08 92 34</p>
+      <p class="print-legal">Alejandro Alonso Perez, trading as Mālā Sail Charters · NIF 71727434W · Calle Galicia 9A, La Oliva, Las Palmas, Spain</p>
     </div>
   </footer>
+  </div><!-- /sheet 3 — on board, host your own week, reserve -->
 
 </body>
 </html>
