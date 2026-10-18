@@ -659,7 +659,11 @@ ul { list-style: none; }
   gap: 28px;
   margin-bottom: 48px;
 }
-.trips-grid.is-collapsed { display: none; }
+/* The grid opens on the season a visitor can book now — the coming winter —
+   and keeps the summer departures behind the button. It used to hide every
+   card until the button was pressed, which left the section empty and the
+   hero's "See Trips" pointing at nothing. */
+.trips-grid.is-collapsed [data-season="summer"] { display: none; }
 
 .trips-group-title {
   grid-column: 1 / -1;

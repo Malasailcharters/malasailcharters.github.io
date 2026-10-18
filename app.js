@@ -61,22 +61,23 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => revealObserver.observe(el));
 
-// ---- DESTINATIONS: SHOW ALL ----
-// The destination cards stay hidden until the visitor asks to see them,
-// keeping the page short on both desktop and mobile.
+// ---- DESTINATIONS: WINTER FIRST, SUMMER BEHIND THE BUTTON ----
+// The grid opens on the departures still ahead (the winter season) and keeps
+// the summer block behind the button, so the section stays short and what a
+// visitor sees first is what they can book now.
 const tripsGrid = document.getElementById('trips-grid');
 const tripsMore = document.getElementById('trips-more');
-const tripsTotal = tripsGrid
-  ? tripsGrid.querySelectorAll('.trip-card').length
+const tripsSummer = tripsGrid
+  ? tripsGrid.querySelectorAll('.trip-card[data-season="summer"]').length
   : 0;
 
-if (tripsMore && tripsGrid && tripsTotal > 0) {
+if (tripsMore && tripsGrid && tripsSummer > 0) {
   const label = tripsMore.querySelector('.trips-more-text');
 
   const setTripsLabel = (open) => {
     label.textContent = open
-      ? 'Show fewer destinations'
-      : `Show all ${tripsTotal} destinations`;
+      ? 'Show winter only'
+      : `Show ${tripsSummer} summer destinations`;
   };
   setTripsLabel(false);
 
