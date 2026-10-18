@@ -670,18 +670,22 @@ const sectionObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.4 });
 
-// Hide Padlet board if requested (shareable link without the community board).
+// The Padlet host board is hidden from the public site by default (the <body>
+// carries the class hide-padlet). ?hostboard=1 brings it back for internal use.
 function hidePadletIfRequested() {
   const params = new URLSearchParams(window.location.search);
+  const iframe = document.getElementById('board-iframe');
+  if (params.get('hostboard') === '1') {
+    document.body.classList.remove('hide-padlet');
+    if (iframe && iframe.dataset.src) iframe.setAttribute('src', iframe.dataset.src);
+    return;
+  }
   if (params.has('nopadlet') || params.get('nopadlet') === '1' ||
       params.has('noboard') || params.get('noboard') === '1' ||
       params.has('quiet') || params.get('quiet') === '1' ||
       params.get('hostboard') === '0') {
     document.body.classList.add('hide-padlet');
-    const iframe = document.getElementById('board-iframe');
     if (iframe) iframe.setAttribute('src', 'about:blank');
-  } else if (params.get('hostboard') === '1') {
-    document.body.classList.remove('hide-padlet');
   }
 }
 if (document.readyState === 'loading') {

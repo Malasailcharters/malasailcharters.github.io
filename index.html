@@ -230,7 +230,7 @@
   }
   </script>
 </head>
-<body>
+<body class="hide-padlet">
 
   <!-- =========== NAVBAR =========== -->
   <nav class="navbar" id="navbar">
@@ -614,8 +614,18 @@
            URL below. It must look like:
            https://padlet.com/embed/TU_ID
            (padlet.ws/p/TU_ID is the older short domain; padlet.com/embed
-           is the current one and is what is used here.) -->
-      <div class="board-embed" id="trip-board" style="display:none">
+           is the current one and is what is used here.) 
+
+           TEMPORARILY HIDDEN FROM THE PUBLIC SITE (Oct 2026).
+           The <body> carries the class hide-padlet, which hides this block
+           with display:none and stops the iframe loading (about:blank).
+           The real embed URL is kept in data-src so nothing is lost.
+           To see the board again, open the site with ?hostboard=1 - the
+           class is removed and the iframe src is restored by app.js.
+           To publish it permanently again: delete hide-padlet from <body>,
+           delete the data-src attribute, put the real URL back in src,
+           and drop the hostboard branch from app.js. -->
+      <div class="board-embed" id="trip-board">
         <!-- No title here on purpose: the Padlet board carries its own,
              and two stacked headings read as a mistake. Only the
              full-size link stays in this strip. -->
@@ -627,7 +637,8 @@
         <div class="board-frame">
           <iframe
             id="board-iframe"
-            src="https://padlet.com/embed/s0247wnbgw1jnozy4pag"
+            src="about:blank"
+            data-src="https://padlet.com/embed/s0247wnbgw1jnozy4pag"
             title="Mālā Sail Charters community board"
             loading="lazy"
             allowfullscreen="true"></iframe>
@@ -1416,7 +1427,7 @@
   </div>
 
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
-  <script src="app.js?v=20261018a"></script>
+  <script src="app.js?v=20261018b"></script>
   <script src="https://widgets.tree-nation.com/js/widgets/v3/widgets.min.js"></script>
 </body>
 </html>
