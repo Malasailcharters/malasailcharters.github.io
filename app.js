@@ -216,9 +216,10 @@ function setTripDestination(value) {
 }
 
 const tripCardValues = {
-  'trip-amalfi':    'amalfi',
-  'trip-ionian':    'ionian',
-  'trip-ibiza':     'ibiza',
+  'trip-amalfi':    'italy',
+  'trip-ionian':    'greece',
+  'trip-ibiza':     'spain',
+  'trip-algarve':   'portugal',
   'trip-antigua':   'antigua',
   'trip-thailand':  'thailand',
   'trip-mauritius': 'mauritius'
@@ -231,12 +232,13 @@ document.querySelectorAll('.trip-card').forEach(card => {
 });
 
 const calTripValues = {
-  'cal-trip-1': 'antigua',
-  'cal-trip-2': 'thailand',
-  'cal-trip-3': 'mauritius',
-  'cal-trip-4': 'amalfi',
-  'cal-trip-5': 'ionian',
-  'cal-trip-6': 'ibiza'
+  'cal-trip-1':  'antigua',
+  'cal-trip-2':  'thailand',
+  'cal-trip-3':  'mauritius',
+  'cal-trip-4':  'italy',
+  'cal-trip-5':  'greece',
+  'cal-trip-6':  'spain',
+  'cal-trip-6b': 'portugal'
 };
 
 document.querySelectorAll('.cal-trip').forEach(link => {
