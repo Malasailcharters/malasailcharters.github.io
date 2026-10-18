@@ -675,10 +675,13 @@ function hidePadletIfRequested() {
   const params = new URLSearchParams(window.location.search);
   if (params.has('nopadlet') || params.get('nopadlet') === '1' ||
       params.has('noboard') || params.get('noboard') === '1' ||
-      params.has('quiet') || params.get('quiet') === '1') {
+      params.has('quiet') || params.get('quiet') === '1' ||
+      params.get('hostboard') === '0') {
     document.body.classList.add('hide-padlet');
     const iframe = document.getElementById('board-iframe');
     if (iframe) iframe.setAttribute('src', 'about:blank');
+  } else if (params.get('hostboard') === '1') {
+    document.body.classList.remove('hide-padlet');
   }
 }
 if (document.readyState === 'loading') {
