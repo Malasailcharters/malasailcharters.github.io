@@ -493,14 +493,18 @@ ul { list-style: none; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(176,134,82,0.15);
-  border: 1px solid rgba(176,134,82,0.4);
+  /* The 2027 photo opens over a bright sky, where a pale bronze tint with
+     bronze type (the old treatment) washed out. A dark bronze glass chip
+     with white type keeps it readable on any backdrop and still reads
+     bronze. */
+  background: rgba(58,42,24,0.58);
+  border: 1px solid rgba(212,180,132,0.45);
   backdrop-filter: blur(8px);
   padding: 8px 20px;
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--cyan-light);
+  color: #fff;
   margin-bottom: 24px;
   animation: fadeInDown 0.8s ease both;
 }
