@@ -85,6 +85,15 @@ if (tripsMore && tripsGrid && tripsSummer > 0) {
     const nowOpen = tripsGrid.classList.toggle('is-collapsed') === false;
     tripsMore.setAttribute('aria-expanded', String(nowOpen));
     setTripsLabel(nowOpen);
+
+    // The summer block starts as display:none, so the page's reveal observer
+    // never sees it intersect and would leave it at opacity 0. Show it here
+    // rather than wait for an intersection that may never be reported.
+    if (nowOpen) {
+      tripsGrid
+        .querySelectorAll('[data-season="summer"]')
+        .forEach(el => el.classList.add('visible'));
+    }
   });
 }
 
