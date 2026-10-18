@@ -1318,7 +1318,7 @@ body.hide-padlet #trip-board {
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.3s ease;
 }
-.faq-item.open .faq-answer { max-height: 300px; }
+.faq-item.open .faq-answer { max-height: 1100px; }
 
 .faq-answer p {
   padding: 4px 24px 20px;
