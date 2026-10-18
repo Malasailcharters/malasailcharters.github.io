@@ -252,6 +252,19 @@ ul { list-style: none; }
 .navbar:not(.scrolled) .burger-btn span { background: #fff; }
 .navbar:not(.scrolled) .logo-icon-svg { color: #fff; }
 
+/* The 2027 hero opens on a bright sky, so the transparent bar's type carries
+   the same soft shadow as the hero copy. It is invisible over the darker
+   parts of any photo, and it is what keeps the small links crisp where the
+   sky is at its brightest, right behind the bar. */
+.navbar:not(.scrolled) .nav-logo,
+.navbar:not(.scrolled) .nav-link {
+  text-shadow: 0 1px 3px rgba(10,6,3,0.55), 0 2px 18px rgba(10,6,3,0.45);
+}
+/* Same idea for the three white bars of the burger. */
+.navbar:not(.scrolled) .burger-btn span {
+  box-shadow: 0 1px 3px rgba(10,6,3,0.6);
+}
+
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -444,10 +457,10 @@ ul { list-style: none; }
   height: 100%;
   object-fit: cover;
   object-position: center;
-  /* Mild correction: the photo's median sits at 111/255, slightly under
-     mid-grey, and the right half is darker than the left. Lifts it without
-     washing out the sky. */
-  filter: brightness(1.12) contrast(1.03) saturate(1.06);
+  /* The 2027 hero photo is graded in the file itself: a shadow-lifting gamma
+     (median 91 -> 133) with a highlight-safe shoulder so the bright sky keeps
+     its gradation, plus vibrance and a light unsharp mask. No CSS correction
+     is layered on top of it. */
   transform: scale(1.05);
   animation: heroZoom 20s ease-in-out infinite alternate;
 }
@@ -459,9 +472,11 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   /* A soft dark wash across the top so the transparent white bar stays
-     readable over the bright sky; it fades out well before the content. */
+     readable. The 2027 photo opens on a much brighter sky than the one it
+     replaced, so the scrim is a touch deeper; it still clears before the
+     content. */
   background:
-    linear-gradient(180deg, rgba(18,13,7,0.5) 0%, rgba(18,13,7,0.24) 6%, rgba(18,13,7,0) 16%),
+    linear-gradient(180deg, rgba(18,13,7,0.60) 0%, rgba(18,13,7,0.30) 6%, rgba(18,13,7,0) 17%),
     var(--gradient-hero);
 }
 
