@@ -357,13 +357,16 @@ function handleNewsletter(e) {
     btn.disabled = false;
     showFormMessage(error, 'notice',
       'Opening your email app to confirm. If nothing happens, write to ' + CONTACT_EMAIL + '.');
+    // The coffee gift does not depend on the form service, so it is shown anyway.
+    form.style.display = 'none';
+    success.style.display = 'flex';
     return;
   }
 
   postForm(form)
     .then(() => {
       form.style.display = 'none';
-      success.style.display = 'block';
+      success.style.display = 'flex';
     })
     .catch(() => {
       btn.textContent = 'Subscribe';
@@ -371,6 +374,40 @@ function handleNewsletter(e) {
       showFormMessage(error, 'error',
         'That did not go through. Please try again, or write to ' + CONTACT_EMAIL + '.');
     });
+}
+
+// ---- NEWSLETTER GIFT: copy the ambassador link ----
+// The 20% link is a plain hyperlink, so it works even if the clipboard API is
+// blocked; the button is only a convenience.
+const giftCopy = document.getElementById('newsletter-gift-copy');
+if (giftCopy) {
+  giftCopy.addEventListener('click', () => {
+    const link = document.getElementById('newsletter-gift-link');
+    const url = link ? link.href : '';
+    const label = giftCopy.textContent;
+
+    const confirmCopy = () => {
+      giftCopy.textContent = 'Link copied';
+      window.setTimeout(() => { giftCopy.textContent = label; }, 2200);
+    };
+    const legacyCopy = () => {
+      const field = document.createElement('textarea');
+      field.value = url;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.top = '-1000px';
+      document.body.appendChild(field);
+      field.select();
+      try { document.execCommand('copy'); confirmCopy(); } catch (e) { /* the link stays on screen */ }
+      document.body.removeChild(field);
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(confirmCopy, legacyCopy);
+    } else {
+      legacyCopy();
+    }
+  });
 }
 
 // ---- REVIEW FORM ----

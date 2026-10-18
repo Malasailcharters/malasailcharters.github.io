@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Montserrat:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20261012c" />
+  <link rel="stylesheet" href="styles.css?v=20261018a" />
 
   <link rel="canonical" href="https://malasailcharters.com/" />
   <meta name="theme-color" content="#33261a" />
@@ -1177,7 +1177,8 @@
         </g>
       </svg>
       <h2>Join the <span class="highlight">Crew</span></h2>
-      <p>Join our newsletter for new trips, fresh dates and exclusive offers.</p>
+      <p>Join our newsletter for new trips, fresh dates and exclusive offers — and get <strong>20% off London Nootropics</strong>, the welcome coffee we serve on board.</p>
+      <img class="newsletter-partner-logo" src="images/london-nootropics-logo.png" alt="London Nootropics" width="387" height="49" loading="lazy" />
       <form class="newsletter-form" id="newsletter-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleNewsletter(event)">
         <input type="hidden" name="access_key" value="bd819dd0-a73c-4949-8143-c3093b98d150" />
         <input type="hidden" name="subject" value="Newsletter signup from the Mala Sail Charters website" />
@@ -1187,7 +1188,13 @@
         <button type="submit" id="newsletter-submit">Subscribe</button>
       </form>
       <p class="form-message" id="newsletter-error" role="alert" style="display:none"></p>
-      <div id="newsletter-success" class="newsletter-success" style="display:none">Welcome aboard! You're on the list.</div>
+      <div id="newsletter-success" class="newsletter-success" style="display:none" role="status" aria-live="polite">
+        <p class="gift-title">Welcome aboard — you are on the list.</p>
+        <p class="gift-lead">Here is your 20% off London Nootropics, the adaptogenic welcome coffee we serve on board:</p>
+        <a class="gift-link" id="newsletter-gift-link" href="https://londonnootropics.com/ALEJANDROALONSO" target="_blank" rel="noopener">londonnootropics.com/ALEJANDROALONSO</a>
+        <button type="button" class="gift-copy" id="newsletter-gift-copy">Copy link</button>
+        <p class="gift-note">The 20% is applied at their checkout when you arrive through this link. It is an affiliate link: if you order, we may earn a small commission, and it never changes what you pay.</p>
+      </div>
       <p class="newsletter-legal">By signing up, you agree to receive marketing emails. You can unsubscribe at any time. See our <a href="privacy.html">Privacy Policy</a>.</p>
     </div>
   </section>
@@ -1409,7 +1416,7 @@
   </div>
 
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
-  <script src="app.js?v=20261012c"></script>
+  <script src="app.js?v=20261018a"></script>
   <script src="https://widgets.tree-nation.com/js/widgets/v3/widgets.min.js"></script>
 </body>
 </html>

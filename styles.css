@@ -1787,6 +1787,13 @@ body.review-open { overflow: hidden; }
 
 .newsletter-container p { color: var(--ink-muted); font-size: 0.95rem; }
 
+/* Partner mark shown under the subscriber pitch: the coffee served on board. */
+.newsletter-partner-logo {
+  width: 172px;
+  height: auto;
+  opacity: 0.92;
+}
+
 .newsletter-form {
   display: flex;
   gap: 12px;
@@ -1830,10 +1837,64 @@ body.review-open { overflow: hidden; }
   box-shadow: 0 8px 30px rgba(176,134,82,0.55);
 }
 
+/* The welcome panel that replaces the form once someone subscribes: it carries
+   the ambassador link, a copy button and the affiliate disclosure. */
 .newsletter-success {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 22px 24px;
+  background: var(--card);
+  border: 1px solid rgba(176,134,82,0.45);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.newsletter-success .gift-title {
   color: var(--cyan);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
+}
+.newsletter-success .gift-lead {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+.newsletter-success .gift-link {
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.newsletter-success .gift-link:hover { color: var(--gold); }
+.newsletter-success .gift-copy {
+  padding: 9px 22px;
+  background: transparent;
+  border: 1px solid rgba(176,134,82,0.55);
+  border-radius: 999px;
+  color: var(--cyan);
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.newsletter-success .gift-copy:hover {
+  background: rgba(176,134,82,0.1);
+  border-color: var(--cyan);
+}
+.newsletter-success .gift-note {
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: var(--gray-500);
+  max-width: 46ch;
 }
 
 .newsletter-legal {
@@ -2134,6 +2195,8 @@ body.review-open { overflow: hidden; }
   .faq-question { font-size: 0.9rem; padding: 18px; }
   .trip-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
   .newsletter-form button { width: 100%; }
+  .newsletter-partner-logo { width: 150px; }
+  .newsletter-success { padding: 20px 16px; }
   .footer-grid { gap: 40px; }
   .captain-img { height: 260px; }
 
