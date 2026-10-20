@@ -1,2 +1,6 @@
 .wrangler/
 node_modules/
+# Drone originals dropped in the repo folder: 4-5 MB each and still carry
+# GPS EXIF. The web copies live in images/ with the metadata stripped.
+/DJI_*.JPG
+/Captura de pantalla *.png
