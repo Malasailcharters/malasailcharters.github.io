@@ -1074,14 +1074,15 @@ body.hide-padlet #trip-board {
   width: 100%;
   border-radius: var(--radius-xl);
   object-fit: cover;
-  height: 480px;
+  object-position: center 20%;
+  height: 520px;
   position: relative;
   z-index: 1;
 }
 .captain-img-decoration {
   position: absolute;
-  top: -14px; right: -14px;
-  bottom: 14px; left: 14px;
+  top: -16px; right: -16px;
+  bottom: 16px; left: 16px;
   border: 2px solid rgba(176,134,82,0.3);
   border-radius: var(--radius-xl);
   z-index: 0;
