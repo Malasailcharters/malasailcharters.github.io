@@ -907,6 +907,87 @@ ul { list-style: none; }
 .cal-trip:hover .cal-arrow { opacity: 1; transform: translateX(4px); }
 
 /* =============================================
+   MOMENTS STRIP
+   A slow, seamless band of small square photos bridging the calendar and the
+   captain. Two identical sets sit side by side and the whole track slides left
+   by exactly one set width, so the loop restarts on an identical frame and the
+   seam is invisible. Nothing here is interactive: it is decoration, so the
+   images are aria-hidden in the markup and the strip takes no focus.
+   To slow it down or speed it up, change --strip-speed below.
+   ============================================= */
+.moments-strip {
+  --strip-speed: 90s;      /* time for one full pass */
+  --strip-gap: 18px;
+  --strip-size: 220px;     /* side of each square frame */
+
+  position: relative;
+  overflow: hidden;
+  padding: 0 0;
+  background: var(--ocean-deep);
+  /* Soft edges so the band dissolves into the pastel instead of being cut off. */
+  -webkit-mask-image: linear-gradient(90deg,
+      transparent 0%, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg,
+      transparent 0%, #000 7%, #000 93%, transparent 100%);
+}
+
+.moments-track {
+  display: flex;
+  align-items: center;
+  gap: var(--strip-gap);
+  width: max-content;
+  animation: moments-scroll var(--strip-speed) linear infinite;
+  will-change: transform;
+}
+
+/* One set width plus one gap is exactly the distance that lands the second
+   copy where the first began, so the jump back is imperceptible. */
+@keyframes moments-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(calc(-50% - (var(--strip-gap) / 2)), 0, 0); }
+}
+
+.moments-track img {
+  width: var(--strip-size);
+  height: var(--strip-size);
+  flex: 0 0 auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 3px;
+  border: 1px solid rgba(176,134,82,0.28);
+  background: var(--ocean-light);
+  box-shadow: 0 2px 10px rgba(51,38,26,0.06);
+}
+
+/* Pausing on hover keeps the band from being distracting while someone reads.
+   Only applies to devices with a real pointer. */
+@media (hover: hover) and (pointer: fine) {
+  .moments-strip:hover .moments-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (max-width: 760px) {
+  .moments-strip {
+    --strip-size: 150px;
+    --strip-gap: 12px;
+    --strip-speed: 70s;
+  }
+}
+
+/* Respect a stated preference for reduced motion: hold the band still and let
+   it scroll by hand instead of moving on its own. */
+@media (prefers-reduced-motion: reduce) {
+  .moments-track {
+    animation: none;
+  }
+  .moments-strip {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* =============================================
    PADLET BOARD
    ============================================= */
 .board-embed {

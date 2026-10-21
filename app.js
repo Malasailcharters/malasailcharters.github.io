@@ -693,3 +693,38 @@ if (document.readyState === 'loading') {
 } else {
   hidePadletIfRequested();
 }
+
+// The moments strip loops by sliding one full set to the left. For that jump to
+// be invisible, the second half of the track has to be an exact copy of the
+// first, so the frame the animation snaps back to is identical to the one it
+// left. Cloning here keeps index.html readable: the markup lists the 14 photos
+// once, and this doubles them at runtime.
+function initMomentsStrip() {
+  const track = document.getElementById('moments-track');
+  if (!track) return;
+
+  const originals = Array.from(track.children);
+  originals.forEach((img) => {
+    const copy = img.cloneNode(true);
+    // The copy is purely decorative and already aria-hidden via alt="".
+    copy.setAttribute('aria-hidden', 'true');
+    track.appendChild(copy);
+  });
+
+  // If the animation is not the thing moving the strip (reduced motion, or a
+  // browser without the keyframes), drop the duplicates so the band is not
+  // needlessly twice as long to scroll by hand.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const dropCopies = () => {
+    if (reduce.matches) {
+      originals.forEach(() => track.removeChild(track.lastElementChild));
+    }
+  };
+  dropCopies();
+  if (reduce.addEventListener) reduce.addEventListener('change', dropCopies);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMomentsStrip);
+} else {
+  initMomentsStrip();
+}
