@@ -1074,7 +1074,7 @@ body.hide-padlet #trip-board {
   width: 100%;
   border-radius: var(--radius-xl);
   object-fit: cover;
-  object-position: center 35%;
+  object-position: center top;
   height: 520px;
   position: relative;
   z-index: 1;
