@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none"
+     stroke="#b08652" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"
+     role="img" aria-label="Compass rose">
+  <title>Compass rose</title>
+
+  <!-- Outer ring, drawn as two fine concentric circles -->
+  <circle cx="200" cy="200" r="150" stroke-width="1.1"/>
+  <circle cx="200" cy="200" r="142" stroke-width="0.5" stroke-opacity="0.65"/>
+
+  <!-- Degree ticks around the ring: major every 45deg, minor every 15deg -->
+  <g stroke-width="0.6">
+    <!-- 8 major ticks sit between the points -->
+    <line x1="200" y1="50"  x2="200" y2="66"  transform="rotate(22.5 200 200)"/>
+    <line x1="200" y1="50"  x2="200" y2="66"  transform="rotate(67.5 200 200)"/>
+    <line x1="200" y1="50"  x2="200" y2="66"  transform="rotate(112.5 200 200)"/>
+    <line x1="200" y1="50"  x2="200" y2="66"  transform="rotate(157.5 200 200)"/>
+    <line x1="200" y1="50"  x2="200" y2="66"  transform="rotate(202.5 200 200)"/>
+    <line x1="200" y1="50"  x2="200" y2="66"  transform="rotate(247.5 200 200)"/>
+    <line x1="200" y1="50"  x2="200" y2="66"  transform="rotate(292.5 200 200)"/>
+    <line x1="200" y1="50"  x2="200" y2="66"  transform="rotate(337.5 200 200)"/>
+  </g>
+
+  <!-- ==== FOUR CARDINAL POINTS ==== -->
+  <!-- Each cardinal is a slim kite: tip at the rim, waist at the centre.
+       Two halves (light/dark) give the classic faceted look while
+       keeping every line hairline. -->
+  <g stroke-width="0.9">
+    <!-- NORTH -->
+    <path d="M200 50 L214 176 L200 200 L186 176 Z"/>
+    <line x1="200" y1="50" x2="200" y2="200" stroke-width="0.6"/>
+    <!-- EAST -->
+    <path d="M350 200 L224 214 L200 200 L224 186 Z"/>
+    <line x1="350" y1="200" x2="200" y2="200" stroke-width="0.6"/>
+    <!-- SOUTH -->
+    <path d="M200 350 L186 224 L200 200 L214 224 Z"/>
+    <line x1="200" y1="350" x2="200" y2="200" stroke-width="0.6"/>
+    <!-- WEST -->
+    <path d="M50 200 L176 186 L200 200 L176 214 Z"/>
+    <line x1="50" y1="200" x2="200" y2="200" stroke-width="0.6"/>
+  </g>
+
+  <!-- ==== FOUR INTERCARDINAL POINTS (half length) ==== -->
+  <g stroke-width="0.85">
+    <!-- NE -->
+    <path d="M306 94 L219 181 L200 200 L211 178 Z"/>
+    <line x1="306" y1="94" x2="200" y2="200" stroke-width="0.55"/>
+    <!-- SE -->
+    <path d="M306 306 L219 219 L200 200 L222 211 Z"/>
+    <line x1="306" y1="306" x2="200" y2="200" stroke-width="0.55"/>
+    <!-- SW -->
+    <path d="M94 306 L181 219 L200 200 L189 222 Z"/>
+    <line x1="94" y1="306" x2="200" y2="200" stroke-width="0.55"/>
+    <!-- NW -->
+    <path d="M94 94 L181 181 L200 200 L178 189 Z"/>
+    <line x1="94" y1="94" x2="200" y2="200" stroke-width="0.55"/>
+  </g>
+
+  <!-- Inner ring enclosing the hub -->
+  <circle cx="200" cy="200" r="26" stroke-width="0.8"/>
+
+  <!-- Hub: small crisp centre mark -->
+  <circle cx="200" cy="200" r="5" stroke-width="0.9"/>
+  <circle cx="200" cy="200" r="1.5" stroke-width="0.8"/>
+
+  <!-- Fleur-de-lis style north marker, kept minimal -->
+  <path d="M200 22 L208 42 L200 36 L192 42 Z" stroke-width="0.7"/>
+  <line x1="200" y1="36" x2="200" y2="50" stroke-width="0.55"/>
+</svg>

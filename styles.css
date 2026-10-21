@@ -651,6 +651,37 @@ ul { list-style: none; }
 .trips-section {
   padding: 100px 0;
   background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Compass rose behind the destination cards.
+   One large motif, centred on the section, faded to nothing at every edge so
+   it melts into the pastel gradient instead of reading as a boxed image.
+   The mask is what does the blending: no border, no visible boundary.
+   To change the strength, adjust --rose-strength; to move it, change the
+   background-position; to drop it entirely, remove this rule. */
+.trips-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("images/compass-rose.svg");
+  background-repeat: no-repeat;
+  background-position: center 38%;
+  background-size: min(760px, 78vw);
+  opacity: var(--rose-strength, 0.16);
+  -webkit-mask-image: radial-gradient(circle at 50% 38%,
+      #000 0%, #000 34%, rgba(0, 0, 0, 0.55) 52%, rgba(0, 0, 0, 0) 74%);
+  mask-image: radial-gradient(circle at 50% 38%,
+      #000 0%, #000 34%, rgba(0, 0, 0, 0.55) 52%, rgba(0, 0, 0, 0) 74%);
+}
+
+/* Keep the heading, cards and button above the rose. */
+.trips-section > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .trips-grid {
