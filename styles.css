@@ -1227,8 +1227,30 @@ body.hide-padlet #trip-board {
    REVIEWS
    ============================================= */
 .reviews-section {
+  position: relative;
+  overflow: hidden;
   padding: 100px 0;
   background: linear-gradient(180deg, var(--ocean-mid) 0%, var(--ocean-deep) 100%);
+}
+
+.reviews-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("images/compass-rose.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(680px, 90vw);
+  opacity: 0.14;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 78%);
+          mask-image: radial-gradient(ellipse at center, black 55%, transparent 78%);
+}
+
+.reviews-section > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .reviews-stars-bar {
