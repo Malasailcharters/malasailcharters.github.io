@@ -2297,7 +2297,7 @@ body.review-open { overflow: hidden; }
   .trip-meta { flex-wrap: wrap; gap: 4px 8px; }
   .trip-footer { flex-wrap: wrap; gap: 12px; }
 
-  .captain-img { height: 320px; }
+  .captain-img { height: auto; aspect-ratio: 4 / 5; object-position: center 14%; }
 
   /* Padlet apila el contenido en vertical dentro del iframe, necesita mas alto */
   .board-head { flex-wrap: wrap; padding: 16px 20px; }
@@ -2333,7 +2333,7 @@ body.review-open { overflow: hidden; }
   .newsletter-partner-logo { width: 150px; }
   .newsletter-success { padding: 20px 16px; }
   .footer-grid { gap: 40px; }
-  .captain-img { height: 260px; }
+  .captain-img { height: auto; aspect-ratio: 4 / 5; object-position: center 16%; }
 
   .board-head { padding: 12px 20px; }
   .board-frame iframe { height: 560px; }
