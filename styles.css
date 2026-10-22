@@ -1073,9 +1073,10 @@ body.hide-padlet #trip-board {
 .captain-img {
   width: 100%;
   border-radius: var(--radius-xl);
-  object-fit: cover;
-  object-position: center 8%;
+  object-fit: contain;
+  object-position: center top;
   height: 320px;
+  background: var(--ocean-deep);
   position: relative;
   z-index: 1;
 }
