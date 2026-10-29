@@ -4,3 +4,8 @@ node_modules/
 # GPS EXIF. The web copies live in images/ with the metadata stripped.
 /DJI_*.JPG
 /Captura de pantalla *.png
+# Private host documents. The host proposal, its PDFs and the generator are
+# sent one to one and must never reach the published site (see AGENTS.md).
+/propuesta-hosts-*.html
+/Mala-Sail-Charters-*Hosts-2027-*.pdf
+/generate_en_pdf.ps1
