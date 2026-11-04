@@ -9,3 +9,7 @@ node_modules/
 /propuesta-hosts-*.html
 /Mala-Sail-Charters-*Hosts-2027-*.pdf
 /generate_en_pdf.ps1
+
+# Logo reference images sent by the client: kept locally, never published.
+/images/logo_floral_ref.jpg
+/images/logo_flower_ref.jpg
