@@ -231,7 +231,8 @@ const tripCardValues = {
   'trip-algarve':   'portugal',
   'trip-antigua':   'antigua',
   'trip-thailand':  'thailand',
-  'trip-mauritius': 'mauritius'
+  'trip-mauritius': 'mauritius',
+  'trip-seychelles':'seychelles'
 };
 
 document.querySelectorAll('.trip-card').forEach(card => {
@@ -244,6 +245,7 @@ const calTripValues = {
   'cal-trip-1':  'antigua',
   'cal-trip-2':  'thailand',
   'cal-trip-3':  'mauritius',
+  'cal-trip-3b': 'seychelles',
   'cal-trip-4':  'italy',
   'cal-trip-5':  'greece',
   'cal-trip-6':  'spain',

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -161,6 +161,17 @@
         "url": "https://malasailcharters.com/#trip-thailand",
         "touristType": ["Small groups", "No sailing experience required"],
         "itinerary": { "@type": "Place", "name": "Krabi, Thailand" },
+        "provider": { "@id": "https://malasailcharters.com/#business" }
+      },
+      {
+        "@type": "TouristTrip",
+        "@id": "https://malasailcharters.com/#trip-seychelles",
+        "name": "Seychelles sailing trip",
+        "description": "Granite boulders, palm-fringed bays and lagoons in every shade of blue, scattered across the Indian Ocean.",
+        "image": "https://malasailcharters.com/images/seychelles.jpg",
+        "url": "https://malasailcharters.com/#trip-seychelles",
+        "touristType": ["Small groups", "No sailing experience required"],
+        "itinerary": { "@type": "Place", "name": "Seychelles, Indian Ocean" },
         "provider": { "@id": "https://malasailcharters.com/#business" }
       },
       {
@@ -406,6 +417,33 @@
           </div>
         </div>
 
+        <div class="trip-card" data-season="winter" id="trip-seychelles">
+          <div class="trip-card-img-wrap">
+            <img src="images/seychelles.jpg" alt="Seychelles, Indian Ocean" class="trip-card-img" />
+            <div class="trip-badge badge-new">New</div>
+            <div class="trip-overlay">
+              <a href="#contact" class="btn btn-primary btn-sm">Book</a>
+            </div>
+          </div>
+          <div class="trip-card-body">
+            <div class="trip-meta">
+              <span class="trip-location">Seychelles</span>
+            </div>
+            <h3 class="trip-title">Seychelles</h3>
+            <p class="trip-desc">Granite boulders, palm-fringed bays and lagoons in every shade of blue, scattered across the Indian Ocean.</p>
+            <div class="trip-footer">
+              <div class="trip-spots">
+                <span class="spots-dot"></span>
+                <span class="spots-dot"></span>
+                <span class="spots-dot"></span>
+                <span class="spots-dot"></span>
+                <span class="spots-dot"></span>
+                <span class="spots-text">5 spots left</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="trips-group-title" data-season="summer">Summer Season</div>
 
         <div class="trip-card" data-season="summer" id="trip-amalfi">
@@ -531,7 +569,7 @@
         <div class="cal-month" id="cal-winter">
           <div class="cal-month-header">
             <span class="cal-month-name">Winter Season</span>
-            <span class="cal-month-count">3 trips</span>
+            <span class="cal-month-count">4 trips</span>
           </div>
           <div class="cal-trips">
             <a href="#contact" class="cal-trip" id="cal-trip-1">
@@ -547,6 +585,11 @@
             <a href="#contact" class="cal-trip" id="cal-trip-3">
               <span class="cal-dot" style="background:#ef4444"></span>
               <div><strong>Mauritius</strong><span>February</span></div>
+              <span class="cal-arrow">→</span>
+            </a>
+            <a href="#contact" class="cal-trip" id="cal-trip-3b">
+              <span class="cal-dot" style="background:#0ea5e9"></span>
+              <div><strong>Seychelles</strong><span>February</span></div>
               <span class="cal-arrow">→</span>
             </a>
           </div>
@@ -1154,6 +1197,7 @@
                 <option value="portugal">Portugal &mdash; Algarve</option>
                 <option value="antigua">Antigua &amp; Barbuda</option>
                 <option value="mauritius">Mauritius</option>
+                <option value="seychelles">Seychelles</option>
                 <option value="thailand">Thailand &mdash; Krabi</option>
                 <option value="other">Other / Not decided yet</option>
               </select>
@@ -1406,6 +1450,7 @@
               <option value="portugal">Portugal &mdash; Algarve</option>
               <option value="antigua">Antigua &amp; Barbuda</option>
               <option value="mauritius">Mauritius</option>
+              <option value="seychelles">Seychelles</option>
               <option value="thailand">Thailand &mdash; Krabi</option>
               <option value="other">Other / Not decided yet</option>
             </select>
