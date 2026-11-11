@@ -1064,7 +1064,7 @@ body.hide-padlet #trip-board {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  align-items: center;
+  align-items: start;
 }
 
 .captain-img-wrap {
@@ -1075,7 +1075,7 @@ body.hide-padlet #trip-board {
   border-radius: var(--radius-xl);
   object-fit: contain;
   object-position: center top;
-  height: 320px;
+  height: 560px;
   background: var(--ocean-deep);
   position: relative;
   z-index: 1;
